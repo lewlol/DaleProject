@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
-  m_Name: Stone
+  m_Name: Greystone
   m_EditorClassIdentifier: 
-  tileName: Stone
-  tileSprite: {fileID: 2113505540, guid: 451d863b3c3bb9348ae3758afa8eb4dd, type: 3}
+  tileName: Greystone
+  tileSprite: {fileID: 1347967682, guid: 451d863b3c3bb9348ae3758afa8eb4dd, type: 3}

@@ -13,6 +13,7 @@ public class TerrainGeneration : MonoBehaviour
     [Range(0f, 0.1f)]public float caveFrequency;
     [Range(-10000, 10000)]public int seed;
     Texture2D noiseTexture;
+    Texture2D biomeTexture;
 
     public void Start()
     {
@@ -54,5 +55,20 @@ public class TerrainGeneration : MonoBehaviour
             }
         }
         noiseTexture.Apply();
+    }
+
+    public void GenerateBiomeTexture()
+    {
+        biomeTexture = new Texture2D(worldWidth * 5, worldHeight * 5);
+
+        for (int x = 0; x < noiseTexture.width; x++)
+        {
+            for (int y = 0; y < noiseTexture.height; y++)
+            {
+                float v = Mathf.PerlinNoise((x + seed) * caveFrequency, (y + seed) * caveFrequency);
+                noiseTexture.SetPixel(x, y, new Color(v, v, v));
+            }
+        }
+        biomeTexture.Apply();
     }
 }
