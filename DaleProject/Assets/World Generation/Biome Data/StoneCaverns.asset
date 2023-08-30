@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec57ab553ea9b5479f4773f482f31ea, type: 3}
   m_Name: StoneCaverns
   m_EditorClassIdentifier: 
-  biomeName: 
-  biomeTemperature: 0
+  biomeName: Stone Caverns
+  rockTile: {fileID: 11400000, guid: 13bdd188b62a12c409c0ff5fb7dbc554, type: 2}
+  minTemperature: 0
+  maxTemperature: 0
+  minHumidity: 0
+  maxHumidity: 0
+  conditionPoints: 0
+  mapColour: {r: 0, g: 0, b: 0, a: 0}

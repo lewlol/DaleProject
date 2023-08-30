@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec57ab553ea9b5479f4773f482f31ea, type: 3}
   m_Name: Grey Caverns
   m_EditorClassIdentifier: 
-  biomeName: 
-  biomeTemperature: 0
+  biomeName: Grey Caverns
+  rockTile: {fileID: 11400000, guid: 8c22977434baba1489fe1e397bc69530, type: 2}
+  minTemperature: 0
+  maxTemperature: 0
+  minHumidity: 0
+  maxHumidity: 0
+  conditionPoints: 0
+  mapColour: {r: 0, g: 0, b: 0, a: 0}
