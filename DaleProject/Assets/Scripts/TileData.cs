@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Tile")]
-public class Tile : ScriptableObject
+public class TileData : ScriptableObject
 {
     [Header("Tile Information")]
     public string tileName;
