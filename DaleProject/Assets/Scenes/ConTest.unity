@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89a74d9f4870e24181a0157865c2307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  playerStats: {fileID: 11400000, guid: a9b986ee5313c2b49b8c66873ed7ce6a, type: 2}
   jumpForce: 6
   groundCheck: {fileID: 752735590}
   groundLayer:
@@ -284,11 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64bc799f4bf48e34ba5ac90a13dded80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: a9b986ee5313c2b49b8c66873ed7ce6a, type: 2}
   ignoreRaycast:
     serializedVersion: 2
     m_Bits: 0
-  miningrange: 2
-  requiredHoldTime: 2
   shakeMagnitude: 0.05
 --- !u!1 &458273870
 GameObject:
@@ -319,10 +318,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ff2a53d3c1b8840a2bc6eb0392961e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
+  biome: []
   worldWidth: 300
   worldHeight: 300
   caveFrequency: 0.03
+  biomeFrequency: 0
   seed: 3906
 --- !u!4 &458273872
 Transform:

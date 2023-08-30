@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerStatsData playerStats;
     //movement variables
-    public float moveSpeed = 5f;
     public float jumpForce;
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Movement
         float moveDirection = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(moveDirection * playerStats.speed, rb.velocity.y);
     }
     void Jumping()
     {

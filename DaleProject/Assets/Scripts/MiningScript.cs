@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class MiningScript : MonoBehaviour
 {
+    public PlayerStatsData playerStats;
     private RaycastHit2D hit;
     public LayerMask ignoreRaycast;
-    public float miningrange = 2f;
 
     // Holding variables
     private bool isHolding = false;
     private float currentHoldTime = 0.0f;
-    public float requiredHoldTime = 0.5f;
 
     // Shaking Variables
     public float shakeMagnitude = 0.05f; // Adjust this as needed
@@ -38,14 +37,14 @@ public class MiningScript : MonoBehaviour
             if (IsInRange(hit.collider.gameObject))
             {
                 tilesprite = hit.transform.GetChild(0).gameObject;
-                if (tilesprite.GetComponent<SpriteRenderer>().enabled == false)
+                if (tilesprite != null && tilesprite.GetComponent<SpriteRenderer>().enabled == false)
                 {
                     tilesprite.GetComponent<SpriteRenderer>().enabled = true;
                 }
             }
             else
             {
-                if (tilesprite.GetComponent<SpriteRenderer>().enabled == true)
+                if (tilesprite != null && tilesprite.GetComponent<SpriteRenderer>().enabled == true)
                 {
                     tilesprite.GetComponent<SpriteRenderer>().enabled = false;
                 }
@@ -54,7 +53,7 @@ public class MiningScript : MonoBehaviour
         }
         if (hit.collider == null)
         {
-            if (tilesprite.GetComponent<SpriteRenderer>().enabled == true)
+            if (tilesprite != null && tilesprite.GetComponent<SpriteRenderer>().enabled == true)
             {
                 tilesprite.GetComponent<SpriteRenderer>().enabled = false;
             }
@@ -103,7 +102,7 @@ public class MiningScript : MonoBehaviour
         {
             currentHoldTime += Time.deltaTime;
 
-            if (currentHoldTime >= requiredHoldTime)
+            if (currentHoldTime >= playerStats.miningspeed)
             {
                 BlockBreak(hit.collider.gameObject);
                 currentHoldTime = 0.0f;
@@ -141,7 +140,7 @@ public class MiningScript : MonoBehaviour
             }
         }
 
-        return distance <= miningrange;
+        return distance <= playerStats.miningrange;
     }
 
     private void BlockBreak(GameObject block)
