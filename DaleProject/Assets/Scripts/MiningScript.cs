@@ -9,7 +9,7 @@ public class MiningScript : MonoBehaviour
     // Holding variables
     private bool isHolding = false;
     private float currentHoldTime = 0.0f;
-    public float requiredHoldTime = 1.0f;
+    public float requiredHoldTime = 0.5f;
 
     // Shaking Variables
     public float shakeMagnitude = 0.05f; // Adjust this as needed
@@ -26,14 +26,50 @@ public class MiningScript : MonoBehaviour
 
     private void Update()
     {
+        hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, float.MaxValue, ~ignoreRaycast);
         miningblock();
+        highlightingblocks();
     }
+
+    public void highlightingblocks()
+    {
+        if (hit.collider != null && hit.collider.CompareTag("Block"))
+        {
+            if (IsInRange(hit.collider.gameObject))
+            {
+                tilesprite = hit.transform.GetChild(0).gameObject;
+                if (tilesprite.GetComponent<SpriteRenderer>().enabled == false)
+                {
+                    tilesprite.GetComponent<SpriteRenderer>().enabled = true;
+                }
+            }
+            else
+            {
+                if (tilesprite.GetComponent<SpriteRenderer>().enabled == true)
+                {
+                    tilesprite.GetComponent<SpriteRenderer>().enabled = false;
+                }
+
+            }
+        }
+        if (hit.collider == null)
+        {
+            if (tilesprite.GetComponent<SpriteRenderer>().enabled == true)
+            {
+                tilesprite.GetComponent<SpriteRenderer>().enabled = false;
+            }
+
+        }
+    }
+
+
 
     public void miningblock()
     {
+       
+
         if (Input.GetMouseButtonDown(0))
         {
-            hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, float.MaxValue, ~ignoreRaycast);
 
             if (hit.collider != null && hit.collider.CompareTag("Block"))
             {
@@ -43,10 +79,10 @@ public class MiningScript : MonoBehaviour
                     tilesprite = hit.transform.GetChild(0).gameObject;
 
                     // Store the original position when interaction starts
-                    originalPosition = hit.collider.transform.position;
+                    originalPosition = tilesprite.transform.position;
 
                     // Store the original local position of the sprite
-                    originalSpritePosition = hit.collider.gameObject.GetComponent<SpriteRenderer>().transform.localPosition;
+                    originalSpritePosition = tilesprite.gameObject.GetComponent<SpriteRenderer>().transform.localPosition;
                 }
             }
         }
@@ -59,7 +95,7 @@ public class MiningScript : MonoBehaviour
                 isHolding = false;
 
                 // Reset the sprite's local position
-                hit.collider.gameObject.GetComponent<SpriteRenderer>().transform.localPosition = originalSpritePosition;
+                tilesprite.transform.localPosition = originalSpritePosition;
             }
         }
 
@@ -72,14 +108,8 @@ public class MiningScript : MonoBehaviour
                 BlockBreak(hit.collider.gameObject);
                 currentHoldTime = 0.0f;
                 isHolding = false;
-
-                
-                
-                
-
-
             }
-            
+
             ApplyShake(tilesprite);
         }
     }
@@ -91,7 +121,7 @@ public class MiningScript : MonoBehaviour
         Vector3 shakeOffset = new Vector3(offsetX, offsetY, 0);
 
         // Apply the shake offset to the sprite's local position
-        block.GetComponent<SpriteRenderer>().transform.localPosition = originalSpritePosition + shakeOffset;
+        tilesprite.GetComponent<SpriteRenderer>().transform.localPosition = originalSpritePosition + shakeOffset;
     }
 
     private bool IsInRange(GameObject block)
