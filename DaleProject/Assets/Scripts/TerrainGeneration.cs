@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class TerrainGeneration : MonoBehaviour
 {
-    public GameObject tile;
-    Vector2 spawnPosition;
+    [Header("Possible Biomes")]
+    public BiomeData[] biome;
 
     [Header("Terrain Settings")]
     public int worldWidth;
     public int worldHeight;
     [Range(0f, 0.1f)]public float caveFrequency;
+    [Range(0f, 0.1f)] public float biomeFrequency;
     [Range(-10000, 10000)]public int seed;
-    Texture2D noiseTexture;
-    Texture2D biomeTexture;
 
+    //Hidden Variables
+    Vector2 spawnPosition; //Tile Spawn Pos
+    Texture2D CaveTexture; //Cave Noise Texture
+    Texture2D biomeTexture; //Biome Noise Texture
+    BiomeData activeBiome; //Active Biome Data
     public void Start()
     {
         seed = Random.Range(-10000, 10000);
-        GenerateNoiseTexture();
+        GenerateCaveTexture();
         GenerateWorld();
     }
 
@@ -28,7 +32,7 @@ public class TerrainGeneration : MonoBehaviour
         {
             for(int y = 0; y < worldHeight; y++)
             {
-                if(noiseTexture.GetPixel(x, y).r < 0.5)
+                if(CaveTexture.GetPixel(x, y).r < 0.5)
                 {
                     spawnPosition = new Vector2(x, y);
                     SpawnTile();
@@ -39,34 +43,39 @@ public class TerrainGeneration : MonoBehaviour
 
     public void SpawnTile()
     {
-        Instantiate(tile, spawnPosition, Quaternion.identity);
+        Instantiate(activeBiome.rockTile, spawnPosition, Quaternion.identity);
     }
 
-    public void GenerateNoiseTexture()
+    private void GenerateBiomes()
     {
-        noiseTexture = new Texture2D(worldWidth * 2, worldHeight * 2);
 
-        for (int x = 0; x < noiseTexture.width; x++)
+    }
+
+    public void GenerateCaveTexture()
+    {
+        CaveTexture = new Texture2D(worldWidth * 2, worldHeight * 2);
+
+        for (int x = 0; x < CaveTexture.width; x++)
         {
-            for (int y = 0; y < noiseTexture.height; y++)
+            for (int y = 0; y < CaveTexture.height; y++)
             {
                 float v = Mathf.PerlinNoise((x + seed) * caveFrequency, (y + seed) * caveFrequency);
-                noiseTexture.SetPixel(x, y, new Color(v, v, v));
+                CaveTexture.SetPixel(x, y, new Color(v, v, v));
             }
         }
-        noiseTexture.Apply();
+        CaveTexture.Apply();
     }
 
     public void GenerateBiomeTexture()
     {
         biomeTexture = new Texture2D(worldWidth * 5, worldHeight * 5);
 
-        for (int x = 0; x < noiseTexture.width; x++)
+        for (int x = 0; x < CaveTexture.width; x++)
         {
-            for (int y = 0; y < noiseTexture.height; y++)
+            for (int y = 0; y < CaveTexture.height; y++)
             {
-                float v = Mathf.PerlinNoise((x + seed) * caveFrequency, (y + seed) * caveFrequency);
-                noiseTexture.SetPixel(x, y, new Color(v, v, v));
+                float v = Mathf.PerlinNoise((x + seed) * biomeFrequency, (y + seed) * biomeFrequency);
+                CaveTexture.SetPixel(x, y, new Color(v, v, v));
             }
         }
         biomeTexture.Apply();

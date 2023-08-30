@@ -12,5 +12,10 @@ public class BiomeData : ScriptableObject
     public TileData rockTile;
 
     [Header("Biome Attributes")]
-    public float biomeTemperature;
+    public float minTemperature;
+    public float maxTemperature;
+    public float minHumidity;
+    public float maxHumidity;
+    public int conditionPoints;
+    public Color mapColour;
 }
