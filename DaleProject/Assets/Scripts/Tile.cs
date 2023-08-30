@@ -5,12 +5,11 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public TileData td;
-    public void Awake()
-    {
-        TileStats();
-    }
+    public SpriteRenderer blockSprite;
 
     private void TileStats()
     {
+        if(td.tileSprite != null)
+            blockSprite.sprite = td.tileSprite;
     }
 }

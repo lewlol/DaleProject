@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class TerrainGeneration : MonoBehaviour
@@ -14,13 +15,16 @@ public class TerrainGeneration : MonoBehaviour
     [Range(0f, 0.1f)] public float biomeFrequency;
     [Range(-10000, 10000)]public int seed;
 
+    [Header("Blank Tiles")]
+    public GameObject RockTile;
+
     //Hidden Variables
     Vector2 spawnPosition; //Tile Spawn Pos
     Texture2D CaveTexture; //Cave Noise Texture
-    Texture2D biomeTexture; //Biome Noise Texture
     BiomeData activeBiome; //Active Biome Data
     public void Start()
     {
+        activeBiome = biome[2];
         seed = Random.Range(-10000, 10000);
         GenerateCaveTexture();
         GenerateWorld();
@@ -43,12 +47,8 @@ public class TerrainGeneration : MonoBehaviour
 
     public void SpawnTile()
     {
-        Instantiate(activeBiome.rockTile, spawnPosition, Quaternion.identity);
-    }
-
-    private void GenerateBiomes()
-    {
-
+        GameObject newTile = Instantiate(RockTile, spawnPosition, Quaternion.identity);
+        newTile.GetComponent<Tile>().td = activeBiome.rockTile;
     }
 
     public void GenerateCaveTexture()
@@ -64,20 +64,5 @@ public class TerrainGeneration : MonoBehaviour
             }
         }
         CaveTexture.Apply();
-    }
-
-    public void GenerateBiomeTexture()
-    {
-        biomeTexture = new Texture2D(worldWidth * 5, worldHeight * 5);
-
-        for (int x = 0; x < CaveTexture.width; x++)
-        {
-            for (int y = 0; y < CaveTexture.height; y++)
-            {
-                float v = Mathf.PerlinNoise((x + seed) * biomeFrequency, (y + seed) * biomeFrequency);
-                CaveTexture.SetPixel(x, y, new Color(v, v, v));
-            }
-        }
-        biomeTexture.Apply();
     }
 }
