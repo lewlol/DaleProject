@@ -10,11 +10,13 @@ public class TerrainGeneration : MonoBehaviour
     [Header("Terrain Settings")]
     public int worldWidth;
     public int worldHeight;
-    [Range(0.1f, 0.2f)]public float caveFrequency;
+    [Range(0f, 0.1f)]public float caveFrequency;
     [Range(-10000, 10000)]public int seed;
     Texture2D noiseTexture;
+
     public void Start()
     {
+        seed = Random.Range(-10000, 10000);
         GenerateNoiseTexture();
         GenerateWorld();
     }

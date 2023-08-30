@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 3495896745892836731, guid: c6fb48b4b7e8f5941bcea6668551bec0, type: 3}
-  worldWidth: 100
-  worldHeight: 100
-  caveFrequency: 0.1314
+  worldWidth: 300
+  worldHeight: 300
+  caveFrequency: 0.03
   seed: 3906
 --- !u!4 &458273872
 Transform:
