@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         Jumping();
         Smoothjump();
+        pickaxerotation();
     }
 
 
