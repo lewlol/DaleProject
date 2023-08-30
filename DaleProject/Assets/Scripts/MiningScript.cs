@@ -43,10 +43,10 @@ public class MiningScript : MonoBehaviour
                     tilesprite = hit.transform.GetChild(0).gameObject;
 
                     // Store the original position when interaction starts
-                    originalPosition = hit.collider.transform.position;
+                    originalPosition = tilesprite.transform.position;
 
                     // Store the original local position of the sprite
-                    originalSpritePosition = hit.collider.gameObject.GetComponent<SpriteRenderer>().transform.localPosition;
+                    originalSpritePosition = tilesprite.gameObject.GetComponent<SpriteRenderer>().transform.localPosition;
                 }
             }
         }
@@ -59,7 +59,7 @@ public class MiningScript : MonoBehaviour
                 isHolding = false;
 
                 // Reset the sprite's local position
-                hit.collider.gameObject.GetComponent<SpriteRenderer>().transform.localPosition = originalSpritePosition;
+               tilesprite.transform.localPosition = originalSpritePosition;
             }
         }
 
@@ -91,7 +91,7 @@ public class MiningScript : MonoBehaviour
         Vector3 shakeOffset = new Vector3(offsetX, offsetY, 0);
 
         // Apply the shake offset to the sprite's local position
-        block.GetComponent<SpriteRenderer>().transform.localPosition = originalSpritePosition + shakeOffset;
+        tilesprite.GetComponent<SpriteRenderer>().transform.localPosition = originalSpritePosition + shakeOffset;
     }
 
     private bool IsInRange(GameObject block)
