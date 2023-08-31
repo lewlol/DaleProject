@@ -1,16 +1,16 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerStats")]
+[CreateAssetMenu(fileName = "Player")]
 public class PlayerStatsData : ScriptableObject
 {
     public int maxhealth;
     public int maxstamina;
     public float speed;
 
-    public float miningrange;
-    public float fortune;
-    public int breakingpower;
-    public float miningspeed;
-
+    public float miningrange;   //Half a block at a time range
+    public float fortune;       //TBD
+    public int breakingpower;   //1,2,3,4
+    public float miningspeed;   //in 0.1 seconds decreases
+    public float shopdiscount;  //In percent
 
 }
