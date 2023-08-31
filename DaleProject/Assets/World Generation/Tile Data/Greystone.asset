@@ -16,3 +16,4 @@ MonoBehaviour:
   tileDescription: A harder rock type due to the pressure where it lays.
   tileType: 0
   tileSprite: {fileID: 1347967682, guid: 451d863b3c3bb9348ae3758afa8eb4dd, type: 3}
+  id: 1

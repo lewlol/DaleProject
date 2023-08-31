@@ -18,6 +18,7 @@ public class MiningScript : MonoBehaviour
 
     private Camera cam;
 
+    private int mineAmount;
     private void Start()
     {
         cam = Camera.main;
@@ -145,6 +146,8 @@ public class MiningScript : MonoBehaviour
 
     private void BlockBreak(GameObject block)
     {
+        mineAmount = 1;
+        gameObject.GetComponent<Backpack>().AddResource(block.GetComponent<Tile>().tileDataHolder.id, mineAmount);
         Destroy(block); // Destroy the block
     }
 }

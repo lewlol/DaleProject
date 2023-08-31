@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,14 @@ using UnityEngine;
 public class Backpack : MonoBehaviour
 {
     //Int for each resource (Such a stupid way to do this but idc inventories are smelly)
+    public int[] resources;
 
-    //Rocks
-    public int stone;
-    public int greystone;
-
-    //Ores
-
-
-    //Gemstones
-
-    public void AddResource(TileTypes resourceType, int amount)
+    public void AddResource(int id, int amount)
     {
-        //Add Resource
+        resources[id] += amount;
     }
 
-    public void RemoveResource(TileTypes resourceType, int amount)
+    public void RemoveResource(int amount)
     {
         //Remove Resource
     }
