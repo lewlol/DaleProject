@@ -136,8 +136,9 @@ GameObject:
   - component: {fileID: 317135964}
   - component: {fileID: 317135963}
   - component: {fileID: 317135962}
+  - component: {fileID: 317135968}
   - component: {fileID: 317135967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,6 +290,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   shakeMagnitude: 0.05
+--- !u!114 &317135968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317135961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f6465673c24c0409dc00bebe2753a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 947923145492388, guid: 82d2eb138be0d6a4683918959640fbe3, type: 3}
+  bombForce: 5
+  bombRadius: 2
+  bombTimer: 2
+  particles: {fileID: 0}
+  throwCooldown: 3
+  shakeMagnitude: 0.1
+  shakeDuration: 0.2
 --- !u!1 &458273870
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +345,7 @@ MonoBehaviour:
   caveFrequency: 0.03
   biomeFrequency: 0
   seed: 3906
+  RockTile: {fileID: 0}
 --- !u!4 &458273872
 Transform:
   m_ObjectHideFlags: 0
@@ -491,7 +513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752735590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1154801025}
   - component: {fileID: 1154801024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pickaxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1641553750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
