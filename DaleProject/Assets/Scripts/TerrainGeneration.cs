@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class TerrainGeneration : MonoBehaviour
 {
-    [Header("Possible Biomes")]
-    public BiomeData[] biome;
+    [Header("Areas")]
+    public WorldAreaData[] areas;
+    int areaLevel;
 
     [Header("Terrain Settings")]
     public int worldWidth;
@@ -24,31 +25,29 @@ public class TerrainGeneration : MonoBehaviour
     BiomeData activeBiome; //Active Biome Data
     public void Start()
     {
-        activeBiome = biome[2];
-        seed = Random.Range(-10000, 10000);
-        GenerateCaveTexture();
-        GenerateWorld();
+        GenerateNewWorld();
     }
 
-    private void GenerateWorld()
+    private void GenerateStone()
     {
-        for(int x = 0; x < worldWidth; x++)
+        for (int x = 0; x < worldWidth; x++)
         {
-            for(int y = 0; y < worldHeight; y++)
+            for (int y = 0; y < worldHeight; y++)
             {
-                if(CaveTexture.GetPixel(x, y).r < 0.5)
+                if (CaveTexture.GetPixel(x, y).r < 0.5)
                 {
+                    CheckAreaLevel(y);
                     spawnPosition = new Vector2(x, y);
-                    SpawnTile();
+                    SpawnTile(RockTile);
                 }
             }
         }
     }
 
-    public void SpawnTile()
+    public void SpawnTile(GameObject tilePrefab)
     {
-        GameObject newTile = Instantiate(RockTile, spawnPosition, Quaternion.identity);
-        newTile.GetComponent<Tile>().td = activeBiome.rockTile;
+        GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
+        newTile.GetComponent<Tile>().AssignStats(areas[areaLevel].rockTile);
     }
 
     public void GenerateCaveTexture()
@@ -64,5 +63,26 @@ public class TerrainGeneration : MonoBehaviour
             }
         }
         CaveTexture.Apply();
+    }
+
+    public void CheckAreaLevel(int yLevel)
+    {
+        if(yLevel > areas[areaLevel].bottomLayerY)
+        {
+            areaLevel++;
+        }
+    }
+
+    private void GenerateNewWorld()
+    {
+        //Reset Certain Variables
+        areaLevel = 0;
+
+        //Random Seed
+        seed = Random.Range(-10000, 10000);
+
+        //Voids
+        GenerateCaveTexture();
+        GenerateStone();
     }
 }

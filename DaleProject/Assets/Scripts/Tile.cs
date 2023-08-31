@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public TileData td;
-    public SpriteRenderer blockSprite;
-
-    private void TileStats()
+    public SpriteRenderer sr;
+    public void AssignStats(TileData td)
     {
-        if(td.tileSprite != null)
-            blockSprite.sprite = td.tileSprite;
+        sr.sprite = td.tileSprite;
     }
 }

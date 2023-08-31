@@ -152,13 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ff2a53d3c1b8840a2bc6eb0392961e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  biome:
-  - {fileID: 11400000, guid: 19292c5e73d340049a4301d5cb396f30, type: 2}
-  - {fileID: 11400000, guid: fce253bd839e0ec4195447192300a468, type: 2}
-  - {fileID: 11400000, guid: 62b5ed42f94aad748b0eb7676c486dbf, type: 2}
-  worldWidth: 300
-  worldHeight: 300
-  caveFrequency: 0.03
+  areas:
+  - {fileID: 11400000, guid: 4193163536bac3847ad5bcf578ff7547, type: 2}
+  - {fileID: 11400000, guid: 910dd005a07101848969c73fb17fdb53, type: 2}
+  worldWidth: 150
+  worldHeight: 800
+  caveFrequency: 0.04
   biomeFrequency: 0
   seed: 3906
   RockTile: {fileID: 3495896745892836731, guid: c6fb48b4b7e8f5941bcea6668551bec0, type: 3}

@@ -241,5 +241,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b46680b0e032340ad2485dfba4d2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  td: {fileID: 0}
-  blockSprite: {fileID: 5739399355539677609}
+  sr: {fileID: 5739399355539677609}
