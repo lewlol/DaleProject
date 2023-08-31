@@ -67,7 +67,7 @@ public class TerrainGeneration : MonoBehaviour
 
     public void CheckAreaLevel(int yLevel)
     {
-        if(yLevel > areas[areaLevel].bottomLayerY)
+        if(yLevel < areas[areaLevel].topLayerY)
         {
             areaLevel++;
         }

@@ -23,9 +23,4 @@ public class PlayerLifetimeStatsData : ScriptableObject
     public int rarechestsopened;
     public int epicchestsopened;
     public int legendarychestsopened;
-
-
-
-
-
 }
