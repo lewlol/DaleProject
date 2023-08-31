@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: 
   tileName: Stone
+  tileDescription: Generic stone found across the whole world, common but useful!
+  tileType: 0
   tileSprite: {fileID: 2113505540, guid: 451d863b3c3bb9348ae3758afa8eb4dd, type: 3}

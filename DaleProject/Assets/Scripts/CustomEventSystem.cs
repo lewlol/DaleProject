@@ -20,4 +20,13 @@ public class CustomEventSystem : MonoBehaviour
             onPlayerDamaged();
         }
     }
+
+    public event Action onCoinChange;
+    public void CoinChange()
+    {
+        if(onCoinChange != null)
+        {
+            onCoinChange();
+        }
+    }
 }
