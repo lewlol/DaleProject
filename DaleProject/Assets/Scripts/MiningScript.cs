@@ -19,8 +19,10 @@ public class MiningScript : MonoBehaviour
     private Camera cam;
 
     private int mineAmount;
+    int stamina;
     private void Start()
     {
+        CustomEventSystem.current.onSleep += RegenStamina;
         cam = Camera.main;
     }
 
@@ -66,20 +68,25 @@ public class MiningScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-
-            if (hit.collider != null && hit.collider.CompareTag("Block"))
+            if(stamina > 0) //Check for Stamina
             {
-                if (IsInRange(hit.collider.gameObject))
+                if (hit.collider != null && hit.collider.CompareTag("Block"))
                 {
-                    isHolding = true;
-                    tilesprite = hit.transform.GetChild(0).gameObject;
+                    if (IsInRange(hit.collider.gameObject))
+                    {
+                        isHolding = true;
+                        tilesprite = hit.transform.GetChild(0).gameObject;
 
-                    // Store the original position when interaction starts
-                    originalPosition = tilesprite.transform.position;
+                        // Store the original position when interaction starts
+                        originalPosition = tilesprite.transform.position;
 
-                    // Store the original local position of the sprite
-                    originalSpritePosition = tilesprite.gameObject.GetComponent<SpriteRenderer>().transform.localPosition;
+                        // Store the original local position of the sprite
+                        originalSpritePosition = tilesprite.gameObject.GetComponent<SpriteRenderer>().transform.localPosition;
+                    }
                 }
+            }else //No Stamina Left -> Refuse to Break Block
+            {
+                Debug.Log("No Stamina");
             }
         }
 
@@ -142,8 +149,19 @@ public class MiningScript : MonoBehaviour
 
     private void BlockBreak(GameObject block)
     {
+        //How Much does the Player get?
         mineAmount = 1;
+
+        //Call 3D Text - Block Transform (Offset Applied in Text Script), Time it stays there, +(Resource Amount) Block Name, Text Size 
+        CustomEventSystem.current.TextDisplay(block.gameObject.transform.position, 2f, "+" + mineAmount + " " + block.GetComponent<Tile>().tileDataHolder.tileName, 30);
+
+        //Add Resource to Backpack and Destroy the Block
         gameObject.GetComponent<Backpack>().AddResource(block.GetComponent<Tile>().tileDataHolder.id, mineAmount);
         Destroy(block); // Destroy the block
+    }
+
+    public void RegenStamina()
+    {
+        stamina = playerStats.maxstamina;
     }
 }

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6928673293c4b774e80d8254b145714f, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  maxhealth: 0
-  maxstamina: 0
+  maxhealth: 100
+  maxstamina: 35
   speed: 5
   miningrange: 2
   fortune: 0.05
   breakingpower: 0
   miningspeed: 0.5
+  shopdiscount: 0

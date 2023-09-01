@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerStatsData playerStats;
+
     //movement variables
     public float jumpForce;
     public Transform groundCheck;

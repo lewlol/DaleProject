@@ -38,4 +38,22 @@ public class CustomEventSystem : MonoBehaviour
             onWorldGenerated();
         }
     }
+
+    public event Action<Vector3, float, string, int> onTextDisplay;
+    public void TextDisplay(Vector3 position, float time, string text, int size)
+    {
+        if(onTextDisplay != null)
+        {
+            onTextDisplay(position, time, text, size);
+        }
+    }
+
+    public event Action onSleep;
+    public void Sleep()
+    {
+        if(onSleep != null)
+        {
+            onSleep();
+        }
+    }
 }

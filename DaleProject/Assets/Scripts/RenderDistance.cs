@@ -22,8 +22,6 @@ public class RenderDistance : MonoBehaviour
         {
             tiles.Add(tile);
         }
-
-        InvokeRepeating("RefreshRenderDistance", 0f, 5f);
     }
     public void RefreshRenderDistance()
     {
