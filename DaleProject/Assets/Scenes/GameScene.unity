@@ -8779,6 +8779,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.025
       objectReference: {fileID: 0}
+    - target: {fileID: 4140831213642202513, guid: 4d7c6a3379ce0654789d3520eb84b9df, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 81ce5ab72d90a5f49b5b72599a50cba8, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d7c6a3379ce0654789d3520eb84b9df, type: 3}
