@@ -22,6 +22,7 @@ public class MiningScript : MonoBehaviour
     int stamina;
     private void Start()
     {
+        stamina = playerStats.maxstamina;
         CustomEventSystem.current.onSleep += RegenStamina;
         cam = Camera.main;
     }
@@ -149,6 +150,9 @@ public class MiningScript : MonoBehaviour
 
     private void BlockBreak(GameObject block)
     {
+        //Minus Stamina
+        MinusStamina(1);
+
         //How Much does the Player get?
         mineAmount = 1;
 
@@ -160,6 +164,14 @@ public class MiningScript : MonoBehaviour
         Destroy(block); // Destroy the block
     }
 
+    public void MinusStamina(int amount)
+    {
+        stamina -= amount;
+        if(stamina < 0)
+        {
+            stamina = 0;
+        }
+    }
     public void RegenStamina()
     {
         stamina = playerStats.maxstamina;
