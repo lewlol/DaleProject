@@ -17,12 +17,13 @@ public class TerrainGeneration : MonoBehaviour
     [Range(-10000, 10000)]public int seed;
 
     [Header("Blank Tiles")]
-    public GameObject RockTile;
+    public GameObject rockOrePrefab;
 
     //Hidden Variables
     Vector2 spawnPosition; //Tile Spawn Pos
     Texture2D CaveTexture; //Cave Noise Texture
     BiomeData activeBiome; //Active Biome Data
+    TileData activeTile; //Current Tile to Place
     public void Start()
     {
         GenerateNewWorld();
@@ -30,15 +31,18 @@ public class TerrainGeneration : MonoBehaviour
 
     private void GenerateStone()
     {
-        for (int x = 0; x < worldWidth; x++)
+        for(int y = 0; y < worldHeight; y++)
         {
-            for (int y = 0; y < worldHeight; y++)
+            for(int x = 0; x < worldWidth; x++)
             {
                 if (CaveTexture.GetPixel(x, y).r < 0.5)
                 {
-                    CheckAreaLevel(y);
-                    spawnPosition = new Vector2(x, y);
-                    SpawnTile(RockTile);
+                    CheckAreaLevel(-y);
+                    spawnPosition = new Vector2(x, -y);
+
+                    //Determine Tile
+                    RockOrOre();
+                    SpawnTile(rockOrePrefab);
                 }
             }
         }
@@ -47,7 +51,7 @@ public class TerrainGeneration : MonoBehaviour
     public void SpawnTile(GameObject tilePrefab)
     {
         GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
-        newTile.GetComponent<Tile>().AssignStats(areas[areaLevel].rockTile);
+        newTile.GetComponent<Tile>().AssignStats(activeTile);
     }
 
     public void GenerateCaveTexture()
@@ -67,12 +71,31 @@ public class TerrainGeneration : MonoBehaviour
 
     public void CheckAreaLevel(int yLevel)
     {
-        if(yLevel < areas[areaLevel].topLayerY)
+        if(yLevel < areas[areaLevel].bottomLayerY)
         {
             areaLevel++;
+            Debug.Log("Change Area");
         }
     }
 
+    public void RockOrOre()
+    {
+        int num = Random.Range(0, 101);
+        if (num <= 95)
+        {
+            activeTile = areas[areaLevel].rockTile;
+        }
+        if (num > 95 && num <= 98)
+        {
+            int randomCommonOre = Random.Range(0, areas[areaLevel].commonOres.Length);
+            activeTile = areas[areaLevel].commonOres[randomCommonOre];
+        }
+        if (num > 98 && num <= 100)
+        {
+            int randomRareOre = Random.Range(0, areas[areaLevel].rareOres.Length);
+            activeTile = areas[areaLevel].rareOres[randomRareOre];
+        }
+    }
     private void GenerateNewWorld()
     {
         //Reset Certain Variables

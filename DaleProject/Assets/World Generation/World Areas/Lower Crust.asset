@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Lower Crust
   m_EditorClassIdentifier: 
   areaName: Lower Crust
-  topLayerY: 501
-  bottomLayerY: 800
+  topLayerY: -501
+  bottomLayerY: -800
   rockTile: {fileID: 11400000, guid: 8c22977434baba1489fe1e397bc69530, type: 2}
   commonBiomes: []
   rareBiomes: []
+  commonOres:
+  - {fileID: 11400000, guid: e7f4f9ea71785e245bd12f88f393a227, type: 2}
+  rareOres:
+  - {fileID: 11400000, guid: 93e8f1edc0163a649acbd45d5896fd3d, type: 2}

@@ -14,4 +14,8 @@ public class WorldAreaData : ScriptableObject
     public TileData rockTile;
     public BiomeData[] commonBiomes;
     public BiomeData[] rareBiomes;
+
+    [Header("Area Ores and Gems")]
+    public TileData[] commonOres;
+    public TileData[] rareOres;
 }

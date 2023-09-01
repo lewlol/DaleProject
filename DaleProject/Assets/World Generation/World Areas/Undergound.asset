@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaName: Underground
   topLayerY: 0
-  bottomLayerY: 500
+  bottomLayerY: -500
   rockTile: {fileID: 11400000, guid: 13bdd188b62a12c409c0ff5fb7dbc554, type: 2}
   commonBiomes: []
   rareBiomes: []
+  commonOres:
+  - {fileID: 11400000, guid: 1e93d62b75f1d9347a851495b35a3644, type: 2}
+  rareOres:
+  - {fileID: 11400000, guid: 3f4a02bec5220534f98f25b5686ad3ac, type: 2}
+  - {fileID: 11400000, guid: a28aff90c8fdce041ab7bef9d068e503, type: 2}

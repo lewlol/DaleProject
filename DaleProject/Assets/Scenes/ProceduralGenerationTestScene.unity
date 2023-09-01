@@ -123,51 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &7965960
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7965962}
-  - component: {fileID: 7965961}
-  m_Layer: 0
-  m_Name: Backpack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &7965961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf823b9232f12dd4fbdb84596432c07d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resources: 0000000000000000
---- !u!4 &7965962
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965960}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 101.55722, y: 684.9223, z: -5.9868298}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &458273870
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,14 +153,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areas:
-  - {fileID: 11400000, guid: 4193163536bac3847ad5bcf578ff7547, type: 2}
   - {fileID: 11400000, guid: 910dd005a07101848969c73fb17fdb53, type: 2}
+  - {fileID: 11400000, guid: 4193163536bac3847ad5bcf578ff7547, type: 2}
   worldWidth: 150
   worldHeight: 800
   caveFrequency: 0.04
   biomeFrequency: 0
   seed: 3906
-  RockTile: {fileID: 3495896745892836731, guid: c6fb48b4b7e8f5941bcea6668551bec0, type: 3}
+  rockOrePrefab: {fileID: 3495896745892836731, guid: c6fb48b4b7e8f5941bcea6668551bec0, type: 3}
 --- !u!4 &458273872
 Transform:
   m_ObjectHideFlags: 0
