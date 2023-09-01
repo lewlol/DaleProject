@@ -29,4 +29,13 @@ public class CustomEventSystem : MonoBehaviour
             onCoinChange();
         }
     }
+
+    public event Action onWorldGenerated;
+    public void WorldGenerated()
+    {
+        if(onWorldGenerated != null)
+        {
+            onWorldGenerated();
+        }
+    }
 }

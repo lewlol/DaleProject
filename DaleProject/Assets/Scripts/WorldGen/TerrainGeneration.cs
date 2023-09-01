@@ -107,5 +107,8 @@ public class TerrainGeneration : MonoBehaviour
         //Voids
         GenerateCaveTexture();
         GenerateStone();
+
+        //When Completed Send Event
+        CustomEventSystem.current.WorldGenerated();
     }
 }
