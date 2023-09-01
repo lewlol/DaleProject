@@ -14,12 +14,14 @@ public class MiningScript : MonoBehaviour
     public float shakeMagnitude = 0.05f; // Adjust this as needed
     private Vector3 originalSpritePosition;
     private Vector3 originalPosition;
+    private Vector3 originalBlockPosition; // Store the original block position
     private GameObject tilesprite;
 
     private Camera cam;
 
     private int mineAmount;
     int stamina;
+
     private void Start()
     {
         stamina = playerStats.maxstamina;
@@ -36,6 +38,11 @@ public class MiningScript : MonoBehaviour
 
     public void highlightingblocks()
     {
+        if (tilesprite != null && tilesprite.GetComponent<SpriteRenderer>().enabled == true)
+        {
+            tilesprite.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
         if (hit.collider != null && hit.collider.CompareTag("Block"))
         {
             if (IsInRange(hit.collider.gameObject))
@@ -46,22 +53,6 @@ public class MiningScript : MonoBehaviour
                     tilesprite.GetComponent<SpriteRenderer>().enabled = true;
                 }
             }
-            else
-            {
-                if (tilesprite != null && tilesprite.GetComponent<SpriteRenderer>().enabled == true)
-                {
-                    tilesprite.GetComponent<SpriteRenderer>().enabled = false;
-                }
-
-            }
-        }
-        if (hit.collider == null)
-        {
-            if (tilesprite != null && tilesprite.GetComponent<SpriteRenderer>().enabled == true)
-            {
-                tilesprite.GetComponent<SpriteRenderer>().enabled = false;
-            }
-
         }
     }
 
@@ -69,7 +60,7 @@ public class MiningScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if(stamina > 0) //Check for Stamina
+            if (stamina > 0) // Check for Stamina
             {
                 if (hit.collider != null && hit.collider.CompareTag("Block"))
                 {
@@ -80,12 +71,14 @@ public class MiningScript : MonoBehaviour
 
                         // Store the original position when interaction starts
                         originalPosition = tilesprite.transform.position;
+                        originalBlockPosition = tilesprite.transform.position; // Store the original block position
 
                         // Store the original local position of the sprite
                         originalSpritePosition = tilesprite.gameObject.GetComponent<SpriteRenderer>().transform.localPosition;
                     }
                 }
-            }else //No Stamina Left -> Refuse to Break Block
+            }
+            else // No Stamina Left -> Refuse to Break Block
             {
                 Debug.Log("No Stamina");
             }
@@ -100,6 +93,9 @@ public class MiningScript : MonoBehaviour
 
                 // Reset the sprite's local position
                 tilesprite.transform.localPosition = originalSpritePosition;
+
+                // Reset the block's position to its original position after releasing
+                tilesprite.transform.position = originalBlockPosition;
             }
         }
 
@@ -120,12 +116,19 @@ public class MiningScript : MonoBehaviour
 
     private void ApplyShake(GameObject block)
     {
-        float offsetX = Random.Range(-shakeMagnitude, shakeMagnitude);
-        float offsetY = Random.Range(-shakeMagnitude, shakeMagnitude);
-        Vector3 shakeOffset = new Vector3(offsetX, offsetY, 0);
+        if (tilesprite != null)
+        {
+            SpriteRenderer spriteRenderer = tilesprite.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                float offsetX = Random.Range(-shakeMagnitude, shakeMagnitude);
+                float offsetY = Random.Range(-shakeMagnitude, shakeMagnitude);
+                Vector3 shakeOffset = new Vector3(offsetX, offsetY, 0);
 
-        // Apply the shake offset to the sprite's local position
-        tilesprite.GetComponent<SpriteRenderer>().transform.localPosition = originalSpritePosition + shakeOffset;
+                // Apply the shake offset to the sprite's local position
+                spriteRenderer.transform.localPosition = originalSpritePosition + shakeOffset;
+            }
+        }
     }
 
     private bool IsInRange(GameObject block)
@@ -150,16 +153,16 @@ public class MiningScript : MonoBehaviour
 
     private void BlockBreak(GameObject block)
     {
-        //Minus Stamina
+        // Minus Stamina
         MinusStamina(1);
 
-        //How Much does the Player get?
+        // How Much does the Player get?
         mineAmount = 1;
 
-        //Call 3D Text - Block Transform (Offset Applied in Text Script), Time it stays there, +(Resource Amount) Block Name, Text Size 
+        // Call 3D Text - Block Transform (Offset Applied in Text Script), Time it stays there, +(Resource Amount) Block Name, Text Size 
         CustomEventSystem.current.TextDisplay(block.gameObject.transform.position, 2f, "+" + mineAmount + " " + block.GetComponent<Tile>().tileDataHolder.tileName, 30);
 
-        //Add Resource to Backpack and Destroy the Block
+        // Add Resource to Backpack and Destroy the Block
         gameObject.GetComponent<Backpack>().AddResource(block.GetComponent<Tile>().tileDataHolder.id, mineAmount);
         Destroy(block); // Destroy the block
     }
@@ -167,11 +170,12 @@ public class MiningScript : MonoBehaviour
     public void MinusStamina(int amount)
     {
         stamina -= amount;
-        if(stamina < 0)
+        if (stamina < 0)
         {
             stamina = 0;
         }
     }
+
     public void RegenStamina()
     {
         stamina = playerStats.maxstamina;
