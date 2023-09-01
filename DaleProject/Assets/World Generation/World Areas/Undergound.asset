@@ -23,3 +23,4 @@ MonoBehaviour:
   rareOres:
   - {fileID: 11400000, guid: 3f4a02bec5220534f98f25b5686ad3ac, type: 2}
   - {fileID: 11400000, guid: a28aff90c8fdce041ab7bef9d068e503, type: 2}
+  - {fileID: 11400000, guid: 6220593f6c1bcd046a48a4a0732a65b1, type: 2}

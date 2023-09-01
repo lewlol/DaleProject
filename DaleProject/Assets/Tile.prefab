@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8838534580947707661}
   - component: {fileID: 5739399355539677609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 177560085259110691}
   - component: {fileID: 3390462443008568382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 1261759461787361558}
   - component: {fileID: 4533011287771771411}
   - component: {fileID: 2065873524780462836}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile
   m_TagString: Block
   m_Icon: {fileID: 0}

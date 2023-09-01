@@ -13,14 +13,18 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     public float fallMultiplier;
     public float lowjumpMultiplier;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     //Pickaxe and Sprite Rotation
     public Transform playerCenter; // Empty GameObject at the center of the player
     public GameObject pickaxe; // The pickaxe GameObject
+
+    //Animation
+    private Animator playerAnim;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerAnim = GetComponent<Animator>();
     }
     void Update()
     {
@@ -28,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         Jumping();
         Smoothjump();
         pickaxerotation();
+        PlayerWalkingAnimation();
     }
 
 
@@ -74,15 +79,26 @@ public class PlayerMovement : MonoBehaviour
 
             if (mousePos.x < playerCenter.position.x)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                spriteRenderer.flipX = true;
                 pickaxe.GetComponent<SpriteRenderer>().flipY = true;
             }
             else
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                spriteRenderer.flipX = false;
                 pickaxe.GetComponent<SpriteRenderer>().flipY = false;
             }
 
+        }
+    }
+
+    void PlayerWalkingAnimation()
+    {
+        if(rb.velocity.x != 0)
+        {
+            playerAnim.SetBool("isWalking", true);
+        }else
+        {
+            playerAnim.SetBool("isWalking", false);
         }
     }
 }

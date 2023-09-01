@@ -8,6 +8,7 @@ public enum TileDatabase
     Coal,
     Iron,
     Gold,
+    Silver,
 
     //Gemstones
 
