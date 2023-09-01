@@ -27,7 +27,7 @@ public class MiningScript : MonoBehaviour
     private void Update()
     {
         hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, float.MaxValue, ~ignoreRaycast);
-        miningblock();
+        MiningBlock();
         highlightingblocks();
     }
 
@@ -62,12 +62,8 @@ public class MiningScript : MonoBehaviour
         }
     }
 
-
-
-    public void miningblock()
+    public void MiningBlock()
     {
-       
-
         if (Input.GetMouseButtonDown(0))
         {
 
