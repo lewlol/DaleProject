@@ -8,6 +8,7 @@ public class BombItem : Item
     public GameObject bombPrefab;
     public float bombForce;
     public float bombRadius;
+    public int bombDamage;
     GameObject currentBomb;
     public override void Activate(GameObject parent)
     {
@@ -32,6 +33,11 @@ public class BombItem : Item
             {
                 CustomEventSystem.current.TextDisplay(collider.transform.position, 3, "+1 " + collider.GetComponent<Tile>().tileDataHolder.tileName, 30, Color.white);
                 CollectAndDestroyBlock(collider.gameObject);
+            }
+
+            if (collider.gameObject.tag == "Player")
+            {
+                collider.gameObject.GetComponent<PlayerHealth>().TakeDamage(bombDamage);
             }
         }
 

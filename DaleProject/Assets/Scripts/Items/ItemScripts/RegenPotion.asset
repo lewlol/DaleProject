@@ -9,16 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ce36ec77bb8fe44a111c2f0014a192, type: 3}
-  m_Name: Bomb
+  m_Script: {fileID: 11500000, guid: 1f30bec5793dfe6499ae17d382039942, type: 3}
+  m_Name: RegenPotion
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 0}
-  itemName: Bomb
+  itemName: Regeneration Potion
   itemDescription: 
-  coolDownTime: 2
-  activeTime: 3
+  coolDownTime: 30
+  activeTime: 0
   infinite: 0
-  bombPrefab: {fileID: 947923145492388, guid: 82d2eb138be0d6a4683918959640fbe3, type: 3}
-  bombForce: 5
-  bombRadius: 2
-  bombDamage: 15
+  healthgain: 3
+  regenTime: 30
