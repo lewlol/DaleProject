@@ -18,3 +18,4 @@ MonoBehaviour:
   tileType: 1
   tileSprite: {fileID: -1406872768, guid: 92457a5a155189844809ff03b78cee7f, type: 3}
   id: 5
+  breakTime: 1.3

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  tileName: Stone
+  tileName: 0
   tileDescription: Generic stone found across the whole world, common but useful!
   tileType: 0
   tileSprite: {fileID: 2113505540, guid: 451d863b3c3bb9348ae3758afa8eb4dd, type: 3}
+  id: 0
+  breakTime: 0.6

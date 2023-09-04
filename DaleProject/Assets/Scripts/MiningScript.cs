@@ -3,7 +3,7 @@ using UnityEngine;
 public class MiningScript : MonoBehaviour
 {
     public float miningRange = 2.0f;
-    public float miningTime = 1.0f;
+    private float miningTime ;
     public float shakeMagnitude = 0.05f; // Adjust this as needed
 
     private bool isMining = false;
@@ -66,6 +66,7 @@ public class MiningScript : MonoBehaviour
 
             if (isMining)
             {
+                miningTime = hit.collider.gameObject.GetComponent<Tile>().tileDataHolder.breakTime;
                 miningTimer += Time.deltaTime;
 
                 if (miningTimer >= miningTime)

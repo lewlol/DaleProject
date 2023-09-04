@@ -13,5 +13,6 @@ public class TileData : ScriptableObject
     [Header("Tile Attributes")]
     public Sprite tileSprite;
     public int id;
+    public float breakTime;
 }
 
