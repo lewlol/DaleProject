@@ -8848,26 +8848,6 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 81ce5ab72d90a5f49b5b72599a50cba8, type: 2}
-    - target: {fileID: 4140831213642202513, guid: 4d7c6a3379ce0654789d3520eb84b9df, type: 3}
-      propertyPath: item1Count
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140831213642202513, guid: 4d7c6a3379ce0654789d3520eb84b9df, type: 3}
-      propertyPath: activeItem1
-      value: 
-      objectReference: {fileID: 11400000, guid: 1d60b95eea356a94d91e5714775fc173, type: 2}
-    - target: {fileID: 4140831213642202513, guid: 4d7c6a3379ce0654789d3520eb84b9df, type: 3}
-      propertyPath: activeItem2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6644960840487924075, guid: 4d7c6a3379ce0654789d3520eb84b9df, type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 11400000, guid: a9b986ee5313c2b49b8c66873ed7ce6a, type: 2}
-    - target: {fileID: 6644960840487924075, guid: 4d7c6a3379ce0654789d3520eb84b9df, type: 3}
-      propertyPath: ignoreRaycast.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d7c6a3379ce0654789d3520eb84b9df, type: 3}
