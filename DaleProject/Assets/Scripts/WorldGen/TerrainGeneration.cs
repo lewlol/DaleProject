@@ -13,6 +13,7 @@ public class TerrainGeneration : MonoBehaviour
     public int worldWidth;
     public int worldHeight;
     [Range(0f, 0.1f)]public float caveFrequency;
+    [Range(0f, 1f)]public float oreFrequency;
     [Range(0f, 0.1f)] public float biomeFrequency;
     [Range(-10000, 10000)]public int seed;
 
@@ -22,6 +23,7 @@ public class TerrainGeneration : MonoBehaviour
     //Hidden Variables
     Vector2 spawnPosition; //Tile Spawn Pos
     Texture2D CaveTexture; //Cave Noise Texture
+    Texture2D OreTexture;
     BiomeData activeBiome; //Active Biome Data
     TileData activeTile; //Current Tile to Place
     public void Start()
@@ -40,8 +42,6 @@ public class TerrainGeneration : MonoBehaviour
                     CheckAreaLevel(-y);
                     spawnPosition = new Vector2(x, -y);
 
-                    //Determine Tile
-                    RockOrOre();
                     SpawnTile(rockOrePrefab);
                 }
             }
@@ -78,23 +78,40 @@ public class TerrainGeneration : MonoBehaviour
         }
     }
 
-    public void RockOrOre()
+    public void GenerateOre()
     {
-        int num = Random.Range(0, 101);
-        if (num <= 95)
+        for (int y = 0; y < worldHeight; y++)
         {
-            activeTile = areas[areaLevel].rockTile;
+            for (int x = 0; x < worldWidth; x++)
+            {
+                if (OreTexture.GetPixel(x, y).r < 0.5)
+                {
+                    CheckAreaLevel(-y);
+                    spawnPosition = new Vector2(x, -y);
+
+                    SpawnTile(rockOrePrefab);
+                }
+            }
         }
-        if (num > 95 && num <= 98)
+    }
+
+    public void GenerateOreTexture()
+    {
+        OreTexture = new Texture2D(worldWidth, worldHeight);
+        for (int y = 0; y < worldHeight; y++)
         {
-            int randomCommonOre = Random.Range(0, areas[areaLevel].commonOres.Length);
-            activeTile = areas[areaLevel].commonOres[randomCommonOre];
+            for (int x = 0; x < worldWidth; x++)
+            {
+                float v = Mathf.PerlinNoise((x + seed) * oreFrequency, (y + seed) * oreFrequency);
+                OreTexture.SetPixel(x, y, new Color(v, v, v));
+            }
         }
-        if (num > 98 && num <= 100)
-        {
-            int randomRareOre = Random.Range(0, areas[areaLevel].rareOres.Length);
-            activeTile = areas[areaLevel].rareOres[randomRareOre];
-        }
+        OreTexture.Apply();
+    }
+
+    public void DeleteBlock(int x, int y)
+    {
+
     }
     private void GenerateNewWorld()
     {
@@ -106,7 +123,9 @@ public class TerrainGeneration : MonoBehaviour
 
         //Voids
         GenerateCaveTexture();
+        GenerateOreTexture();
         GenerateStone();
+        GenerateOre();
 
         //When Completed Send Event
         CustomEventSystem.current.WorldGenerated();
