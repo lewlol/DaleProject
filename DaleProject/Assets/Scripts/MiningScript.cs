@@ -96,7 +96,16 @@ public class MiningScript : MonoBehaviour
     {
         MinusStamina(1);
 
-        mineAmount = 1;
+        float fortune = playerStats.fortune;
+        int guaranteedAmount = Mathf.FloorToInt(fortune);
+        float fractionalPart = fortune - guaranteedAmount;
+        int additionalAmount = 0;
+        if (Random.value <= fractionalPart)
+        {
+            additionalAmount = 1;
+        }
+
+        mineAmount = guaranteedAmount + additionalAmount;
 
         // Call 3D Text - Block Transform (Offset Applied in Text Script), Time it stays there, +(Resource Amount) Block Name, Text Size 
         CustomEventSystem.current.TextDisplay(block.gameObject.transform.position, 2f, "+" + mineAmount + " " + block.GetComponent<Tile>().tileDataHolder.tileName, 30, Color.white);

@@ -16,7 +16,7 @@ MonoBehaviour:
   maxstamina: 35
   speed: 5
   miningrange: 2
-  fortune: 0.05
+  fortune: 1
   breakingpower: 0
   miningspeed: 0.5
   shopdiscount: 0
