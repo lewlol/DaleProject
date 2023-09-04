@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 4024228613814587396}
   - component: {fileID: 2230572942293472509}
   - component: {fileID: 9189872764864745516}
+  - component: {fileID: 6644960840487924075}
   - component: {fileID: 6273437256001287197}
   - component: {fileID: 3938312379127673724}
   - component: {fileID: 4140831213642202513}
@@ -138,11 +139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64bc799f4bf48e34ba5ac90a13dded80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miningRange: 2
+  miningTime: 1
+  shakeMagnitude: 0.05
   playerStats: {fileID: 11400000, guid: a9b986ee5313c2b49b8c66873ed7ce6a, type: 2}
   ignoreRaycast:
     serializedVersion: 2
     m_Bits: 256
-  shakeMagnitude: 0.05
 --- !u!114 &4024228613814587397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +226,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6644960840487924075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024228613814587392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64bc799f4bf48e34ba5ac90a13dded80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miningRange: 2
+  miningTime: 1
+  shakeMagnitude: 0.05
+  playerStats: {fileID: 0}
+  ignoreRaycast:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &6273437256001287197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +283,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d30e88444188843a627808dac61b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  activeItem1: {fileID: 0}
+  item1Count: 0
+  activeItem2: {fileID: 0}
+  item2Count: 0
+  activeItem3: {fileID: 0}
+  item3Count: 0
 --- !u!1 &4024228613856935898
 GameObject:
   m_ObjectHideFlags: 0
