@@ -93,7 +93,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4024228613814587398}
-  - component: {fileID: 86723378578282167}
   - component: {fileID: 4024228613814587397}
   - component: {fileID: 4024228613814587396}
   - component: {fileID: 2230572942293472509}
@@ -127,25 +126,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &86723378578282167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4024228613814587392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64bc799f4bf48e34ba5ac90a13dded80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miningRange: 2
-  miningTime: 1
-  shakeMagnitude: 0.05
-  playerStats: {fileID: 11400000, guid: a9b986ee5313c2b49b8c66873ed7ce6a, type: 2}
-  ignoreRaycast:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!114 &4024228613814587397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,10 +221,10 @@ MonoBehaviour:
   miningRange: 2
   miningTime: 1
   shakeMagnitude: 0.05
-  playerStats: {fileID: 0}
+  playerStats: {fileID: 11400000, guid: a9b986ee5313c2b49b8c66873ed7ce6a, type: 2}
   ignoreRaycast:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!114 &6273437256001287197
 MonoBehaviour:
   m_ObjectHideFlags: 0
