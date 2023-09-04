@@ -19,6 +19,12 @@ public class MiningScript : MonoBehaviour
     public LayerMask ignoreRaycast;
     private int mineAmount;
 
+
+    private void Start()
+    {
+        stamina = playerStats.maxstamina;
+    }
+
     private void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -42,7 +48,7 @@ public class MiningScript : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Block") && IsInRange(hit.collider.gameObject))
         {
             HightlightBlock(hit.collider.gameObject);
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && CanMine()) // Check if the player can mine
             {
                 currentBlock = hit.collider.gameObject;
                 childTransform = currentBlock.transform.GetChild(0); // Assuming the child is at index 0
@@ -137,7 +143,7 @@ public class MiningScript : MonoBehaviour
 
     private void HightlightBlock(GameObject block)
     {
-        if(block != previousHighlightedBlock)
+        if (block != previousHighlightedBlock)
         {
             Unhighlightblock();
             lastHighlightedBlock = block;
@@ -148,6 +154,7 @@ public class MiningScript : MonoBehaviour
             previousHighlightedBlock = block;
         }
     }
+
     private void Unhighlightblock()
     {
         if (lastHighlightedBlock != null)
@@ -157,6 +164,20 @@ public class MiningScript : MonoBehaviour
             childSpriteRenderer.enabled = false;
             lastHighlightedBlock = null;
             previousHighlightedBlock = null;
+        }
+    }
+
+    private bool CanMine()
+    {
+        if (stamina >= 1) 
+        {
+            return true;
+        }
+        else
+        {
+           
+            Debug.Log("Not enough stamina to mine.");
+            return false;
         }
     }
 }
