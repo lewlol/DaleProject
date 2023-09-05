@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class TerrainGeneration : MonoBehaviour
@@ -23,9 +22,9 @@ public class TerrainGeneration : MonoBehaviour
     //Hidden Variables
     Vector2 spawnPosition; //Tile Spawn Pos
     Texture2D CaveTexture; //Cave Noise Texture
-    Texture2D OreTexture;
     BiomeData activeBiome; //Active Biome Data
     TileData activeTile; //Current Tile to Place
+    List<GameObject> tiles = new List<GameObject>(); //List of Tiles 
     public void Start()
     {
         GenerateNewWorld();
@@ -42,16 +41,19 @@ public class TerrainGeneration : MonoBehaviour
                     CheckAreaLevel(-y);
                     spawnPosition = new Vector2(x, -y);
 
-                    SpawnTile(rockOrePrefab);
+                    SpawnRock(rockOrePrefab, x, -y);
                 }
             }
         }
     }
 
-    public void SpawnTile(GameObject tilePrefab)
+    public void SpawnRock(GameObject tilePrefab, int x, int y)
     {
+        activeTile = areas[areaLevel].rockTile;
         GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
         newTile.GetComponent<Tile>().AssignStats(activeTile);
+        newTile.name = x + "," + y;
+        tiles.Add(newTile);
     }
 
     public void GenerateCaveTexture()
@@ -74,7 +76,6 @@ public class TerrainGeneration : MonoBehaviour
         if(yLevel < areas[areaLevel].bottomLayerY)
         {
             areaLevel++;
-            Debug.Log("Change Area");
         }
     }
 
@@ -84,34 +85,58 @@ public class TerrainGeneration : MonoBehaviour
         {
             for (int x = 0; x < worldWidth; x++)
             {
-                if (OreTexture.GetPixel(x, y).r < 0.5)
+                if (CaveTexture.GetPixel(x, y).r < 0.5) //Rock Block
                 {
-                    CheckAreaLevel(-y);
-                    spawnPosition = new Vector2(x, -y);
+                    //Percentage Chance to Generate Ore
+                    float chance = Random.Range(0, 1);
+                    if(chance <= oreFrequency)
+                    {
+                        //Check Area Level and Change Spawn Position
+                        CheckAreaLevel(-y);
+                        spawnPosition = new Vector2(x, -y);
 
-                    SpawnTile(rockOrePrefab);
+                        //Delete Rock Block
+                        DeleteBlock(x, -y);
+
+                        //Spawn Ore
+                        SpawnOre(x, -y);
+                    }
+
+                    //Run Vein (Check Up, Down, Left, Right for Percentage Chance to Spawn Vein)
+                    //Delete Block in that Place if Vein Worked, Then Run it Again in that Position
                 }
             }
         }
     }
 
-    public void GenerateOreTexture()
+    public void SpawnOre(int x, int y)
     {
-        OreTexture = new Texture2D(worldWidth, worldHeight);
-        for (int y = 0; y < worldHeight; y++)
+        //Choose Ore
+        int rarity = Random.Range(0, 11);
+        if(rarity <= 7)
         {
-            for (int x = 0; x < worldWidth; x++)
-            {
-                float v = Mathf.PerlinNoise((x + seed) * oreFrequency, (y + seed) * oreFrequency);
-                OreTexture.SetPixel(x, y, new Color(v, v, v));
-            }
+            //Common
+            int ore = Random.Range(0, areas[areaLevel].commonOres.Length);
+            GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
+            newTile.GetComponent<Tile>().AssignStats(areas[areaLevel].commonOres[ore]);
+            newTile.name = x + "," + y;
+            tiles.Add(newTile);
         }
-        OreTexture.Apply();
+        else
+        {
+            //Rare
+            int ore = Random.Range(0, areas[areaLevel].rareOres.Length);
+            GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
+            newTile.GetComponent<Tile>().AssignStats(areas[areaLevel].rareOres[ore]);
+            newTile.name = x + "," + y;
+            tiles.Add(newTile);
+        }
     }
-
     public void DeleteBlock(int x, int y)
     {
-
+        string blockName = x + "," + y;
+        GameObject tile = GameObject.Find(blockName);
+        Destroy(tile);
     }
     private void GenerateNewWorld()
     {
@@ -123,9 +148,8 @@ public class TerrainGeneration : MonoBehaviour
 
         //Voids
         GenerateCaveTexture();
-        GenerateOreTexture();
         GenerateStone();
-        GenerateOre();
+        //GenerateOre();
 
         //When Completed Send Event
         CustomEventSystem.current.WorldGenerated();
