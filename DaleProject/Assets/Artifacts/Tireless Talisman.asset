@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tireless Talisman
   m_EditorClassIdentifier: 
   id: 1
-  artifactname: LewsMilk
+  artifactname: Tireless Talisman
   sprite: {fileID: 0}
   level: 1
   statUpgrade: Stamina Decrease
