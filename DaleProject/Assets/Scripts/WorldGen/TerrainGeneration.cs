@@ -22,6 +22,7 @@ public class TerrainGeneration : MonoBehaviour
     //Hidden Variables
     Vector2 spawnPosition; //Tile Spawn Pos
     Texture2D CaveTexture; //Cave Noise Texture
+    Texture2D OreTexture; //Ore Texture
     BiomeData activeBiome; //Active Biome Data
     TileData activeTile; //Current Tile to Place
     List<GameObject> tiles = new List<GameObject>(); //List of Tiles 
@@ -86,7 +87,7 @@ public class TerrainGeneration : MonoBehaviour
         {
             for (int x = 0; x < worldWidth; x++)
             {
-                if (CaveTexture.GetPixel(x, y).r < 0.5) //Rock Block
+                if (CaveTexture.GetPixel(x, y).r < 0.5 && OreTexture.GetPixel(x, y) == Color.white) //Rock Block
                 {
                     //Percentage Chance to Generate Ore
                     float chance = Random.Range(0f, 1f);
@@ -102,9 +103,6 @@ public class TerrainGeneration : MonoBehaviour
                         //Spawn Ore
                         SpawnOre(x, -y, false);
                     }
-
-                    //Run Vein (Check Up, Down, Left, Right for Percentage Chance to Spawn Vein)
-                    //Delete Block in that Place if Vein Worked, Then Run it Again in that Position
                 }
             }
         }
@@ -112,42 +110,50 @@ public class TerrainGeneration : MonoBehaviour
 
     public void SpawnOre(int x, int y, bool newOre)
     {
-        //Choose Ore
-        if (!newOre)
+        if(OreTexture.GetPixel(x, y) == Color.white)
         {
-            int rarity = Random.Range(0, 11);
-            if (rarity <= 7)
+            //Choose Ore
+            if (!newOre)
             {
-                //Common
-                int ore = Random.Range(0, areas[areaLevel].commonOres.Length);
-                activeTile = areas[areaLevel].commonOres[ore];
+                int rarity = Random.Range(0, 11);
+                if (rarity <= 7)
+                {
+                    //Common
+                    int ore = Random.Range(0, areas[areaLevel].commonOres.Length);
+                    activeTile = areas[areaLevel].commonOres[ore];
+                }
+                else
+                {
+                    //Rare
+                    int ore = Random.Range(0, areas[areaLevel].rareOres.Length);
+                    activeTile = areas[areaLevel].rareOres[ore];
+                }
+
+                GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
+                newTile.GetComponent<Tile>().AssignStats(activeTile);
+                newTile.name = x + "," + y;
+                tiles.Add(newTile);
+
+                OreTexture.SetPixel(x, y, Color.black);
+                OreTexture.Apply();
+
+                veinCount = 0;
+                GenerateOreVein(activeTile.veinChance, activeTile.maxVeinCount, activeTile, x, y);
             }
-            else
+            if (newOre)
             {
-                //Rare
-                int ore = Random.Range(0, areas[areaLevel].rareOres.Length);
-                activeTile = areas[areaLevel].rareOres[ore];
+                spawnPosition = new Vector2(x, y);
+                GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
+                newTile.GetComponent<Tile>().AssignStats(activeTile);
+                newTile.name = x + "," + y;
+                tiles.Add(newTile);
+
+                OreTexture.SetPixel(x, y, Color.black);
+                OreTexture.Apply();
+
+                GenerateOreVein(activeTile.veinChance, activeTile.maxVeinCount, activeTile, x, y);
             }
-
-            GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
-            newTile.GetComponent<Tile>().AssignStats(activeTile);
-            newTile.name = x + "," + y;
-            tiles.Add(newTile);
-
-            veinCount = 0;
-            GenerateOreVein(activeTile.veinChance, activeTile.maxVeinCount, activeTile, x, y);
         }
-        if(newOre)
-        {
-            spawnPosition = new Vector2(x, y);
-            GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
-            newTile.GetComponent<Tile>().AssignStats(activeTile);
-            newTile.name = x + "," + y;
-            tiles.Add(newTile);
-
-            GenerateOreVein(activeTile.veinChance, activeTile.maxVeinCount, activeTile, x, y);
-        }
-
     }
 
     public void GenerateOreVein(float veinChance, int maxVein, TileData activeTile, int x, int y)
@@ -180,6 +186,19 @@ public class TerrainGeneration : MonoBehaviour
             }
         }
     }
+    public void GenerateOreTexture()
+    {
+        OreTexture = new Texture2D(worldWidth, worldHeight);
+
+        for (int x = 0; x < OreTexture.width; x++)
+        {
+            for (int y = 0; y < OreTexture.height; y++)
+            {
+                OreTexture.SetPixel(x, y, Color.white);
+            }
+        }
+        OreTexture.Apply();
+    }
     public void DeleteBlock(int x, int y)
     {
         string blockName = x + "," + y;
@@ -197,6 +216,7 @@ public class TerrainGeneration : MonoBehaviour
         //Voids
         GenerateCaveTexture();
         GenerateStone();
+        GenerateOreTexture();
         GenerateOre();
 
         //When Completed Send Event
