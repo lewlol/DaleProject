@@ -88,7 +88,8 @@ public class TerrainGeneration : MonoBehaviour
                 if (CaveTexture.GetPixel(x, y).r < 0.5) //Rock Block
                 {
                     //Percentage Chance to Generate Ore
-                    float chance = Random.Range(0, 1);
+                    float chance = Random.Range(0f, 1f);
+                    Debug.Log(chance);
                     if(chance <= oreFrequency)
                     {
                         //Check Area Level and Change Spawn Position
@@ -149,7 +150,7 @@ public class TerrainGeneration : MonoBehaviour
         //Voids
         GenerateCaveTexture();
         GenerateStone();
-        //GenerateOre();
+        GenerateOre();
 
         //When Completed Send Event
         CustomEventSystem.current.WorldGenerated();

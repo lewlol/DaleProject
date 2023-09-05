@@ -483,7 +483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5322443233359850232, guid: b3fc6b19e76d65646afe45bbc1f5816a, type: 3}
       propertyPath: oreFrequency
-      value: 0.429
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5322443233359850233, guid: b3fc6b19e76d65646afe45bbc1f5816a, type: 3}
       propertyPath: m_Name

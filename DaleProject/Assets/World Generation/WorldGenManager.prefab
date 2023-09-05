@@ -50,7 +50,7 @@ MonoBehaviour:
   worldWidth: 150
   worldHeight: 127
   caveFrequency: 0.08
-  oreFrequency: 0.094
+  oreFrequency: 0.02
   biomeFrequency: 0
   seed: 3906
   rockOrePrefab: {fileID: 3495896745892836731, guid: c6fb48b4b7e8f5941bcea6668551bec0, type: 3}
