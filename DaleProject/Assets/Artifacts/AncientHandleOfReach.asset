@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15199656686077c4cbe3c92375c135e4, type: 3}
-  m_Name: ConnorsBank
+  m_Name: AncientHandleOfReach
   m_EditorClassIdentifier: 
-  id: 0
-  artifactname: ConnorsBank
+  id: 2
+  artifactname: Ancient Handle Of Reach
   sprite: {fileID: 0}
   level: 1
-  statUpgrade: ShopPrices
-  statBoost: 1.05
+  statUpgrade: Reach
+  statBoost: 2
   upgradeIncrement: 0.05

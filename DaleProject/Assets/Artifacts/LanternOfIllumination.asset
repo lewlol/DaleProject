@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 3
   artifactname: Lantern Of Illumination
   sprite: {fileID: 0}
-  level: 0
+  level: 1
   statUpgrade: Minintg Helmet Light
   statBoost: 4
   upgradeIncrement: 0.5

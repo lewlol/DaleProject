@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15199656686077c4cbe3c92375c135e4, type: 3}
-  m_Name: LewsMilk
+  m_Name: AmuletOfCharisma
   m_EditorClassIdentifier: 
-  id: 1
-  artifactname: LewsMilk
+  id: 0
+  artifactname: Amulet Of Charisma
   sprite: {fileID: 0}
   level: 1
-  statUpgrade: Stamina Decrease
+  statUpgrade: ShopPrices
   statBoost: 1.05
   upgradeIncrement: 0.05
