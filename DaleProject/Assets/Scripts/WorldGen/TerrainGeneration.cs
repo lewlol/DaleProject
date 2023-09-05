@@ -25,6 +25,7 @@ public class TerrainGeneration : MonoBehaviour
     BiomeData activeBiome; //Active Biome Data
     TileData activeTile; //Current Tile to Place
     List<GameObject> tiles = new List<GameObject>(); //List of Tiles 
+    int veinCount; //Vein Counter
     public void Start()
     {
         GenerateNewWorld();
@@ -89,7 +90,6 @@ public class TerrainGeneration : MonoBehaviour
                 {
                     //Percentage Chance to Generate Ore
                     float chance = Random.Range(0f, 1f);
-                    Debug.Log(chance);
                     if(chance <= oreFrequency)
                     {
                         //Check Area Level and Change Spawn Position
@@ -100,7 +100,7 @@ public class TerrainGeneration : MonoBehaviour
                         DeleteBlock(x, -y);
 
                         //Spawn Ore
-                        SpawnOre(x, -y);
+                        SpawnOre(x, -y, false);
                     }
 
                     //Run Vein (Check Up, Down, Left, Right for Percentage Chance to Spawn Vein)
@@ -110,27 +110,74 @@ public class TerrainGeneration : MonoBehaviour
         }
     }
 
-    public void SpawnOre(int x, int y)
+    public void SpawnOre(int x, int y, bool newOre)
     {
         //Choose Ore
-        int rarity = Random.Range(0, 11);
-        if(rarity <= 7)
+        if (!newOre)
         {
-            //Common
-            int ore = Random.Range(0, areas[areaLevel].commonOres.Length);
+            int rarity = Random.Range(0, 11);
+            if (rarity <= 7)
+            {
+                //Common
+                int ore = Random.Range(0, areas[areaLevel].commonOres.Length);
+                activeTile = areas[areaLevel].commonOres[ore];
+            }
+            else
+            {
+                //Rare
+                int ore = Random.Range(0, areas[areaLevel].rareOres.Length);
+                activeTile = areas[areaLevel].rareOres[ore];
+            }
+
             GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
-            newTile.GetComponent<Tile>().AssignStats(areas[areaLevel].commonOres[ore]);
+            newTile.GetComponent<Tile>().AssignStats(activeTile);
             newTile.name = x + "," + y;
             tiles.Add(newTile);
+
+            veinCount = 0;
+            GenerateOreVein(activeTile.veinChance, activeTile.maxVeinCount, activeTile, x, y);
         }
-        else
+        if(newOre)
         {
-            //Rare
-            int ore = Random.Range(0, areas[areaLevel].rareOres.Length);
+            spawnPosition = new Vector2(x, y);
             GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
-            newTile.GetComponent<Tile>().AssignStats(areas[areaLevel].rareOres[ore]);
+            newTile.GetComponent<Tile>().AssignStats(activeTile);
             newTile.name = x + "," + y;
             tiles.Add(newTile);
+
+            GenerateOreVein(activeTile.veinChance, activeTile.maxVeinCount, activeTile, x, y);
+        }
+
+    }
+
+    public void GenerateOreVein(float veinChance, int maxVein, TileData activeTile, int x, int y)
+    {
+        //Chance to Spawn Vein
+        int vc = Random.Range(0, 101);
+        if(vc <= veinChance && veinCount < maxVein)
+        {
+            int dir = Random.Range(0, 4);
+            veinCount++;
+            if(dir == 0)//Right
+            {
+                DeleteBlock(x + 1, y);
+                SpawnOre(x + 1, y, true);
+            }
+            if(dir == 1)//Left
+            {
+                DeleteBlock(x - 1, y);
+                SpawnOre(x - 1, y, true);
+            }
+            if(dir == 2)//Up
+            {
+                DeleteBlock(x, y + 1);
+                SpawnOre(x, y + 1, true);
+            }
+            if(dir == 3)//Down
+            {
+                DeleteBlock(x, y - 1);
+                SpawnOre(x, y - 1, true);
+            }
         }
     }
     public void DeleteBlock(int x, int y)

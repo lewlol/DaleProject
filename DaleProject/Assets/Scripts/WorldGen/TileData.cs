@@ -14,5 +14,7 @@ public class TileData : ScriptableObject
     public Sprite tileSprite;
     public int id;
     public float breakTime;
+    public float veinChance;
+    public int maxVeinCount;
 }
 

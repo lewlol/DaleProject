@@ -19,3 +19,5 @@ MonoBehaviour:
   tileSprite: {fileID: -2143043521, guid: 92457a5a155189844809ff03b78cee7f, type: 3}
   id: 4
   breakTime: 1.2
+  veinChance: 35
+  maxVeinCount: 5
