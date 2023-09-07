@@ -3,14 +3,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player")]
 public class PlayerStatsData : ScriptableObject
 {
+    [Header("Health / Stamina")]
     public int maxhealth;
     public int maxstamina;
-    public float speed;
 
+    [Header("Player")]
+    public float speed;
+    public float charisma;  //Shop Discount (Rizz the Shopkeepers)
+
+    [Header("Mining")]
     public float miningrange;   //Half a block at a time range
-    public float fortune;       //TBD
     public int breakingpower;   //1,2,3,4
     public float miningspeed;   //in 0.1 seconds decreases
-    public float shopdiscount;  //In percent
-
+    public float fortune;       //TBD
 }

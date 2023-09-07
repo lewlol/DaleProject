@@ -13,11 +13,12 @@ public class TerrainGeneration : MonoBehaviour
     public int worldHeight;
     [Range(0f, 0.1f)]public float caveFrequency;
     [Range(0f, 1f)]public float oreFrequency;
+    [Range(0, 1f)]public float gemFrequency;
     [Range(0f, 0.1f)] public float biomeFrequency;
     [Range(-10000, 10000)]public int seed;
 
     [Header("Blank Tiles")]
-    public GameObject rockOrePrefab;
+    public GameObject tilePrefab;
 
     //Hidden Variables
     Vector2 spawnPosition; //Tile Spawn Pos
@@ -43,7 +44,7 @@ public class TerrainGeneration : MonoBehaviour
                     CheckAreaLevel(-y);
                     spawnPosition = new Vector2(x, -y);
 
-                    SpawnRock(rockOrePrefab, x, -y);
+                    SpawnRock(tilePrefab, x, -y);
                 }
             }
         }
@@ -79,6 +80,70 @@ public class TerrainGeneration : MonoBehaviour
         {
             areaLevel++;
         }
+    }
+
+    void GenerateGemstone()
+    {
+        for (int y = 0; y < worldHeight; y++)
+        {
+            for (int x = 0; x < worldWidth; x++)
+            {
+                if (CaveTexture.GetPixel(x, y).r > 0.5)
+                {
+                    int crystalChance = Random.Range(0, 101);
+                    if(crystalChance <= gemFrequency)
+                    {
+                        //Check Area Level and Change Spawn Position
+                        CheckAreaLevel(-y);
+                        spawnPosition = new Vector2(x, -y);
+
+                        //Delete Rock Block
+                        DeleteBlock(x, -y);
+
+                        //Spawn Crystal
+                        SpawnGemstone(x, -y);
+                    }
+                }
+            }
+        }
+    }
+
+    void SpawnGemstone(int x, int y)
+    {
+        //Determine Gemstone to Spawn
+        int rarity = Random.Range(0, 4);
+        if(rarity <= 2)//Common
+        {
+            int gem = Random.Range(0, areas[areaLevel].commonGems.Length);
+            activeTile = areas[areaLevel].commonGems[gem];
+        }
+        else
+        {
+            int gem = Random.Range(0, areas[areaLevel].rareGems.Length);
+            activeTile = areas[areaLevel].rareGems[gem];
+        }
+
+        //Spawn Crystal
+        GameObject crystal = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
+        SpriteRenderer sr = crystal.GetComponent<SpriteRenderer>();
+
+        //Find which side the block is on and then change the sprite
+        if (CaveTexture.GetPixel(x + 1, y).r < 0.5) //Block on the Right Side
+        {
+            sr.sprite = activeTile.rightCrystal;
+        }
+        else if (CaveTexture.GetPixel(x - 1, y).r < 0.5) //Block on the Left Side
+        {
+            sr.sprite = activeTile.leftCrystal;
+        }
+        else if (CaveTexture.GetPixel(x, y + 1).r < 0.5) //Block on the Top
+        {
+            sr.sprite = activeTile.upCrystal;
+        }
+        else if (CaveTexture.GetPixel(x, y - 1).r < 0.5) //Block on the Bottom
+        {
+            sr.sprite = activeTile.downCrystal;
+        }    
     }
 
     public void GenerateOre()
@@ -129,7 +194,7 @@ public class TerrainGeneration : MonoBehaviour
                     activeTile = areas[areaLevel].rareOres[ore];
                 }
 
-                GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
+                GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
                 newTile.GetComponent<Tile>().AssignStats(activeTile);
                 newTile.name = x + "," + y;
                 tiles.Add(newTile);
@@ -143,7 +208,7 @@ public class TerrainGeneration : MonoBehaviour
             if (newOre)
             {
                 spawnPosition = new Vector2(x, y);
-                GameObject newTile = Instantiate(rockOrePrefab, spawnPosition, Quaternion.identity);
+                GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
                 newTile.GetComponent<Tile>().AssignStats(activeTile);
                 newTile.name = x + "," + y;
                 tiles.Add(newTile);
@@ -155,7 +220,6 @@ public class TerrainGeneration : MonoBehaviour
             }
         }
     }
-
     public void GenerateOreVein(float veinChance, int maxVein, TileData activeTile, int x, int y)
     {
         //Chance to Spawn Vein
@@ -218,6 +282,7 @@ public class TerrainGeneration : MonoBehaviour
         GenerateStone();
         GenerateOreTexture();
         GenerateOre();
+        GenerateGemstone();
 
         //When Completed Send Event
         CustomEventSystem.current.WorldGenerated();

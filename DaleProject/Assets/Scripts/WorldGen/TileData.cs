@@ -16,5 +16,11 @@ public class TileData : ScriptableObject
     public float breakTime;
     public float veinChance;
     public int maxVeinCount;
+
+    [Header("Crystal Attributes")]
+    public Sprite upCrystal;
+    public Sprite downCrystal;
+    public Sprite leftCrystal;
+    public Sprite rightCrystal;
 }
 

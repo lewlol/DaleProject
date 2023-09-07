@@ -18,4 +18,6 @@ public class WorldAreaData : ScriptableObject
     [Header("Area Ores and Gems")]
     public TileData[] commonOres;
     public TileData[] rareOres;
+    public TileData[] commonGems;
+    public TileData[] rareGems;
 }

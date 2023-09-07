@@ -11,7 +11,13 @@ public enum TileDatabase
     Silver,
 
     //Gemstones
-
+    Ruby,
+    Sapphire,
+    Jasper,
+    Emerald,
+    Diamond,
+    Tanzanite,
+    Jadeite,
 
     //Misc
 }

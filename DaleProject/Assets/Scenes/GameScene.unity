@@ -481,6 +481,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5322443233359850232, guid: b3fc6b19e76d65646afe45bbc1f5816a, type: 3}
+      propertyPath: tilePrefab
+      value: 
+      objectReference: {fileID: 3495896745892836731, guid: c6fb48b4b7e8f5941bcea6668551bec0, type: 3}
     - target: {fileID: 5322443233359850233, guid: b3fc6b19e76d65646afe45bbc1f5816a, type: 3}
       propertyPath: m_Name
       value: WorldGenManager
