@@ -9,6 +9,10 @@ public enum TileDatabase
     Iron,
     Gold,
     Silver,
+    Copper,
+    Cobalt,
+    Lapis,
+    Mithril,
 
     //Gemstones
     Ruby,
