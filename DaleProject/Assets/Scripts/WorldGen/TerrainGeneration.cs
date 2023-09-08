@@ -54,7 +54,7 @@ public class TerrainGeneration : MonoBehaviour
     {
         activeTile = areas[areaLevel].rockTile;
         GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
-        newTile.GetComponent<Tile>().AssignStats(activeTile);
+        newTile.GetComponent<Tile>().Rock(activeTile);
         newTile.name = x + "," + y;
         tiles.Add(newTile);
     }
@@ -125,25 +125,8 @@ public class TerrainGeneration : MonoBehaviour
 
         //Spawn Crystal
         GameObject crystal = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
-        SpriteRenderer sr = crystal.GetComponent<SpriteRenderer>();
 
-        //Find which side the block is on and then change the sprite
-        if (CaveTexture.GetPixel(x + 1, y).r < 0.5) //Block on the Right Side
-        {
-            sr.sprite = activeTile.rightCrystal;
-        }
-        else if (CaveTexture.GetPixel(x - 1, y).r < 0.5) //Block on the Left Side
-        {
-            sr.sprite = activeTile.leftCrystal;
-        }
-        else if (CaveTexture.GetPixel(x, y + 1).r < 0.5) //Block on the Top
-        {
-            sr.sprite = activeTile.upCrystal;
-        }
-        else if (CaveTexture.GetPixel(x, y - 1).r < 0.5) //Block on the Bottom
-        {
-            sr.sprite = activeTile.downCrystal;
-        }    
+        crystal.GetComponent<Tile>().Gemstone(activeTile, x, y, CaveTexture);
     }
 
     public void GenerateOre()
@@ -195,7 +178,7 @@ public class TerrainGeneration : MonoBehaviour
                 }
 
                 GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
-                newTile.GetComponent<Tile>().AssignStats(activeTile);
+                newTile.GetComponent<Tile>().Ore(activeTile);
                 newTile.name = x + "," + y;
                 tiles.Add(newTile);
 
@@ -209,7 +192,7 @@ public class TerrainGeneration : MonoBehaviour
             {
                 spawnPosition = new Vector2(x, y);
                 GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
-                newTile.GetComponent<Tile>().AssignStats(activeTile);
+                newTile.GetComponent<Tile>().Ore(activeTile);
                 newTile.name = x + "," + y;
                 tiles.Add(newTile);
 

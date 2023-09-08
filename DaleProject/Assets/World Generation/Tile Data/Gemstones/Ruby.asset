@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: Ruby
   m_EditorClassIdentifier: 
-  tileName: 6
+  tileName: 10
   tileDescription: A red, shiny gem found in the underground.
   tileType: 2
   id: 10
