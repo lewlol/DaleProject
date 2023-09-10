@@ -5,7 +5,6 @@ using UnityEngine;
 public class TerrainGeneration : MonoBehaviour
 {
     [Header("Areas")]
-    public WorldAreaData[] areas;
     int areaLevel;
 
     [Header("Terrain Settings")]
@@ -24,7 +23,6 @@ public class TerrainGeneration : MonoBehaviour
     Vector2 spawnPosition; //Tile Spawn Pos
     Texture2D CaveTexture; //Cave Noise Texture
     Texture2D OreTexture; //Ore Texture
-    BiomeData activeBiome; //Active Biome Data
     TileData activeTile; //Current Tile to Place
     List<GameObject> tiles = new List<GameObject>(); //List of Tiles 
     int veinCount; //Vein Counter
@@ -52,7 +50,7 @@ public class TerrainGeneration : MonoBehaviour
 
     public void SpawnRock(GameObject tilePrefab, int x, int y)
     {
-        activeTile = areas[areaLevel].rockTile;
+       // activeTile = areas[areaLevel].rockTile;
         GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
         newTile.GetComponent<Tile>().Rock(activeTile);
         newTile.name = x + "," + y;
@@ -76,10 +74,10 @@ public class TerrainGeneration : MonoBehaviour
 
     public void CheckAreaLevel(int yLevel)
     {
-        if(yLevel < areas[areaLevel].bottomLayerY)
-        {
-            areaLevel++;
-        }
+       // if(yLevel < areas[areaLevel].bottomLayerY)
+       // {
+       //     areaLevel++;
+       // }
     }
 
     void GenerateGemstone()
@@ -114,19 +112,18 @@ public class TerrainGeneration : MonoBehaviour
         int rarity = Random.Range(0, 4);
         if(rarity <= 2)//Common
         {
-            int gem = Random.Range(0, areas[areaLevel].commonGems.Length);
-            activeTile = areas[areaLevel].commonGems[gem];
+           // int gem = Random.Range(0, areas[areaLevel].commonGems.Length);
+            //activeTile = areas[areaLevel].commonGems[gem];
         }
         else
         {
-            int gem = Random.Range(0, areas[areaLevel].rareGems.Length);
-            activeTile = areas[areaLevel].rareGems[gem];
+         //   int gem = Random.Range(0, areas[areaLevel].rareGems.Length);
+         //   activeTile = areas[areaLevel].rareGems[gem];
         }
 
         //Spawn Crystal
         GameObject crystal = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
 
-        crystal.GetComponent<Tile>().Gemstone(activeTile, x, y, CaveTexture);
     }
 
     public void GenerateOre()
@@ -167,14 +164,14 @@ public class TerrainGeneration : MonoBehaviour
                 if (rarity <= 7)
                 {
                     //Common
-                    int ore = Random.Range(0, areas[areaLevel].commonOres.Length);
-                    activeTile = areas[areaLevel].commonOres[ore];
+                 //   int ore = Random.Range(0, areas[areaLevel].commonOres.Length);
+                //    activeTile = areas[areaLevel].commonOres[ore];
                 }
                 else
                 {
                     //Rare
-                    int ore = Random.Range(0, areas[areaLevel].rareOres.Length);
-                    activeTile = areas[areaLevel].rareOres[ore];
+              //      int ore = Random.Range(0, areas[areaLevel].rareOres.Length);
+               //     activeTile = areas[areaLevel].rareOres[ore];
                 }
 
                 GameObject newTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
