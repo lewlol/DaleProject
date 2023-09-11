@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: CrustAdamantite
   m_EditorClassIdentifier: 
-  tileName: 0
+  tileName: 11
   tileDescription: 
-  tileType: 0
-  tileSprite: {fileID: 0}
-  id: 0
-  breakTime: 0
-  sellPrice: 0
-  breakingPower: 0
-  veinChance: 0
-  maxVeinCount: 0
+  tileType: 1
+  tileSprite: {fileID: 1074985114, guid: eae1c614058c8ea4da2a2e025eed6418, type: 3}
+  id: 11
+  breakTime: 3
+  sellPrice: 25
+  breakingPower: 3
+  veinChance: 45
+  maxVeinCount: 8
   upCrystal: {fileID: 0}
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}

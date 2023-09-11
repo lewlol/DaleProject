@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: Crust_Silver
   m_EditorClassIdentifier: 
-  tileName: 5
+  tileName: 6
   tileDescription: A white metal found around the world that is used to make tools.
     This ore allowed ancient cilisations to explore more of the underground world.
   tileType: 1
-  tileSprite: {fileID: -1406872768, guid: 92457a5a155189844809ff03b78cee7f, type: 3}
-  id: 5
-  breakTime: 1.3
+  tileSprite: {fileID: -820175237, guid: b63319c36936faa4aa8c565d8a132eae, type: 3}
+  id: 6
+  breakTime: 1.5
+  sellPrice: 6
+  breakingPower: 1
   veinChance: 70
   maxVeinCount: 7
+  upCrystal: {fileID: 0}
+  downCrystal: {fileID: 0}
+  leftCrystal: {fileID: 0}
+  rightCrystal: {fileID: 0}

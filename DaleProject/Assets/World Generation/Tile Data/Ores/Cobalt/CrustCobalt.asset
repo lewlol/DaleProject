@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: CrustCobalt
   m_EditorClassIdentifier: 
-  tileName: 0
+  tileName: 7
   tileDescription: 
-  tileType: 0
-  tileSprite: {fileID: 0}
-  id: 0
-  breakTime: 0
-  sellPrice: 0
-  breakingPower: 0
-  veinChance: 0
-  maxVeinCount: 0
+  tileType: 1
+  tileSprite: {fileID: -1614774496, guid: 43bef94711d697e469e876ad2e0ee954, type: 3}
+  id: 7
+  breakTime: 1.7
+  sellPrice: 8
+  breakingPower: 1
+  veinChance: 70
+  maxVeinCount: 8
   upCrystal: {fileID: 0}
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}

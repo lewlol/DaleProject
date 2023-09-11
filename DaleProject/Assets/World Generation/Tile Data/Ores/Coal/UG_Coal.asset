@@ -16,8 +16,14 @@ MonoBehaviour:
   tileDescription: Used for years to smelt underground valuables to forge them into
     the strongest of tools.
   tileType: 1
-  tileSprite: {fileID: 2028120045, guid: 92457a5a155189844809ff03b78cee7f, type: 3}
+  tileSprite: {fileID: 1539820148, guid: 64cf8086db31827469a5b984b1f9c0a1, type: 3}
   id: 2
   breakTime: 1
+  sellPrice: 2
+  breakingPower: 0
   veinChance: 90
   maxVeinCount: 16
+  upCrystal: {fileID: 0}
+  downCrystal: {fileID: 0}
+  leftCrystal: {fileID: 0}
+  rightCrystal: {fileID: 0}

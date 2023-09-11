@@ -17,8 +17,14 @@ MonoBehaviour:
     Used since ancient times to create different manmade objects such as tools and
     machines.
   tileType: 1
-  tileSprite: {fileID: -1702142646, guid: 92457a5a155189844809ff03b78cee7f, type: 3}
+  tileSprite: {fileID: -1921087459, guid: fc3eaee00f01ce741a4e87cb32a18ff1, type: 3}
   id: 3
   breakTime: 1.1
+  sellPrice: 4
+  breakingPower: 0
   veinChance: 80
   maxVeinCount: 10
+  upCrystal: {fileID: 0}
+  downCrystal: {fileID: 0}
+  leftCrystal: {fileID: 0}
+  rightCrystal: {fileID: 0}

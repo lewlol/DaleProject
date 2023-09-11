@@ -18,3 +18,11 @@ MonoBehaviour:
   tileSprite: {fileID: 1347967682, guid: 451d863b3c3bb9348ae3758afa8eb4dd, type: 3}
   id: 1
   breakTime: 0.8
+  sellPrice: 1
+  breakingPower: 1
+  veinChance: 0
+  maxVeinCount: 0
+  upCrystal: {fileID: 0}
+  downCrystal: {fileID: 0}
+  leftCrystal: {fileID: 0}
+  rightCrystal: {fileID: 0}

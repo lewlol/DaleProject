@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: Obsidian
   m_EditorClassIdentifier: 
-  tileName: 0
+  tileName: 9
   tileDescription: 
-  tileType: 0
-  tileSprite: {fileID: 0}
-  id: 0
-  breakTime: 0
-  sellPrice: 0
-  breakingPower: 0
-  veinChance: 0
-  maxVeinCount: 0
+  tileType: 1
+  tileSprite: {fileID: -766664109, guid: f268574c0c65418479bff6ace41c49f0, type: 3}
+  id: 9
+  breakTime: 5
+  sellPrice: 20
+  breakingPower: 2
+  veinChance: 35
+  maxVeinCount: 4
   upCrystal: {fileID: 0}
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}

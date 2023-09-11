@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: Sapphire
   m_EditorClassIdentifier: 
-  tileName: 11
+  tileName: 13
   tileDescription: 
-  tileType: 0
-  id: 11
-  breakTime: 1.5
+  tileType: 2
   tileSprite: {fileID: 0}
+  id: 13
+  breakTime: 1
+  sellPrice: 3
+  breakingPower: 0
   veinChance: 0
   maxVeinCount: 0
   upCrystal: {fileID: -1519006043, guid: e35573d2827b8354ca1b512972064bc6, type: 3}

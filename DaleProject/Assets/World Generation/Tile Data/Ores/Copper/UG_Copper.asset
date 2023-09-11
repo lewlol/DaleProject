@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: UG_Copper
   m_EditorClassIdentifier: 
-  tileName: 0
-  tileDescription: 
-  tileType: 0
-  tileSprite: {fileID: 0}
-  id: 0
-  breakTime: 0
-  veinChance: 0
-  maxVeinCount: 0
+  tileName: 4
+  tileDescription: a metal with a colour changing feature, used to conduct electricity.
+  tileType: 1
+  tileSprite: {fileID: -10308352, guid: a298ae509ac733f44b58d06a0d0de420, type: 3}
+  id: 4
+  breakTime: 0.9
+  sellPrice: 2
+  breakingPower: 0
+  veinChance: 90
+  maxVeinCount: 16
   upCrystal: {fileID: 0}
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}

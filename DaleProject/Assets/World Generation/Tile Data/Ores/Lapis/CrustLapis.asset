@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: CrustLapis
   m_EditorClassIdentifier: 
-  tileName: 0
-  tileDescription: 
-  tileType: 0
-  id: 0
-  breakTime: 0
-  tileSprite: {fileID: 0}
-  veinChance: 0
-  maxVeinCount: 0
+  tileName: 8
+  tileDescription: A prolific element used for generations by civilisations for the
+    powers it may bring.
+  tileType: 1
+  tileSprite: {fileID: 1458466694, guid: e5db88e2634939e43a4173bed3cc8aee, type: 3}
+  id: 8
+  breakTime: 2
+  sellPrice: 4
+  breakingPower: 1
+  veinChance: 80
+  maxVeinCount: 12
   upCrystal: {fileID: 0}
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}

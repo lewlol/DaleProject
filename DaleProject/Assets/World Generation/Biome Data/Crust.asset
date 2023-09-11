@@ -23,11 +23,13 @@ MonoBehaviour:
   commonOres:
   - {fileID: 11400000, guid: e7f4f9ea71785e245bd12f88f393a227, type: 2}
   - {fileID: 11400000, guid: 93e8f1edc0163a649acbd45d5896fd3d, type: 2}
+  - {fileID: 11400000, guid: 313814ab89b0f7e40b65862675d5f310, type: 2}
   rareOres:
-  - {fileID: 11400000, guid: e7f4f9ea71785e245bd12f88f393a227, type: 2}
-  - {fileID: 11400000, guid: 313814ab89b0f7e40b65862675d5f310, type: 2}
+  - {fileID: 11400000, guid: e742e6c69f7b87b4eba7a77baf26742b, type: 2}
+  - {fileID: 11400000, guid: 3eb895cf86ec6ec4e98a22dccfa26636, type: 2}
   uniqueOres:
-  - {fileID: 11400000, guid: 313814ab89b0f7e40b65862675d5f310, type: 2}
+  - {fileID: 11400000, guid: 1b6a003e12a745d469d29f2214513238, type: 2}
+  - {fileID: 11400000, guid: 717aa01584f63024eb06495a2462c141, type: 2}
   commonGems:
   - {fileID: 11400000, guid: 6d63cc7757381494bb2492dad1be0a53, type: 2}
   - {fileID: 11400000, guid: 4f7c1da0da75218499785c3bc1161a3a, type: 2}
