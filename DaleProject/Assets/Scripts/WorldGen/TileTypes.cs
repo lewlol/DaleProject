@@ -4,5 +4,5 @@ public enum TileTypes
     Ore,
     Gemstone,
     Loot,
-    Trap
+    Trap,
 }

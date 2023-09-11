@@ -11,11 +11,11 @@ public class TileData : ScriptableObject
     public TileTypes tileType;
 
     [Header("Tile Attributes")]
+    public Sprite tileSprite;
     public int id;
     public float breakTime;
 
     [Header("Ore Attributes")]
-    public Sprite tileSprite;
     public float veinChance;
     public int maxVeinCount;
 

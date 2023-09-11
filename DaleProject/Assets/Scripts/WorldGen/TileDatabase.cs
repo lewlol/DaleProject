@@ -1,3 +1,4 @@
+
 public enum TileDatabase
 {
     //Rocks
@@ -7,21 +8,29 @@ public enum TileDatabase
     //Ores
     Coal,
     Iron,
+    Copper,
     Gold,
     Silver,
-    Copper,
     Cobalt,
     Lapis,
+    Obsidian,
     Mithril,
+    Adamantite,
 
     //Gemstones
     Ruby,
     Sapphire,
     Jasper,
     Emerald,
+    Amethyst,
+    Amber,
     Diamond,
     Tanzanite,
     Jadeite,
+    Quartz,
+    BlackOnyx,
+    Citrine,
+    RoseQuartz,
 
     //Misc
 }

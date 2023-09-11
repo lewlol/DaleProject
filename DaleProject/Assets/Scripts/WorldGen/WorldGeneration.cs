@@ -357,6 +357,7 @@ public class WorldGeneration : MonoBehaviour
         newTile.name = (x + quadrantOffset.x) + "," + (y + quadrantOffset.y);
         tiles.Add(newTile);
     }
+
     public void GenerateCaveTexture()
     {
         caveTexture = new Texture2D(quadrantSize, quadrantSize);
