@@ -19,6 +19,9 @@ public class MiningScript : MonoBehaviour
     public LayerMask ignoreRaycast;
     private int mineAmount;
 
+    //Fortune
+    public float fortune;
+
 
     private void Start()
     {
@@ -96,7 +99,24 @@ public class MiningScript : MonoBehaviour
     {
         MinusStamina(1);
 
-        float fortune = playerStats.fortune;
+        if (block.GetComponent<Tile>().tileDataHolder.tileType == TileTypes.Rock)
+        {
+            fortune = playerStats.stonefortune;
+        }
+        else if (block.GetComponent<Tile>().tileDataHolder.tileType == TileTypes.Ore)
+        {
+            fortune = playerStats.orefortune;
+        }
+        else if (block.GetComponent<Tile>().tileDataHolder.tileType == TileTypes.Gemstone)
+        {
+            fortune = playerStats.gemstonefortune;
+        }
+        else
+        {
+            fortune = 1;
+        }
+
+        
         int guaranteedAmount = Mathf.FloorToInt(fortune);
         float fractionalPart = fortune - guaranteedAmount;
         int additionalAmount = 0;
