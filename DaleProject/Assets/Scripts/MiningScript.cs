@@ -51,7 +51,7 @@ public class MiningScript : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Block") && IsInRange(hit.collider.gameObject))
         {
             HightlightBlock(hit.collider.gameObject);
-            if (Input.GetMouseButtonDown(0) && CanMine()) // Check if the player can mine
+            if (Input.GetMouseButtonDown(0) && CanMine() && CanBreak(hit.collider.gameObject)) // Check if the player can mine
             {
                 currentBlock = hit.collider.gameObject;
                 childTransform = currentBlock.transform.GetChild(0); // Assuming the child is at index 0
@@ -210,4 +210,61 @@ public class MiningScript : MonoBehaviour
             return false;
         }
     }
+    public bool CanBreak(GameObject block)
+    {
+        Tile blockTile = block.GetComponent<Tile>();
+
+        if (blockTile != null)
+        {
+            if(blockTile.tileDataHolder.tileType==TileTypes.Rock)
+            {
+               
+                if (playerStats.stonebreakingpower >= blockTile.tileDataHolder.breakingPower)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.Log("Player does not have enough breaking power to break this block.");
+                    return false;
+                }
+            }
+            if (blockTile.tileDataHolder.tileType == TileTypes.Ore)
+            {
+               
+                if (playerStats.orebreakingpower >= blockTile.tileDataHolder.breakingPower)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.Log("Player does not have enough breaking power to break this block.");
+                    return false;
+                }
+            }
+            if (blockTile.tileDataHolder.tileType == TileTypes.Gemstone)
+            {
+                
+                if (playerStats.gemstonebreakingpower >= blockTile.tileDataHolder.breakingPower)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.Log("Player does not have enough breaking power to break this block.");
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            
+            return false;
+        }
+    }
+
 }
