@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: CrustLapis
   m_EditorClassIdentifier: 
-  tileName: 8
+  tileName: Lapis Lazuli
   tileDescription: A prolific element used for generations by civilisations for the
     powers it may bring.
   tileType: 1

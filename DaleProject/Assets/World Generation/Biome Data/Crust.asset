@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biomeName: Cracked Crust
   caveFrequency: 0.07
-  oreFrequency: 0.175
+  oreFrequency: 0.03
   gemFrequency: 0.112
   biomeFrequency: 0.634
   hasOre: 1

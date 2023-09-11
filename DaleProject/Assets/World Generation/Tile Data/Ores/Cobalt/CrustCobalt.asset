@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: CrustCobalt
   m_EditorClassIdentifier: 
-  tileName: 7
+  tileName: Cobalt
   tileDescription: 
   tileType: 1
   tileSprite: {fileID: -1614774496, guid: 43bef94711d697e469e876ad2e0ee954, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: UG_Gold
   m_EditorClassIdentifier: 
-  tileName: 5
+  tileName: Gold
   tileDescription: A shiny metal often adored for its glamour! from currency to valuables,
     gold has always been used by civilisations for many uses
   tileType: 1

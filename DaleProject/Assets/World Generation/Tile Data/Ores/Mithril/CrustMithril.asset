@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: CrustMithril
   m_EditorClassIdentifier: 
-  tileName: 10
+  tileName: Mithril
   tileDescription: 
   tileType: 1
   tileSprite: {fileID: -1673808132, guid: 5cc71362c0b72414d8601469beac3988, type: 3}

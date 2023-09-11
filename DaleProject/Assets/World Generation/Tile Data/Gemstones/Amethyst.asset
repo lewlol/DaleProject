@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
-  m_Name: UG_Iron
+  m_Name: Amethyst
   m_EditorClassIdentifier: 
-  tileName: Iron
-  tileDescription: Common but extremely useful resource found all over the world.
-    Used since ancient times to create different manmade objects such as tools and
-    machines.
-  tileType: 1
-  tileSprite: {fileID: -1921087459, guid: fc3eaee00f01ce741a4e87cb32a18ff1, type: 3}
-  id: 3
-  breakTime: 1.1
-  sellPrice: 4
+  tileName: Amethyst
+  tileDescription: 
+  tileType: 2
+  tileSprite: {fileID: 0}
+  id: 16
+  breakTime: 0
+  sellPrice: 0
   breakingPower: 0
-  veinChance: 80
-  maxVeinCount: 10
+  veinChance: 0
+  maxVeinCount: 0
   upCrystal: {fileID: 0}
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}

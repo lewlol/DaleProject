@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: Emerald
   m_EditorClassIdentifier: 
-  tileName: 0
+  tileName: Emerald
   tileDescription: 
-  tileType: 0
+  tileType: 2
   tileSprite: {fileID: 0}
-  id: 0
-  breakTime: 0
+  id: 15
+  breakTime: 1.2
+  sellPrice: 5
+  breakingPower: 1
   veinChance: 0
   maxVeinCount: 0
-  upCrystal: {fileID: 0}
-  downCrystal: {fileID: 0}
-  leftCrystal: {fileID: 0}
-  rightCrystal: {fileID: 0}
+  upCrystal: {fileID: -1072205506, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  downCrystal: {fileID: -911497748, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  leftCrystal: {fileID: -2049758325, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  rightCrystal: {fileID: 1631142273, guid: e35573d2827b8354ca1b512972064bc6, type: 3}

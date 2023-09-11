@@ -6,7 +6,7 @@ using UnityEngine;
 public class TileData : ScriptableObject
 {
     [Header("Tile Information")]
-    public TileDatabase tileName;
+    public string tileName;
     public string tileDescription;
     public TileTypes tileType;
 
