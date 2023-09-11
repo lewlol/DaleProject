@@ -14,6 +14,8 @@ public class TileData : ScriptableObject
     public Sprite tileSprite;
     public int id;
     public float breakTime;
+    public int sellPrice;
+    public int breakingPower;
 
     [Header("Ore Attributes")]
     public float veinChance;
