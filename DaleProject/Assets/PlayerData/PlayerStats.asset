@@ -15,8 +15,12 @@ MonoBehaviour:
   maxhealth: 100
   maxstamina: 35
   speed: 5
+  charisma: 0
   miningrange: 2
-  fortune: 1
-  breakingpower: 0
   miningspeed: 0.5
-  shopdiscount: 0
+  stonefortune: 1
+  orefortune: 1
+  gemstonefortune: 1
+  stonebreakingpower: 0
+  orebreakingpower: 0
+  gemstonebreakingpower: 0

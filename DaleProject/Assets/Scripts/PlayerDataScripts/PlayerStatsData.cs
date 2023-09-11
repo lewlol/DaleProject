@@ -13,7 +13,12 @@ public class PlayerStatsData : ScriptableObject
 
     [Header("Mining")]
     public float miningrange;   //Half a block at a time range
-    public int breakingpower;   //1,2,3,4
     public float miningspeed;   //in 0.1 seconds decreases
-    public float fortune;       //TBD
+    public float stonefortune;//start at 1
+    public float orefortune; //start at 1
+    public float gemstonefortune;// start at 1
+    public int stonebreakingpower;
+    public int orebreakingpower;
+    public int gemstonebreakingpower;
+
 }
