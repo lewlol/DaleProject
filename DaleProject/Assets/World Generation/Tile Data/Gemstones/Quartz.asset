@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
-  m_Name: Jadeite
+  m_Name: Quartz
   m_EditorClassIdentifier: 
-  tileName: Jadeite
+  tileName: Quartz
   tileDescription: 
   tileType: 2
   tileSprite: {fileID: 0}
-  id: 20
-  breakTime: 2.7
-  sellPrice: 12
-  breakingPower: 2
+  id: 21
+  breakTime: 2.8
+  sellPrice: 15
+  breakingPower: 3
   veinChance: 0
   maxVeinCount: 0
-  upCrystal: {fileID: -831153815, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
-  downCrystal: {fileID: -311079850, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
-  leftCrystal: {fileID: -1331526202, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
-  rightCrystal: {fileID: -1906626420, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  upCrystal: {fileID: 2126444837, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  downCrystal: {fileID: -1551979526, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  leftCrystal: {fileID: 1142806038, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  rightCrystal: {fileID: 748101127, guid: e35573d2827b8354ca1b512972064bc6, type: 3}

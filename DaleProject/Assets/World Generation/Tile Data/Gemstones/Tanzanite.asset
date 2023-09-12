@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: Tanzanite
   m_EditorClassIdentifier: 
-  tileName: 0
+  tileName: Tanzanite
   tileDescription: 
-  tileType: 0
+  tileType: 2
   tileSprite: {fileID: 0}
-  id: 0
-  breakTime: 0
+  id: 19
+  breakTime: 2.4
+  sellPrice: 12
+  breakingPower: 2
   veinChance: 0
   maxVeinCount: 0
-  upCrystal: {fileID: 0}
-  downCrystal: {fileID: 0}
-  leftCrystal: {fileID: 0}
-  rightCrystal: {fileID: 0}
+  upCrystal: {fileID: 253446944, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  downCrystal: {fileID: 774881760, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  leftCrystal: {fileID: -1320893290, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  rightCrystal: {fileID: 2039430479, guid: e35573d2827b8354ca1b512972064bc6, type: 3}

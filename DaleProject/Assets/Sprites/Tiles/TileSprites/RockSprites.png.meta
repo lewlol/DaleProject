@@ -181,6 +181,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: RockSprites_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a210f220af743b547af4b19308215b29
+      internalID: 1104002515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -194,6 +215,7 @@ TextureImporter:
     nameFileIdTable:
       RockSprites_1: 1347967682
       RockSprites_2: -2040210233
+      RockSprites_3: 1104002515
       RockSprites_0: 2113505540
   spritePackingTag: 
   pSDRemoveMatte: 0

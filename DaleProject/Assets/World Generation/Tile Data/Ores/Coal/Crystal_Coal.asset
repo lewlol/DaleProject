@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
+  m_Name: Crystal_Coal
+  m_EditorClassIdentifier: 
+  tileName: Coal
+  tileDescription: Used for years to smelt underground valuables to forge them into
+    the strongest of tools.
+  tileType: 1
+  tileSprite: {fileID: 130189918, guid: 64cf8086db31827469a5b984b1f9c0a1, type: 3}
+  id: 2
+  breakTime: 1
+  sellPrice: 2
+  breakingPower: 0
+  veinChance: 90
+  maxVeinCount: 16
+  upCrystal: {fileID: 0}
+  downCrystal: {fileID: 0}
+  leftCrystal: {fileID: 0}
+  rightCrystal: {fileID: 0}

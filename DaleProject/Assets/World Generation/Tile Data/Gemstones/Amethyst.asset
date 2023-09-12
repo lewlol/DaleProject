@@ -17,12 +17,12 @@ MonoBehaviour:
   tileType: 2
   tileSprite: {fileID: 0}
   id: 16
-  breakTime: 0
-  sellPrice: 0
-  breakingPower: 0
+  breakTime: 1.5
+  sellPrice: 7
+  breakingPower: 1
   veinChance: 0
   maxVeinCount: 0
-  upCrystal: {fileID: 0}
-  downCrystal: {fileID: 0}
-  leftCrystal: {fileID: 0}
-  rightCrystal: {fileID: 0}
+  upCrystal: {fileID: 1691050025, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  downCrystal: {fileID: 1047673045, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  leftCrystal: {fileID: 199816424, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  rightCrystal: {fileID: -2009317797, guid: e35573d2827b8354ca1b512972064bc6, type: 3}

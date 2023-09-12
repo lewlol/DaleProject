@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
   m_Name: Diamond
   m_EditorClassIdentifier: 
-  tileName: 0
+  tileName: Diamond
   tileDescription: 
-  tileType: 0
+  tileType: 2
   tileSprite: {fileID: 0}
-  id: 0
-  breakTime: 0
+  id: 18
+  breakTime: 2
+  sellPrice: 10
+  breakingPower: 2
   veinChance: 0
   maxVeinCount: 0
-  upCrystal: {fileID: 0}
-  downCrystal: {fileID: 0}
-  leftCrystal: {fileID: 0}
-  rightCrystal: {fileID: 0}
+  upCrystal: {fileID: 283737190, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  downCrystal: {fileID: 1889948364, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  leftCrystal: {fileID: 1755539454, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  rightCrystal: {fileID: -1177865179, guid: e35573d2827b8354ca1b512972064bc6, type: 3}

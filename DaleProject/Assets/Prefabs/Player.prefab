@@ -253,6 +253,7 @@ MonoBehaviour:
   ignoreRaycast:
     serializedVersion: 2
     m_Bits: 256
+  fortune: 0
 --- !u!114 &3825188230941575050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerLight: {fileID: 381353459855594795}
   ylevel: 1.9
+  playerstats: {fileID: 11400000, guid: a9b986ee5313c2b49b8c66873ed7ce6a, type: 2}
+  helmetlight: 0
 --- !u!114 &6587998329438817798
 MonoBehaviour:
   m_ObjectHideFlags: 0
