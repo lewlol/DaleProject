@@ -16,6 +16,7 @@ public class MiningScript : MonoBehaviour
 
     int stamina;
     public PlayerStatsData playerStats;
+    public PlayerLifetimeStatsData lifetimeStats;
     public LayerMask ignoreRaycast;
     private int mineAmount;
 
@@ -102,14 +103,21 @@ public class MiningScript : MonoBehaviour
         if (block.GetComponent<Tile>().tileDataHolder.tileType == TileTypes.Rock)
         {
             fortune = playerStats.stonefortune;
+            TrackRockMined(block.GetComponent<Tile>().tileDataHolder.tileName);
+            
         }
         else if (block.GetComponent<Tile>().tileDataHolder.tileType == TileTypes.Ore)
         {
             fortune = playerStats.orefortune;
+            TrackOreMined(block.GetComponent<Tile>().tileDataHolder.tileName);
+            
         }
         else if (block.GetComponent<Tile>().tileDataHolder.tileType == TileTypes.Gemstone)
         {
             fortune = playerStats.gemstonefortune;
+            TrackGemstoneMined(block.GetComponent<Tile>().tileDataHolder.tileName);
+            
+
         }
         else
         {
@@ -266,5 +274,112 @@ public class MiningScript : MonoBehaviour
             return false;
         }
     }
+    private void TrackRockMined(string rockType)
+    {
+        lifetimeStats.totalrocksmined++;
+        switch (rockType)
+        {
+            case "Stone":
+                lifetimeStats.totalstone++;
+                break;
+            case "Greystone":
+                lifetimeStats.totalgreystone++;
+                break;
+            case "Pinkstone":
+                lifetimeStats.totalpinkstone++;
+                break;
+                // Add cases for other rock types here
+        }
+    }
+
+    private void TrackOreMined(string oreType)
+    {
+        lifetimeStats.totaloresmined++; // Increment the total ores mined count
+
+        switch (oreType)
+        {
+            case "Coal":
+                lifetimeStats.totalcoal++;
+                break;
+            case "Iron":
+                lifetimeStats.totaliron++;
+                break;
+            case "Gold":
+                lifetimeStats.totalgold++;
+                break;
+            case "Copper":
+                lifetimeStats.totalcopper++;
+                break;
+            case "Silver":
+                lifetimeStats.totalsilver++;
+                break;
+            case "Cobalt":
+                lifetimeStats.totalcobalt++;
+                break;
+            case "Lapis Lazuli":
+                lifetimeStats.totallapis++;
+                break;
+            case "Obsidian":
+                lifetimeStats.totalobsidian++;
+                break;
+            case "Mithril":
+                lifetimeStats.totalmithril++;
+                break;
+            case "Adamantite":
+                lifetimeStats.totaladmantite++;
+                break;
+                // Add cases for other ore types here
+        }
+    }
+
+    private void TrackGemstoneMined(string gemstoneType)
+    {
+        lifetimeStats.totalgemstonesmined++; // Increment the total gemstones mined count
+
+        switch (gemstoneType)
+        {
+            case "Ruby":
+                lifetimeStats.totalruby++;
+                break;
+            case "Sapphire":
+                lifetimeStats.totalsapphire++;
+                break;
+            case "Jasper":
+                lifetimeStats.totaljasper++;
+                break;
+            case "Emerald":
+                lifetimeStats.totalemerald++;
+                break;
+            case "Amethyst":
+                lifetimeStats.totalamethyst++;
+                break;
+            case "Moonstone":
+                lifetimeStats.totalmoonstone++;
+                break;
+            case "Diamond":
+                lifetimeStats.totaldiamond++;
+                break;
+            case "Tanzanite":
+                lifetimeStats.totaltanzanite++;
+                break;
+            case "Jadeite":
+                lifetimeStats.totaljadeite++;
+                break;
+            case "Quartz":
+                lifetimeStats.totalquartz++;
+                break;
+            case "Black Onyx":
+                lifetimeStats.totalblackonyx++;
+                break;
+            case "Citrine":
+                lifetimeStats.totalcitrine++;
+                break;
+            case "Rose Quartz":
+                lifetimeStats.totalrosequartz++;
+                break;
+                // Add cases for other gemstone types here
+        }
+    }
+
 
 }
