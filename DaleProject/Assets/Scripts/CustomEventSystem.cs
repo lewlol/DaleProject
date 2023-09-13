@@ -56,4 +56,13 @@ public class CustomEventSystem : MonoBehaviour
             onSleep();
         }
     }
+
+    public event Action<string, TileTypes> onBlockBreak;
+    public void BlockBreak(string blockName, TileTypes blockType)
+    {
+        if(onBlockBreak != null)
+        {
+            onBlockBreak(blockName, blockType);
+        }
+    }
 }

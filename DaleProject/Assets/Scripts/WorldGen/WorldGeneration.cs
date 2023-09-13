@@ -366,8 +366,16 @@ public class WorldGeneration : MonoBehaviour
         {
             for (int y = 0; y < caveTexture.height; y++)
             {
-                float v = Mathf.PerlinNoise((x + seed) * activeBiome.caveFrequency, (y + seed) * activeBiome.caveFrequency);
-                caveTexture.SetPixel(x, y, new Color(v, v, v));
+                float v = Mathf.PerlinNoise((x + seed) * activeBiome.caveSize, (y + seed) * activeBiome.caveSize);
+
+                if (v < activeBiome.caveFrequency)
+                {
+                    caveTexture.SetPixel(x, y, new Color(0f, 0f, 0f)); // Cave color (black)
+                }
+                else
+                {
+                    caveTexture.SetPixel(x, y, new Color(1f, 1f, 1f)); // Solid ground color (white)
+                }
             }
         }
         caveTexture.Apply();

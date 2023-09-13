@@ -242,4 +242,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 5739399355539677609}
+  bx: {fileID: 4533011287771771411}
   tileDataHolder: {fileID: 0}

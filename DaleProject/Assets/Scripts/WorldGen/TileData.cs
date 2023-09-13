@@ -16,6 +16,7 @@ public class TileData : ScriptableObject
     public float breakTime;
     public int sellPrice;
     public int breakingPower;
+    public bool isTrigger;
 
     [Header("Ore Attributes")]
     public float veinChance;

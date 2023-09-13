@@ -33,6 +33,12 @@ public class BombItem : Item
             {
                 CustomEventSystem.current.TextDisplay(collider.transform.position, 3, "+1 " + collider.GetComponent<Tile>().tileDataHolder.tileName, 30, Color.white);
                 CollectAndDestroyBlock(collider.gameObject);
+
+                // Add Resource to Backpack and Destroy the Block
+                parent.GetComponent<Backpack>().AddResource(collider.GetComponent<Tile>().tileDataHolder.id, 1);
+
+                //Track Lifetime Stats
+                CustomEventSystem.current.BlockBreak(collider.GetComponent<Tile>().tileDataHolder.tileName, collider.GetComponent<Tile>().tileDataHolder.tileType);
             }
 
             if (collider.gameObject.tag == "Player")

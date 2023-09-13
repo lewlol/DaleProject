@@ -20,6 +20,7 @@ MonoBehaviour:
   breakTime: 3
   sellPrice: 20
   breakingPower: 3
+  isTrigger: 1
   veinChance: 0
   maxVeinCount: 0
   upCrystal: {fileID: 1392282833, guid: e35573d2827b8354ca1b512972064bc6, type: 3}

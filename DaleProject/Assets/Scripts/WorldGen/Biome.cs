@@ -9,7 +9,8 @@ public class Biome : ScriptableObject
     public string biomeName;
 
     [Header("Biome Settings")]
-    [Range(0f, 0.1f)] public float caveFrequency; //Cave Size
+    [Range(0f, 0.3f)] public float caveSize; //Cave Size
+    [Range(0.45f, 0.6f)] public float caveFrequency; //Frequency of Caves
     [Range(0f, 0.1f)] public float oreFrequency; //Ore Distribution
     [Range(0, 1f)] public float gemFrequency; //Gem Distribution
     [Range(0f, 1f)] public float biomeFrequency; //How Often this Biome Shows Up

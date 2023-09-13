@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Underground
   m_EditorClassIdentifier: 
   biomeName: Underground
-  caveFrequency: 0.06
+  caveSize: 0.114
+  caveFrequency: 0.557
   oreFrequency: 0.025
   gemFrequency: 0.025
   biomeFrequency: 1
