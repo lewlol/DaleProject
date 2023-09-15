@@ -206,7 +206,7 @@ public class WorldGeneration : MonoBehaviour
 
                 GameObject newTile = Instantiate(tile, spawnPosition, Quaternion.identity);
                 newTile.GetComponent<Tile>().Ore(activeTile);
-                newTile.name = (x + quadrantOffset.x) + "," + (y + quadrantOffset.y);
+                newTile.name = x + "," + (y + quadrantOffset.y);
                 tiles.Add(newTile);
 
                 oreTexture.SetPixel(x, y, Color.black);
@@ -217,7 +217,7 @@ public class WorldGeneration : MonoBehaviour
             }
             if (newOre)
             {
-                spawnPosition = new Vector2(x, y) + quadrantOffset;
+                SetSpawnPoint(x, y);
                 GameObject newTile = Instantiate(tile, spawnPosition, Quaternion.identity);
                 newTile.GetComponent<Tile>().Ore(activeTile);
                 newTile.name = x + "," + y;
@@ -343,7 +343,7 @@ public class WorldGeneration : MonoBehaviour
             {
                 if (caveTexture.GetPixel(x, y).r < 0.5)
                 {
-                    spawnPosition = new Vector2(x, y) + quadrantOffset;
+                    SetSpawnPoint(x, y);
 
                     SpawnRock(x, y);
                 }
@@ -405,5 +405,10 @@ public class WorldGeneration : MonoBehaviour
         {
             quadrantOffset = new Vector2(quadrantSize, 0);
         }
+    }
+
+    private void SetSpawnPoint(int x, int y)
+    {
+        spawnPosition = new Vector2(x, y) + quadrantOffset;
     }
 }
