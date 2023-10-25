@@ -185,10 +185,6 @@ PrefabInstance:
       value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 2086649039329453340, guid: b3fc6b19e76d65646afe45bbc1f5816a, type: 3}
-      propertyPath: quadrantAmounts
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2086649039329453340, guid: b3fc6b19e76d65646afe45bbc1f5816a, type: 3}
       propertyPath: rareBiomes.Array.size
       value: 1
       objectReference: {fileID: 0}

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quadrantSize: 100
+  quadrantAmounts: 4
   seed: 0
   undergroundBiome: {fileID: 11400000, guid: ffd3f35ed6a876b4a903e6948262d61a, type: 2}
   commonBiomes: []
