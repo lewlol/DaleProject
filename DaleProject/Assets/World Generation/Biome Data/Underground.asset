@@ -21,6 +21,7 @@ MonoBehaviour:
   hasOre: 1
   hasGems: 1
   rockTile: {fileID: 11400000, guid: 13bdd188b62a12c409c0ff5fb7dbc554, type: 2}
+  biomeBackground: {fileID: 21300000, guid: a4cdf5a1df8da624d99a70eda5bdba1a, type: 3}
   commonOres:
   - {fileID: 11400000, guid: 1e93d62b75f1d9347a851495b35a3644, type: 2}
   rareOres:

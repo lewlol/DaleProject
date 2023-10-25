@@ -19,6 +19,7 @@ public class Biome : ScriptableObject
 
     [Header("Biome Attributes")]
     public TileData rockTile;
+    public Sprite biomeBackground;
 
     [Header("Biome Ores")]
     public TileData[] commonOres;

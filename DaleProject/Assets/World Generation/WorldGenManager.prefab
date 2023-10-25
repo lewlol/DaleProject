@@ -51,3 +51,4 @@ MonoBehaviour:
   rareBiomes: []
   uniqueBiomes: []
   tile: {fileID: 3495896745892836731, guid: c6fb48b4b7e8f5941bcea6668551bec0, type: 3}
+  backgroundTile: {fileID: 6451372524385929111, guid: f393e6bd3d00976408cf8ed78e73a07e, type: 3}

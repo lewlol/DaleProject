@@ -6,6 +6,7 @@ public class WorldGeneration : MonoBehaviour
 {
     int currentQuadrant;
     Vector2 quadrantOffset;
+    Vector2 backgroundPosition;
 
     float totalBiomeChance;
     List<Biome> possibleBiomes = new List<Biome>();
@@ -36,6 +37,7 @@ public class WorldGeneration : MonoBehaviour
 
     [Header("Tile Prefabs")]
     public GameObject tile;
+    public GameObject backgroundTile;
 
     private void Start()
     {
@@ -64,6 +66,9 @@ public class WorldGeneration : MonoBehaviour
 
         //Generate Stone + Caves
         GenerateStone();
+
+        //Generate Background
+        GenerateBackground();
 
         //Generate Ore Texture + Veins
         if (activeBiome.hasOre)
@@ -397,14 +402,27 @@ public class WorldGeneration : MonoBehaviour
             quadrantOffset = new Vector2(0, quadrantSize);
         }else if(currentQuadrant == 1)
         {
-            quadrantOffset = new Vector2(quadrantSize, quadrantSize);
+            quadrantOffset = new Vector2(0, quadrantSize * 2);
         }else if(currentQuadrant == 2)
         {
-            quadrantOffset = new Vector2(0, 0);
+            quadrantOffset = new Vector2(0, quadrantSize * 3);
         }else if(currentQuadrant == 3)
         {
-            quadrantOffset = new Vector2(quadrantSize, 0);
+            quadrantOffset = new Vector2(0, quadrantSize * 4);
         }
+    }
+
+    private void GenerateBackground()
+    {
+        backgroundPosition = new Vector2((quadrantSize / 2) - 0.5f, quadrantOffset.y + (quadrantSize / 2) - 0.5f);
+
+        GameObject background = Instantiate(backgroundTile, backgroundPosition, Quaternion.identity);
+        SpriteRenderer sr = background.GetComponent<SpriteRenderer>();
+
+        sr.sprite = activeBiome.biomeBackground;
+        sr.size = new Vector2(quadrantSize, quadrantSize);
+
+        background.name = "Quadrant " + currentQuadrant + " Background";
     }
 
     private void SetSpawnPoint(int x, int y)
