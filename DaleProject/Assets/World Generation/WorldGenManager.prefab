@@ -52,3 +52,7 @@ MonoBehaviour:
   uniqueBiomes: []
   tile: {fileID: 3495896745892836731, guid: c6fb48b4b7e8f5941bcea6668551bec0, type: 3}
   backgroundTile: {fileID: 6451372524385929111, guid: f393e6bd3d00976408cf8ed78e73a07e, type: 3}
+  dirtTile: {fileID: 345086887535825134, guid: 86be0ea20122d634cac4162570b8db35, type: 3}
+  mineshaftTile: {fileID: 268641863201485135, guid: 8e0133d66341f9c4fac1b701c2991d6f, type: 3}
+  borderTile: {fileID: 5125202598916607239, guid: 5f517363687263c418a3d820bc0e588a, type: 3}
+  dirt: {fileID: 0}

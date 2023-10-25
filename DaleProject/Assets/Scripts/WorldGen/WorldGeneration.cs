@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class WorldGeneration : MonoBehaviour
 {
     int currentQuadrant;
     Vector2 quadrantOffset;
-    Vector2 backgroundPosition;
+    Vector3 backgroundPosition;
+
+    bool mineshaftGenerated;
+    bool borderGenerated;
 
     float totalBiomeChance;
     List<Biome> possibleBiomes = new List<Biome>();
@@ -27,6 +31,7 @@ public class WorldGeneration : MonoBehaviour
 
     [Header("Terrain Settings")]
     public int quadrantSize;
+    public int quadrantAmounts;
     [Range(-10000, 10000)]public int seed;
 
     [Header("Biomes")]
@@ -38,9 +43,16 @@ public class WorldGeneration : MonoBehaviour
     [Header("Tile Prefabs")]
     public GameObject tile;
     public GameObject backgroundTile;
+    public GameObject dirtTile;
+    public GameObject mineshaftTile;
+    public GameObject borderTile;
+
+    [Header("Misc Properties")]
+    public GameObject dirt;
 
     private void Start()
     {
+        currentQuadrant = 1;
         GenerateNewWorld();
     }
 
@@ -55,11 +67,15 @@ public class WorldGeneration : MonoBehaviour
     {
         seed = Random.Range(-10000, 10000);
 
-        //Set Quadrant Offset
-        SetQuadrantOffset();
-
         //Choose Biome
         ChooseBiome();
+
+        //Generate Mineshaft
+        GenerateMineshaft(mineshaftGenerated);
+        mineshaftGenerated = true;
+
+        //Set Quadrant Offset
+        SetQuadrantOffset();
 
         //Generate Cave Texture - Only Generate Once
         GenerateCaveTexture();
@@ -69,6 +85,10 @@ public class WorldGeneration : MonoBehaviour
 
         //Generate Background
         GenerateBackground();
+
+        //Generate Borders
+        GenerateBorders(borderGenerated);
+        borderGenerated = true;
 
         //Generate Ore Texture + Veins
         if (activeBiome.hasOre)
@@ -86,7 +106,7 @@ public class WorldGeneration : MonoBehaviour
         Debug.Log("Quadrant " + currentQuadrant + "is a " + activeBiome.name + " Biome");
 
         //Check to Generate Another Quadrant
-        if(currentQuadrant < 3)
+        if(currentQuadrant < quadrantAmounts)
         {
             currentQuadrant++;
             GenerateQuadrant();
@@ -105,7 +125,7 @@ public class WorldGeneration : MonoBehaviour
                     float chance = Random.Range(0, 1f);
                     if(chance <= activeBiome.gemFrequency)
                     {
-                        spawnPosition = new Vector2(x, y) + quadrantOffset;
+                        SetSpawnPoint(x, y);
 
                         //Choose Which Gem
                         int ranGem = Random.Range(0, 101);
@@ -173,7 +193,7 @@ public class WorldGeneration : MonoBehaviour
                     if (chance <= activeBiome.oreFrequency)
                     {
                         //Check Area Level and Change Spawn Position
-                        spawnPosition = new Vector2(x, y) + quadrantOffset;
+                        SetSpawnPoint(x, y);
 
                         //Delete Rock Block
                         DeleteBlock(x, y);
@@ -281,7 +301,7 @@ public class WorldGeneration : MonoBehaviour
 
     private void ChooseBiome()
     {
-        if(currentQuadrant == 0) //Always Stone
+        if(currentQuadrant == 1) //Always Stone
         {
             activeBiome = undergroundBiome;
         }
@@ -397,24 +417,12 @@ public class WorldGeneration : MonoBehaviour
     //Setting Quadrant Position - Limits to 4 Quadrants but for now it works
     private void SetQuadrantOffset()
     {
-        if(currentQuadrant == 0)
-        {
-            quadrantOffset = new Vector2(0, quadrantSize);
-        }else if(currentQuadrant == 1)
-        {
-            quadrantOffset = new Vector2(0, quadrantSize * 2);
-        }else if(currentQuadrant == 2)
-        {
-            quadrantOffset = new Vector2(0, quadrantSize * 3);
-        }else if(currentQuadrant == 3)
-        {
-            quadrantOffset = new Vector2(0, quadrantSize * 4);
-        }
+        quadrantOffset = new Vector2(0, -quadrantSize * currentQuadrant);
     }
 
     private void GenerateBackground()
     {
-        backgroundPosition = new Vector2((quadrantSize / 2) - 0.5f, quadrantOffset.y + (quadrantSize / 2) - 0.5f);
+        backgroundPosition = new Vector3((quadrantSize / 2) - 0.5f, quadrantOffset.y + (quadrantSize / 2) - 0.5f, 1f);
 
         GameObject background = Instantiate(backgroundTile, backgroundPosition, Quaternion.identity);
         SpriteRenderer sr = background.GetComponent<SpriteRenderer>();
@@ -423,6 +431,50 @@ public class WorldGeneration : MonoBehaviour
         sr.size = new Vector2(quadrantSize, quadrantSize);
 
         background.name = "Quadrant " + currentQuadrant + " Background";
+    }
+
+    private void GenerateMineshaft(bool generated)
+    {
+        if (generated) //Quick bool to only generate a mineshaft once
+            return;
+
+        //Generate First Row of Blocks
+        for(int x = 0; x < quadrantSize; x++)
+        {
+            SetSpawnPoint(x, 0);
+            SpawnRock(x, 0);
+        }
+
+        //Generate Dirt Background
+        GameObject dirtBackground = Instantiate(dirtTile, new Vector3(49.5f, 1, 9f), Quaternion.identity);
+        SpriteRenderer sr = dirtBackground.GetComponent<SpriteRenderer>();
+        sr.size = new Vector2(quadrantSize, 3);
+
+        //Generate Mineshaft Walls
+        GameObject mineshaftBackground = Instantiate(mineshaftTile, new Vector3(49.5f, 1.25f, 8.9f), Quaternion.identity);
+        SpriteRenderer mbsr = mineshaftBackground.GetComponent<SpriteRenderer>();
+        mbsr.size = new Vector2(quadrantSize, 1.5f);
+
+        //Generate Lights
+
+        //Reset Stone
+        int offset = quadrantSize - 100;
+        dirt.transform.position += new Vector3(0, offset, 0);
+        Debug.Log("Mineshaft Generated");
+    }
+
+    private void GenerateBorders(bool generated)
+    {
+        if(generated)
+            return;
+
+        Vector2 lBorderPos = new Vector2(7, 0);
+        GameObject lBorder = Instantiate(borderTile, lBorderPos, Quaternion.identity);
+        lBorder.name = "Left Border";
+
+        Vector2 rBorderPos = new Vector2(quadrantSize - 7, 0);
+        GameObject rBorder = Instantiate(borderTile, rBorderPos, Quaternion.identity);
+        rBorder.name = "Right Border";
     }
 
     private void SetSpawnPoint(int x, int y)

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1274900116017923295}
   - component: {fileID: 3774692152636855874}
   - component: {fileID: 7287621365230148034}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,23 +376,23 @@ Tilemap:
   - m_RefCount: 13
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.9653577, g: 0.60215163, b: 0.70706177, a: 1}
+    m_Data: {r: 0.8855548, g: 0.5233802, b: 0.5406055, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.753538, g: 0.39606306, b: 0.4661766, a: 1}
+    m_Data: {r: 0.9291051, g: 0.5876618, b: 0.5909773, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.7285273, g: 0.34691292, b: 0.37230054, a: 1}
+    m_Data: {r: 0.9389929, g: 0.40455544, b: 0.57748145, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.7040886, g: 0.34211203, b: 0.43917722, a: 1}
+    m_Data: {r: 0.9432656, g: 0.3991275, b: 0.48288342, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.93468875, g: 0.40391612, b: 0.48513135, a: 1}
+    m_Data: {r: 0.75235134, g: 0.4057257, b: 0.42135844, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.78555566, g: 0.3916634, b: 0.46209362, a: 1}
+    m_Data: {r: 0.81915694, g: 0.44776443, b: 0.5219736, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.8156556, g: 0.5282304, b: 0.5688905, a: 1}
+    m_Data: {r: 0.8312395, g: 0.4525815, b: 0.5223741, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.84426284, g: 0.55271786, b: 0.61628646, a: 1}
+    m_Data: {r: 0.82404006, g: 0.43583804, b: 0.55849504, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.80382276, g: 0.3389533, b: 0.35672167, a: 1}
+    m_Data: {r: 0.95864934, g: 0.38426584, b: 0.5240621, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -511,7 +511,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &5497773807541883349
+--- !u!114 &8737376979047881828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
