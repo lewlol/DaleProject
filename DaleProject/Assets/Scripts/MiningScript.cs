@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MiningScript : MonoBehaviour
@@ -22,6 +23,7 @@ public class MiningScript : MonoBehaviour
     //Fortune
     public float fortune;
 
+    private Color blockTextColor;
 
     private void Start()
     {
@@ -128,7 +130,7 @@ public class MiningScript : MonoBehaviour
         mineAmount = guaranteedAmount + additionalAmount;
 
         // Call 3D Text - Block Transform (Offset Applied in Text Script), Time it stays there, +(Resource Amount) Block Name, Text Size 
-        CustomEventSystem.current.TextDisplay(block.gameObject.transform.position, 2f, "+" + mineAmount + " " + block.GetComponent<Tile>().tileDataHolder.tileName, 30, Color.white);
+        CustomEventSystem.current.TextDisplay(block.gameObject.transform.position, 2f, "+" + mineAmount + " " + block.GetComponent<Tile>().tileDataHolder.tileName, 35, block.GetComponent<Tile>().tileDataHolder.tileRarity);
 
         // Add Resource to Backpack and Destroy the Block
         gameObject.GetComponent<Backpack>().AddResource(block.GetComponent<Tile>().tileDataHolder.id, mineAmount);
@@ -214,6 +216,7 @@ public class MiningScript : MonoBehaviour
             return false;
         }
     }
+
     public bool CanBreak(GameObject block)
     {
         Tile blockTile = block.GetComponent<Tile>();

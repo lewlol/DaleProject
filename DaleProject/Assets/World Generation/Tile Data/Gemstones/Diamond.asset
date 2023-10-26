@@ -15,6 +15,7 @@ MonoBehaviour:
   tileName: Diamond
   tileDescription: 
   tileType: 2
+  tileRarity: 2
   tileSprite: {fileID: 0}
   id: 18
   breakTime: 2

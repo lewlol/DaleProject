@@ -15,6 +15,7 @@ MonoBehaviour:
   tileName: Rose Quartz
   tileDescription: 
   tileType: 2
+  tileRarity: 4
   tileSprite: {fileID: 0}
   id: 24
   breakTime: 4

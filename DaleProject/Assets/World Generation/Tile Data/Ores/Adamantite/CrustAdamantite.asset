@@ -15,11 +15,13 @@ MonoBehaviour:
   tileName: Adamantite
   tileDescription: 
   tileType: 1
+  tileRarity: 3
   tileSprite: {fileID: 1074985114, guid: eae1c614058c8ea4da2a2e025eed6418, type: 3}
   id: 11
   breakTime: 3
   sellPrice: 25
   breakingPower: 3
+  isTrigger: 0
   veinChance: 45
   maxVeinCount: 8
   upCrystal: {fileID: 0}

@@ -31,7 +31,7 @@ public class BombItem : Item
         {
             if (collider.CompareTag("Block"))
             {
-                CustomEventSystem.current.TextDisplay(collider.transform.position, 3, "+1 " + collider.GetComponent<Tile>().tileDataHolder.tileName, 30, Color.white);
+                CustomEventSystem.current.TextDisplay(collider.transform.position, 3, "+1 " + collider.GetComponent<Tile>().tileDataHolder.tileName, 30, collider.GetComponent<Tile>().tileDataHolder.tileRarity);
                 CollectAndDestroyBlock(collider.gameObject);
 
                 // Add Resource to Backpack and Destroy the Block

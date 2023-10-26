@@ -16,11 +16,13 @@ MonoBehaviour:
   tileDescription: A prolific element used for generations by civilisations for the
     powers it may bring.
   tileType: 1
+  tileRarity: 2
   tileSprite: {fileID: 1458466694, guid: e5db88e2634939e43a4173bed3cc8aee, type: 3}
   id: 8
   breakTime: 2
   sellPrice: 4
   breakingPower: 1
+  isTrigger: 0
   veinChance: 80
   maxVeinCount: 12
   upCrystal: {fileID: 0}

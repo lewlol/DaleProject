@@ -15,11 +15,13 @@ MonoBehaviour:
   tileName: Obsidian
   tileDescription: 
   tileType: 1
+  tileRarity: 2
   tileSprite: {fileID: -766664109, guid: f268574c0c65418479bff6ace41c49f0, type: 3}
   id: 9
   breakTime: 5
   sellPrice: 20
   breakingPower: 2
+  isTrigger: 0
   veinChance: 35
   maxVeinCount: 4
   upCrystal: {fileID: 0}

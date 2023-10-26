@@ -8,6 +8,7 @@ public class Item : ScriptableObject
     public Sprite itemSprite;
     public string itemName;
     public string itemDescription;
+    public Rarity itemRarity;
 
     [Header("Item Stats")]
     public float coolDownTime;

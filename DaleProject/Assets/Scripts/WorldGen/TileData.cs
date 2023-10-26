@@ -9,6 +9,7 @@ public class TileData : ScriptableObject
     public string tileName;
     public string tileDescription;
     public TileTypes tileType;
+    public Rarity tileRarity;
 
     [Header("Tile Attributes")]
     public Sprite tileSprite;

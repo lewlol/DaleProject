@@ -15,6 +15,7 @@ MonoBehaviour:
   tileName: Emerald
   tileDescription: 
   tileType: 2
+  tileRarity: 1
   tileSprite: {fileID: 0}
   id: 15
   breakTime: 1.2

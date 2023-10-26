@@ -15,11 +15,13 @@ MonoBehaviour:
   tileName: Mithril
   tileDescription: 
   tileType: 1
+  tileRarity: 3
   tileSprite: {fileID: -1673808132, guid: 5cc71362c0b72414d8601469beac3988, type: 3}
   id: 10
   breakTime: 2.2
   sellPrice: 18
   breakingPower: 2
+  isTrigger: 0
   veinChance: 50
   maxVeinCount: 7
   upCrystal: {fileID: 0}

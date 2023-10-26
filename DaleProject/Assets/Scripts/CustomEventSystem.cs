@@ -39,12 +39,12 @@ public class CustomEventSystem : MonoBehaviour
         }
     }
 
-    public event Action<Vector3, float, string, int, Color> onTextDisplay;
-    public void TextDisplay(Vector3 position, float time, string text, int size, Color color)
+    public event Action<Vector3, float, string, int, Rarity> onTextDisplay;
+    public void TextDisplay(Vector3 position, float time, string text, int size, Rarity rarity)
     {
         if(onTextDisplay != null)
         {
-            onTextDisplay(position, time, text, size, color);
+            onTextDisplay(position, time, text, size, rarity);
         }
     }
 

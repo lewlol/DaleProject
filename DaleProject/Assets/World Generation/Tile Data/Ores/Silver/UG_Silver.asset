@@ -16,11 +16,13 @@ MonoBehaviour:
   tileDescription: A white metal found around the world that is used to make tools.
     This ore allowed ancient cilisations to explore more of the underground world.
   tileType: 1
+  tileRarity: 1
   tileSprite: {fileID: -306556567, guid: b63319c36936faa4aa8c565d8a132eae, type: 3}
   id: 6
   breakTime: 1.5
   sellPrice: 6
   breakingPower: 1
+  isTrigger: 0
   veinChance: 70
   maxVeinCount: 7
   upCrystal: {fileID: 0}
