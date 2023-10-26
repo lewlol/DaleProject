@@ -15,6 +15,7 @@ MonoBehaviour:
   tileName: Ruby
   tileDescription: A red, shiny gem found in the underground.
   tileType: 2
+  tileRarity: 0
   tileSprite: {fileID: 0}
   id: 12
   breakTime: 1
@@ -27,3 +28,5 @@ MonoBehaviour:
   downCrystal: {fileID: -693969029, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
   leftCrystal: {fileID: 836053255, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
   rightCrystal: {fileID: -71798434, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  glow: 1
+  glowColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}

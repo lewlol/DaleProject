@@ -5,6 +5,7 @@ using UnityEngine;
 public class TextDisplay : MonoBehaviour
 {
     public GameObject textmesh;
+    public ColorIndex colorIndex;
     Color blockTextColor;
 
     private void Start()
@@ -30,27 +31,31 @@ public class TextDisplay : MonoBehaviour
         switch (tileRarity)
         {
             case Rarity.Common:
-                blockTextColor = Color.white;
+                blockTextColor = colorIndex.common;
                 break;
 
             case Rarity.Uncommon:
-                blockTextColor = Color.green;
+                blockTextColor = colorIndex.uncommon;
                 break;
 
             case Rarity.Rare:
-                blockTextColor = Color.blue;
+                blockTextColor = colorIndex.rare;
                 break;
 
             case Rarity.Unique:
-                blockTextColor = Color.magenta;
+                blockTextColor = colorIndex.unique;
                 break;
 
             case Rarity.Legendary:
-                blockTextColor = Color.yellow;
+                blockTextColor = colorIndex.legendary;
                 break;
 
             case Rarity.Mythic:
-                blockTextColor = Color.red;
+                blockTextColor = colorIndex.mythic;
+                break;
+
+            case Rarity.Quest:
+                blockTextColor = colorIndex.quest;
                 break;
         }
     }

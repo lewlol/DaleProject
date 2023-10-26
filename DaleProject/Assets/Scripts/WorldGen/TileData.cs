@@ -28,5 +28,9 @@ public class TileData : ScriptableObject
     public Sprite downCrystal;
     public Sprite leftCrystal;
     public Sprite rightCrystal;
+
+    [Header("Glow Attributes")]
+    public bool glow;
+    public Color glowColor;
 }
 

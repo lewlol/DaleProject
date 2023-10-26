@@ -5,8 +5,7 @@ public class RandomArtifactGenerator : MonoBehaviour
     public ArtifactManager artifactManager;
 
     private void Update()
-    {
-        
+    {    
         if (Input.GetKeyDown(KeyCode.Space))
         {
            

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4613678d927423a45939ade14e30d307, type: 3}
+  m_Name: ColorIndex
+  m_EditorClassIdentifier: 
+  common: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+  uncommon: {r: 0.33784264, g: 0.9811321, b: 0.34264335, a: 1}
+  rare: {r: 0.18062477, g: 0.75539327, b: 0.9339623, a: 1}
+  unique: {r: 0.81516826, g: 0.36445355, b: 0.8490566, a: 1}
+  legendary: {r: 0.999694, g: 1, b: 0, a: 1}
+  mythic: {r: 1, g: 0.3537736, b: 0.3537736, a: 1}
+  quest: {r: 1, g: 0.6508509, b: 0.28773582, a: 1}

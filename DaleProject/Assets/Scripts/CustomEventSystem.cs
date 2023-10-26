@@ -21,6 +21,15 @@ public class CustomEventSystem : MonoBehaviour
         }
     }
 
+    public event Action<int, int> onStaminaChange;
+    public void StaminaChange(int stamina, int maxStamina)
+    {
+        if(onStaminaChange != null)
+        {
+            onStaminaChange(stamina, maxStamina);
+        }
+    }
+
     public event Action onCoinChange;
     public void CoinChange()
     {

@@ -28,3 +28,5 @@ MonoBehaviour:
   downCrystal: {fileID: -1551979526, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
   leftCrystal: {fileID: 1142806038, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
   rightCrystal: {fileID: 748101127, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
+  glow: 1
+  glowColor: {r: 0.6975347, g: 0.8962264, b: 0.8907072, a: 1}

@@ -170,6 +170,8 @@ public class MiningScript : MonoBehaviour
         {
             stamina = 0;
         }
+
+        CustomEventSystem.current.StaminaChange(stamina, playerStats.maxstamina);
     }
 
     public void RegenStamina()
