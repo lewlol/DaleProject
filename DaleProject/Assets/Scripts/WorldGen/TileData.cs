@@ -32,6 +32,7 @@ public class TileData : ScriptableObject
 
     [Header("Glow Attributes")]
     public bool glow;
+    public float glowIntensity;
     public Color glowColor;
 }
 

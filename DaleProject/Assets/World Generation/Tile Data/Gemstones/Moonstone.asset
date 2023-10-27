@@ -30,4 +30,5 @@ MonoBehaviour:
   leftCrystal: {fileID: -1903624483, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
   rightCrystal: {fileID: 690656851, guid: e35573d2827b8354ca1b512972064bc6, type: 3}
   glow: 1
+  glowIntensity: 0.12
   glowColor: {r: 1, g: 1, b: 1, a: 1}

@@ -21,7 +21,7 @@ MonoBehaviour:
   breakTime: 0
   sellPrice: 0
   breakingPower: 0
-  isTrigger: 0
+  isTrigger: 1
   isInventory: 0
   veinChance: 0
   maxVeinCount: 0
@@ -29,5 +29,6 @@ MonoBehaviour:
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}
   rightCrystal: {fileID: 0}
-  glow: 0
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  glow: 1
+  glowIntensity: 0.015
+  glowColor: {r: 0.9381927, g: 1, b: 0, a: 1}

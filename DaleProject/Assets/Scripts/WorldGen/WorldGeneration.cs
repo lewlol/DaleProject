@@ -178,7 +178,7 @@ public class WorldGeneration : MonoBehaviour
     {
         GameObject gem = Instantiate(tile, spawnPosition, Quaternion.identity);
         Tile tt = gem.GetComponent<Tile>();
-        SetTileName(gem, x + quadrantOffset.x, y + quadrantOffset.y, activeTile.name);
+        SetTileName(gem, x + quadrantOffset.x, y + quadrantOffset.y);
         tt.Gemstone(activeTile, gemSprite);
         tiles.Add(gem);
     }
@@ -199,7 +199,7 @@ public class WorldGeneration : MonoBehaviour
                         SetSpawnPoint(x, y);
 
                         //Delete Rock Block 
-                        DeleteBlock(x, y, activeBiome.rockTile.name);
+                        DeleteBlock(x, y + quadrantOffset.y);
 
                         //Spawn Ore
                         SpawnOre(x, y, false);
@@ -234,7 +234,7 @@ public class WorldGeneration : MonoBehaviour
 
                 GameObject newTile = Instantiate(tile, spawnPosition, Quaternion.identity);
                 newTile.GetComponent<Tile>().Ore(activeTile);
-                SetTileName(newTile, x, y + quadrantOffset.y, activeTile.name);
+                SetTileName(newTile, x, y + quadrantOffset.y); //
                 tiles.Add(newTile);
 
                 oreTexture.SetPixel(x, y, Color.black);
@@ -248,7 +248,7 @@ public class WorldGeneration : MonoBehaviour
                 SetSpawnPoint(x, y);
                 GameObject newTile = Instantiate(tile, spawnPosition, Quaternion.identity);
                 newTile.GetComponent<Tile>().Ore(activeTile);
-                SetTileName(newTile, x, y, activeTile.name);
+                SetTileName(newTile, x, y + quadrantOffset.y);
                 tiles.Add(newTile);
 
                 oreTexture.SetPixel(x, y, Color.black);
@@ -268,22 +268,22 @@ public class WorldGeneration : MonoBehaviour
             veinCount++;
             if (dir == 0)//Right
             {
-                DeleteBlock(x + 1, y, activeTile.name);
+                DeleteBlock(x + 1, y + quadrantOffset.y);
                 SpawnOre(x + 1, y, true);
             }
             if (dir == 1)//Left
             {
-                DeleteBlock(x - 1, y, activeTile.name);
+                DeleteBlock(x - 1, y + quadrantOffset.y);
                 SpawnOre(x - 1, y, true);
             }
             if (dir == 2)//Up
             {
-                DeleteBlock(x, y + 1, activeTile.name);
+                DeleteBlock(x, y + 1 + quadrantOffset.y);
                 SpawnOre(x, y + 1, true);
             }
             if (dir == 3)//Down
             {
-                DeleteBlock(x, y - 1, activeTile.name);
+                DeleteBlock(x, y - 1 + quadrantOffset.y);
                 SpawnOre(x, y - 1, true);
             }
         }
@@ -382,7 +382,7 @@ public class WorldGeneration : MonoBehaviour
     {
         GameObject newTile = Instantiate(tile, spawnPosition, Quaternion.identity);
         newTile.GetComponent<Tile>().Rock(activeBiome.rockTile);
-        SetTileName(newTile, x + quadrantOffset.x, y + quadrantOffset.y, activeBiome.rockTile.name);
+        SetTileName(newTile, x + quadrantOffset.x, y + quadrantOffset.y);
         tiles.Add(newTile);
     }
 
@@ -410,10 +410,14 @@ public class WorldGeneration : MonoBehaviour
     }
 
     //Deleting Blocks
-    private void DeleteBlock(int x, int y, string name)
+    private void DeleteBlock(float x, float y)
     {
-        string blockName = "X" + x + " " + "Y" + y + " " + "Tile " + name;
+        string blockName = "X" + x + " " + "Y" + y;
         GameObject tile = GameObject.Find(blockName);
+        if(tile != null)
+        {
+            Debug.Log("Tile Destroyed");
+        }
         Destroy(tile);
     }
 
@@ -464,7 +468,7 @@ public class WorldGeneration : MonoBehaviour
     {
         GameObject lootTile = Instantiate(tile, spawnPosition, Quaternion.identity);
         lootTile.GetComponent<Tile>().Rock(activeBiome.lootTile);
-        SetTileName(lootTile, x + quadrantOffset.x, y + quadrantOffset.y, activeBiome.lootTile.name);
+        SetTileName(lootTile, x + quadrantOffset.x, y + quadrantOffset.y);
         tiles.Add(lootTile);
     }
     private void GenerateMineshaft(bool generated)
@@ -516,8 +520,8 @@ public class WorldGeneration : MonoBehaviour
         spawnPosition = new Vector2(x, y) + quadrantOffset;
     }
 
-    private void SetTileName(GameObject tile, float x, float y, string name)
+    private void SetTileName(GameObject tile, float x, float y)
     {
-        tile.name = "X" + x + " " + "Y" + y + " " + "Tile " + name;
+        tile.name = "X" + x + " " + "Y" + y;
     }
 }

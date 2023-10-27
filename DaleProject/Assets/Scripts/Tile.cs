@@ -37,6 +37,7 @@ public class Tile : MonoBehaviour
     public void GlowAttributes(TileData dt)
     {
         glowLight.SetActive(dt.glow);
+        glowLight.GetComponent<Light2D>().intensity = dt.glowIntensity;
         glowLight.GetComponent<Light2D>().color = dt.glowColor;
     }
 }
