@@ -22,9 +22,12 @@ MonoBehaviour:
   sellPrice: 20
   breakingPower: 2
   isTrigger: 0
+  isInventory: 1
   veinChance: 35
   maxVeinCount: 4
   upCrystal: {fileID: 0}
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}
   rightCrystal: {fileID: 0}
+  glow: 0
+  glowColor: {r: 0, g: 0, b: 0, a: 0}

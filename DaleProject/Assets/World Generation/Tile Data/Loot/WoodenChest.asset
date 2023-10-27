@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
-  m_Name: Crystal_Coal
+  m_Name: WoodenChest
   m_EditorClassIdentifier: 
-  tileName: Coal
-  tileDescription: Used for years to smelt underground valuables to forge them into
-    the strongest of tools.
-  tileType: 1
+  tileName: Wooden Chest
+  tileDescription: 
+  tileType: 3
   tileRarity: 0
-  tileSprite: {fileID: 130189918, guid: 64cf8086db31827469a5b984b1f9c0a1, type: 3}
-  id: 2
-  breakTime: 1
-  sellPrice: 2
+  tileSprite: {fileID: 21300000, guid: 8995e11c15769c84a82f8c35114f8db3, type: 3}
+  id: 0
+  breakTime: 0
+  sellPrice: 0
   breakingPower: 0
   isTrigger: 0
-  isInventory: 1
-  veinChance: 90
-  maxVeinCount: 16
+  isInventory: 0
+  veinChance: 0
+  maxVeinCount: 0
   upCrystal: {fileID: 0}
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}

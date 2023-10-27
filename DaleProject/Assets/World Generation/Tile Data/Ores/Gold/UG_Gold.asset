@@ -16,14 +16,19 @@ MonoBehaviour:
   tileDescription: A shiny metal often adored for its glamour! from currency to valuables,
     gold has always been used by civilisations for many uses
   tileType: 1
+  tileRarity: 0
   tileSprite: {fileID: 43876379, guid: b35c92207e642074aa22daac726f3300, type: 3}
   id: 5
   breakTime: 1.2
   sellPrice: 12
   breakingPower: 0
+  isTrigger: 0
+  isInventory: 1
   veinChance: 65
   maxVeinCount: 5
   upCrystal: {fileID: 0}
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}
   rightCrystal: {fileID: 0}
+  glow: 0
+  glowColor: {r: 0, g: 0, b: 0, a: 0}

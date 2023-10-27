@@ -103,6 +103,9 @@ public class WorldGeneration : MonoBehaviour
             GenerateGemstones();
         }
 
+        //Generate Loot
+        GenerateLoot();
+
         Debug.Log("Quadrant " + currentQuadrant + "is a " + activeBiome.name + " Biome");
 
         //Check to Generate Another Quadrant
@@ -175,7 +178,7 @@ public class WorldGeneration : MonoBehaviour
     {
         GameObject gem = Instantiate(tile, spawnPosition, Quaternion.identity);
         Tile tt = gem.GetComponent<Tile>();
-        gem.name = (x + quadrantOffset.x) + "," + (y + quadrantOffset.y);
+        SetTileName(gem, x + quadrantOffset.x, y + quadrantOffset.y, activeTile.name);
         tt.Gemstone(activeTile, gemSprite);
         tiles.Add(gem);
     }
@@ -195,8 +198,8 @@ public class WorldGeneration : MonoBehaviour
                         //Check Area Level and Change Spawn Position
                         SetSpawnPoint(x, y);
 
-                        //Delete Rock Block
-                        DeleteBlock(x, y);
+                        //Delete Rock Block 
+                        DeleteBlock(x, y, activeBiome.rockTile.name);
 
                         //Spawn Ore
                         SpawnOre(x, y, false);
@@ -231,7 +234,7 @@ public class WorldGeneration : MonoBehaviour
 
                 GameObject newTile = Instantiate(tile, spawnPosition, Quaternion.identity);
                 newTile.GetComponent<Tile>().Ore(activeTile);
-                newTile.name = x + "," + (y + quadrantOffset.y);
+                SetTileName(newTile, x, y + quadrantOffset.y, activeTile.name);
                 tiles.Add(newTile);
 
                 oreTexture.SetPixel(x, y, Color.black);
@@ -245,7 +248,7 @@ public class WorldGeneration : MonoBehaviour
                 SetSpawnPoint(x, y);
                 GameObject newTile = Instantiate(tile, spawnPosition, Quaternion.identity);
                 newTile.GetComponent<Tile>().Ore(activeTile);
-                newTile.name = x + "," + y;
+                SetTileName(newTile, x, y, activeTile.name);
                 tiles.Add(newTile);
 
                 oreTexture.SetPixel(x, y, Color.black);
@@ -265,27 +268,27 @@ public class WorldGeneration : MonoBehaviour
             veinCount++;
             if (dir == 0)//Right
             {
-                DeleteBlock(x + 1, y);
+                DeleteBlock(x + 1, y, activeTile.name);
                 SpawnOre(x + 1, y, true);
             }
             if (dir == 1)//Left
             {
-                DeleteBlock(x - 1, y);
+                DeleteBlock(x - 1, y, activeTile.name);
                 SpawnOre(x - 1, y, true);
             }
             if (dir == 2)//Up
             {
-                DeleteBlock(x, y + 1);
+                DeleteBlock(x, y + 1, activeTile.name);
                 SpawnOre(x, y + 1, true);
             }
             if (dir == 3)//Down
             {
-                DeleteBlock(x, y - 1);
+                DeleteBlock(x, y - 1, activeTile.name);
                 SpawnOre(x, y - 1, true);
             }
         }
     }
-    public void GenerateOreTexture()
+    public void GenerateOreTexture() //To Stop Ores overlapping each other when generating veins
     {
         oreTexture = new Texture2D(quadrantSize, quadrantSize);
 
@@ -379,7 +382,7 @@ public class WorldGeneration : MonoBehaviour
     {
         GameObject newTile = Instantiate(tile, spawnPosition, Quaternion.identity);
         newTile.GetComponent<Tile>().Rock(activeBiome.rockTile);
-        newTile.name = (x + quadrantOffset.x) + "," + (y + quadrantOffset.y);
+        SetTileName(newTile, x + quadrantOffset.x, y + quadrantOffset.y, activeBiome.rockTile.name);
         tiles.Add(newTile);
     }
 
@@ -407,9 +410,9 @@ public class WorldGeneration : MonoBehaviour
     }
 
     //Deleting Blocks
-    private void DeleteBlock(int x, int y)
+    private void DeleteBlock(int x, int y, string name)
     {
-        string blockName = (x + quadrantOffset.x) + "," + (y + quadrantOffset.y);
+        string blockName = "X" + x + " " + "Y" + y + " " + "Tile " + name;
         GameObject tile = GameObject.Find(blockName);
         Destroy(tile);
     }
@@ -433,6 +436,37 @@ public class WorldGeneration : MonoBehaviour
         background.name = "Quadrant " + currentQuadrant + " Background";
     }
 
+    private void GenerateLoot()
+    {
+        for (int x = 0; x < quadrantSize; x++)
+        {
+            for (int y = 0; y < quadrantSize; y++)
+            {
+                if (caveTexture.GetPixel(x, y).r > 0.5 && oreTexture.GetPixel(x, y) != Color.black)
+                {
+                    if (caveTexture.GetPixel(x, y - 1).r < 0.5)
+                    {
+                        //Percentage Chance to Generate Loot
+                        float chance = Random.Range(0f, 1f);
+                        if (chance <= activeBiome.lootFrequency)
+                        {
+                            //Generate the Loot
+                            SetSpawnPoint(x, y);
+                            SpawnLoot(x, y);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void SpawnLoot(int x, int y)
+    {
+        GameObject lootTile = Instantiate(tile, spawnPosition, Quaternion.identity);
+        lootTile.GetComponent<Tile>().Rock(activeBiome.lootTile);
+        SetTileName(lootTile, x + quadrantOffset.x, y + quadrantOffset.y, activeBiome.lootTile.name);
+        tiles.Add(lootTile);
+    }
     private void GenerateMineshaft(bool generated)
     {
         if (generated) //Quick bool to only generate a mineshaft once
@@ -480,5 +514,10 @@ public class WorldGeneration : MonoBehaviour
     private void SetSpawnPoint(int x, int y)
     {
         spawnPosition = new Vector2(x, y) + quadrantOffset;
+    }
+
+    private void SetTileName(GameObject tile, float x, float y, string name)
+    {
+        tile.name = "X" + x + " " + "Y" + y + " " + "Tile " + name;
     }
 }

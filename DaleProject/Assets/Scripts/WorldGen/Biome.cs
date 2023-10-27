@@ -13,6 +13,7 @@ public class Biome : ScriptableObject
     [Range(0.45f, 0.6f)] public float caveFrequency; //Frequency of Caves
     [Range(0f, 0.1f)] public float oreFrequency; //Ore Distribution
     [Range(0, 1f)] public float gemFrequency; //Gem Distribution
+    [Range(0, 1f)] public float lootFrequency; //How often Loot Shows Up in this Biome
     [Range(0f, 1f)] public float biomeFrequency; //How Often this Biome Shows Up
     public bool hasOre;
     public bool hasGems;
@@ -30,4 +31,7 @@ public class Biome : ScriptableObject
     public TileData[] commonGems;
     public TileData[] rareGems;
     public TileData[] uniqueGems;
+
+    [Header("Biome Loot")]
+    public TileData lootTile;
 }

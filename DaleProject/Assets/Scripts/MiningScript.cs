@@ -133,7 +133,10 @@ public class MiningScript : MonoBehaviour
         CustomEventSystem.current.TextDisplay(block.gameObject.transform.position, 2f, "+" + mineAmount + " " + block.GetComponent<Tile>().tileDataHolder.tileName, 35, block.GetComponent<Tile>().tileDataHolder.tileRarity);
 
         // Add Resource to Backpack and Destroy the Block
-        gameObject.GetComponent<Backpack>().AddResource(block.GetComponent<Tile>().tileDataHolder.id, mineAmount);
+        if (block.GetComponent<Tile>().tileDataHolder.isInventory)
+        {
+            gameObject.GetComponent<Backpack>().AddResource(block.GetComponent<Tile>().tileDataHolder.id, mineAmount);
+        }
 
         //Track Lifetime Stats
         CustomEventSystem.current.BlockBreak(block.GetComponent<Tile>().tileDataHolder.tileName, block.GetComponent<Tile>().tileDataHolder.tileType);
