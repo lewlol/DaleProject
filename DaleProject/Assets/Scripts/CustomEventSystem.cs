@@ -30,12 +30,39 @@ public class CustomEventSystem : MonoBehaviour
         }
     }
 
-    public event Action onCoinChange;
-    public void CoinChange()
+    public event Action<int> onAddCoins;
+    public void AddCoins(int amount)
     {
-        if(onCoinChange != null)
+        if(onAddCoins != null)
         {
-            onCoinChange();
+            onAddCoins(amount);
+        }
+    }
+
+    public event Action<int> onRemoveCoins;
+    public void RemoveCoins(int amount)
+    {
+        if(onRemoveCoins != null)
+        {
+            onRemoveCoins(amount);
+        }
+    }
+
+    public event Action<int> onUpdateCoins;
+    public void UpdateCoins(int amount)
+    {
+        if(onUpdateCoins != null)
+        {
+            onUpdateCoins(amount);
+        }
+    }
+
+    public event Action<int, int> onUpdateBackpack;
+    public void UpdateBackapck(int amount, int id)
+    {
+        if(onUpdateBackpack != null)
+        {
+            onUpdateBackpack(amount, id);
         }
     }
 

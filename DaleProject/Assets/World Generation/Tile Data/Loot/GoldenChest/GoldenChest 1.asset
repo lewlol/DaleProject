@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
-  m_Name: WoodenChest
+  m_Name: GoldenChest 1
   m_EditorClassIdentifier: 
-  tileName: Wooden Chest
+  tileName: Golden Chest
   tileDescription: 
   tileType: 3
-  tileRarity: 0
-  tileSprite: {fileID: 21300000, guid: 8995e11c15769c84a82f8c35114f8db3, type: 3}
+  tileRarity: 1
+  tileSprite: {fileID: 21300000, guid: 97a9700991b0cf14895a06198ecd299c, type: 3}
   id: 0
-  breakTime: 0
+  breakTime: 0.75
   sellPrice: 0
   breakingPower: 0
   isTrigger: 1
@@ -29,6 +29,7 @@ MonoBehaviour:
   downCrystal: {fileID: 0}
   leftCrystal: {fileID: 0}
   rightCrystal: {fileID: 0}
+  lootTable: {fileID: 11400000, guid: 1583a5c42f8f75f4da26ef3dcb44a810, type: 2}
   glow: 1
   glowIntensity: 0.015
-  glowColor: {r: 0.9381927, g: 1, b: 0, a: 1}
+  glowColor: {r: 0.759434, g: 1, b: 0.9761422, a: 1}

@@ -17,7 +17,7 @@ MonoBehaviour:
   caveFrequency: 0.557
   oreFrequency: 0.025
   gemFrequency: 0.025
-  lootFrequency: 0.2
+  lootFrequency: 0.02
   biomeFrequency: 1
   hasOre: 1
   hasGems: 1
@@ -40,4 +40,6 @@ MonoBehaviour:
   uniqueGems:
   - {fileID: 11400000, guid: ce779f0e1bfae11439b426681b7c6f75, type: 2}
   - {fileID: 11400000, guid: cea878ad00d652e44830a8ae5751aa8b, type: 2}
-  lootTile: {fileID: 11400000, guid: af39a1ac6796ec1449e7217398f6595e, type: 2}
+  lootTiles:
+  - {fileID: 11400000, guid: af39a1ac6796ec1449e7217398f6595e, type: 2}
+  - {fileID: 11400000, guid: 7385653b76fa9df46846b1ea56921ee4, type: 2}

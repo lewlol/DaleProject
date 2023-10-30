@@ -30,6 +30,9 @@ public class TileData : ScriptableObject
     public Sprite leftCrystal;
     public Sprite rightCrystal;
 
+    [Header("Loot Attributes")]
+    public LootTable lootTable;
+
     [Header("Glow Attributes")]
     public bool glow;
     public float glowIntensity;

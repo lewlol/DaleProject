@@ -454,9 +454,12 @@ public class WorldGeneration : MonoBehaviour
                         float chance = Random.Range(0f, 1f);
                         if (chance <= activeBiome.lootFrequency)
                         {
+                            //Decide what Loot
+                            int lootOption = Random.Range(0, activeBiome.lootTiles.Length);
+                            TileData loot = activeBiome.lootTiles[lootOption];
                             //Generate the Loot
                             SetSpawnPoint(x, y);
-                            SpawnLoot(x, y);
+                            SpawnLoot(x, y, loot);
                         }
                     }
                 }
@@ -464,10 +467,10 @@ public class WorldGeneration : MonoBehaviour
         }
     }
 
-    private void SpawnLoot(int x, int y)
+    private void SpawnLoot(int x, int y, TileData loot)
     {
         GameObject lootTile = Instantiate(tile, spawnPosition, Quaternion.identity);
-        lootTile.GetComponent<Tile>().Rock(activeBiome.lootTile);
+        lootTile.GetComponent<Tile>().Rock(loot);
         SetTileName(lootTile, x + quadrantOffset.x, y + quadrantOffset.y);
         tiles.Add(lootTile);
     }

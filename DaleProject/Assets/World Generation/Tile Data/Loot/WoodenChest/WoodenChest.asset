@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd6a5fa091ed914b963f8554dcd45ff, type: 3}
+  m_Name: WoodenChest
+  m_EditorClassIdentifier: 
+  tileName: Wooden Chest
+  tileDescription: 
+  tileType: 3
+  tileRarity: 0
+  tileSprite: {fileID: 21300000, guid: 8995e11c15769c84a82f8c35114f8db3, type: 3}
+  id: 0
+  breakTime: 0.75
+  sellPrice: 0
+  breakingPower: 0
+  isTrigger: 1
+  isInventory: 0
+  veinChance: 0
+  maxVeinCount: 0
+  upCrystal: {fileID: 0}
+  downCrystal: {fileID: 0}
+  leftCrystal: {fileID: 0}
+  rightCrystal: {fileID: 0}
+  lootTable: {fileID: 11400000, guid: 47865ae08c1caea498971b88a462b180, type: 2}
+  glow: 1
+  glowIntensity: 0.015
+  glowColor: {r: 0.9381927, g: 1, b: 0, a: 1}

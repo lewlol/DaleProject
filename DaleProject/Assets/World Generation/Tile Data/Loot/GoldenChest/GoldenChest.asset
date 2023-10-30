@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3daeeb5b441ee4b9f47c9654df4a27, type: 3}
+  m_Name: GoldenChest
+  m_EditorClassIdentifier: 
+  lootName: Golden Chest
+  coinChance: 1
+  gemChance: 0.5
+  itemChance: 0.5
+  minCoins: 3
+  maxCoins: 14
+  possibleGemstones:
+  - {fileID: 11400000, guid: cfc06b62e898f444298aa4761c084d71, type: 2}
+  - {fileID: 11400000, guid: f9831b650f906e64fa30cfe91775f4fe, type: 2}
+  - {fileID: 11400000, guid: 4f7c1da0da75218499785c3bc1161a3a, type: 2}
+  - {fileID: 11400000, guid: ce779f0e1bfae11439b426681b7c6f75, type: 2}
+  - {fileID: 11400000, guid: cea878ad00d652e44830a8ae5751aa8b, type: 2}
+  minGems: 2
+  maxGems: 5
+  possibleItems:
+  - {fileID: 11400000, guid: 81ce5ab72d90a5f49b5b72599a50cba8, type: 2}
+  - {fileID: 11400000, guid: 878ade45646ba92499362cb317b0e6d9, type: 2}
+  - {fileID: 11400000, guid: 1d60b95eea356a94d91e5714775fc173, type: 2}
+  minItems: 1
+  maxItems: 3

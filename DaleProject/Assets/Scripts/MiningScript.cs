@@ -130,7 +130,10 @@ public class MiningScript : MonoBehaviour
         mineAmount = guaranteedAmount + additionalAmount;
 
         // Call 3D Text - Block Transform (Offset Applied in Text Script), Time it stays there, +(Resource Amount) Block Name, Text Size 
-        CustomEventSystem.current.TextDisplay(block.gameObject.transform.position, 2f, "+" + mineAmount + " " + block.GetComponent<Tile>().tileDataHolder.tileName, 35, block.GetComponent<Tile>().tileDataHolder.tileRarity);
+        if(block.GetComponent<Tile>().tileDataHolder.tileType != TileTypes.Loot)
+        {
+            CustomEventSystem.current.TextDisplay(block.gameObject.transform.position, 2f, "+" + mineAmount + " " + block.GetComponent<Tile>().tileDataHolder.tileName, 35, block.GetComponent<Tile>().tileDataHolder.tileRarity);
+        }
 
         // Add Resource to Backpack and Destroy the Block
         if (block.GetComponent<Tile>().tileDataHolder.isInventory)
@@ -141,6 +144,12 @@ public class MiningScript : MonoBehaviour
         //Track Lifetime Stats
         CustomEventSystem.current.BlockBreak(block.GetComponent<Tile>().tileDataHolder.tileName, block.GetComponent<Tile>().tileDataHolder.tileType);
 
+        //Loot Check
+        if(block.GetComponent<Tile>().tileDataHolder.tileType == TileTypes.Loot)
+        {
+            block.GetComponent<LootScript>().AssignLootTable(block.GetComponent<Tile>().tileDataHolder.lootTable);
+            block.GetComponent<LootScript>().RunLoot();
+        }
         Destroy(block);
     }
 
@@ -266,6 +275,10 @@ public class MiningScript : MonoBehaviour
                     Debug.Log("Player does not have enough breaking power to break this block.");
                     return false;
                 }
+            }
+            if (blockTile.tileDataHolder.tileType == TileTypes.Loot)
+            {
+                return true;
             }
             else
             {

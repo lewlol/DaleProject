@@ -33,5 +33,5 @@ public class Biome : ScriptableObject
     public TileData[] uniqueGems;
 
     [Header("Biome Loot")]
-    public TileData lootTile;
+    public TileData[] lootTiles;
 }
