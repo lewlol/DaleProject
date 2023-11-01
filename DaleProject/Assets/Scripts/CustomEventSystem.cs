@@ -12,12 +12,12 @@ public class CustomEventSystem : MonoBehaviour
         current = this;
     }
 
-    public event Action onPlayerDamaged;
-    public void PlayerDamaged()
+    public event Action<float, float> onHealthChange;
+    public void HealthChange(float health, float maxHealth)
     {
-        if(onPlayerDamaged != null)
+        if(onHealthChange != null)
         {
-            onPlayerDamaged();
+            onHealthChange(health, maxHealth);
         }
     }
 

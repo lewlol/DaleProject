@@ -28,6 +28,7 @@ public class MiningScript : MonoBehaviour
     private void Start()
     {
         stamina = playerStats.maxstamina;
+        CustomEventSystem.current.StaminaChange(stamina, playerStats.maxstamina);
     }
 
     private void Update()

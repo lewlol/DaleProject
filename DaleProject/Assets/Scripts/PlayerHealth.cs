@@ -11,13 +11,15 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         health = stats.maxhealth;
+
+        CustomEventSystem.current.HealthChange(health, stats.maxhealth);
     }
     public void AddHealth(int healAmount)
     {
         health += healAmount;//Heal
 
         //Event For Health Gain
-        CustomEventSystem.current.PlayerDamaged();
+        CustomEventSystem.current.HealthChange(health, stats.maxhealth);
 
         //Check if Health is over MaxHealth
         if (health > stats.maxhealth)
@@ -35,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
         health -= damage; //Remove Health
 
         //Event for Health Removal
-        CustomEventSystem.current.PlayerDamaged();
+        CustomEventSystem.current.HealthChange(health, stats.maxhealth);
 
         if (health <= 0) //Check Death
         {
