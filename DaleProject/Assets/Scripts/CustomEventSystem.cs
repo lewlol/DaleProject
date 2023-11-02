@@ -102,9 +102,12 @@ public class CustomEventSystem : MonoBehaviour
         }
     }
 
-    public event Action onItemPickup;
-    public void ItemPickup()
+    public event Action<Item, int, int> onItemPickup;
+    public void ItemPickup(Item item, int itemAmount, int itemSlot)
     {
-
+        if(onItemPickup != null)
+        {
+            onItemPickup(item, itemAmount, itemSlot);
+        }
     }
 }
