@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health = stats.maxhealth;
 
-        CustomEventSystem.current.HealthChange(health, stats.maxhealth);
+        StartCoroutine(SetHealthUI());
     }
     public void AddHealth(int healAmount)
     {
@@ -58,5 +58,11 @@ public class PlayerHealth : MonoBehaviour
         {
             regenTime = 0;
         }
+    }
+
+    IEnumerator SetHealthUI()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CustomEventSystem.current.HealthChange(health, stats.maxhealth);
     }
 }

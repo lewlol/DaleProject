@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -28,7 +29,8 @@ public class MiningScript : MonoBehaviour
     private void Start()
     {
         stamina = playerStats.maxstamina;
-        CustomEventSystem.current.StaminaChange(stamina, playerStats.maxstamina);
+
+        StartCoroutine(SetStamUI());
     }
 
     private void Update()
@@ -291,5 +293,11 @@ public class MiningScript : MonoBehaviour
             
             return false;
         }
+    }
+
+    IEnumerator SetStamUI()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CustomEventSystem.current.StaminaChange(stamina, playerStats.maxstamina);
     }
 }

@@ -101,4 +101,10 @@ public class CustomEventSystem : MonoBehaviour
             onBlockBreak(blockName, blockType);
         }
     }
+
+    public event Action onItemPickup;
+    public void ItemPickup()
+    {
+
+    }
 }

@@ -46,6 +46,6 @@ public class CameraZoom : MonoBehaviour
 
     public void ResetZoom()
     {
-        cam.orthographicSize = 6;
+        cam.orthographicSize = 7.5f;
     }
 }
