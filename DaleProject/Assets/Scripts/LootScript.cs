@@ -39,5 +39,15 @@ public class LootScript : MonoBehaviour
         }
 
         //Try Items
+        int itemChance = Random.Range(0, 1);
+        if(itemChance <= lootTable.itemChance)
+        {
+            int item = Random.Range(0, lootTable.possibleItems.Length);
+            Item activeItem = lootTable.possibleItems[item];
+
+            int itemAmount = Random.Range(lootTable.minItems, lootTable.maxItems);
+
+            CustomEventSystem.current.ItemPickup(activeItem, itemAmount, 1);
+        }
     }
 }

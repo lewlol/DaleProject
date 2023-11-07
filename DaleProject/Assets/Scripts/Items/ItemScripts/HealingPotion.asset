@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f739f27eaae6f42bdb4dfe6ecfeb4c, type: 3}
   m_Name: HealingPotion
   m_EditorClassIdentifier: 
+  itemSprite: {fileID: 21300000, guid: bfc8c75c2e6492740bb5527480b7ce1f, type: 3}
   itemName: Healing Potion
+  itemDescription: 
+  itemRarity: 0
   coolDownTime: 30
   activeTime: 1
+  infinite: 0
   healthGain: 25

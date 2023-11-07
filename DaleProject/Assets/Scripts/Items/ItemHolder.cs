@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemHolder : MonoBehaviour
 {
@@ -31,6 +33,11 @@ public class ItemHolder : MonoBehaviour
     ItemState item1State = ItemState.Ready;
     ItemState item2State = ItemState.Ready;
     ItemState item3State = ItemState.Ready;
+
+    private void Start()
+    {
+        CustomEventSystem.current.onItemPickup += ItemGained;
+    }
 
     private void Update()
     {
@@ -181,6 +188,58 @@ public class ItemHolder : MonoBehaviour
                     item3State = ItemState.Ready;
                 }
                 break;
+        }
+    }
+
+    public void RemoveItem(float id)
+    {
+        switch (id) 
+        {
+            case 1:
+                activeItem1 = null;
+                item1Count = 0;
+                CustomEventSystem.current.ItemUIUpdate("Item 2", null, 0, 1);
+                break; 
+
+            case 2:
+                activeItem2 = null;
+                item2Count = 0;
+                CustomEventSystem.current.ItemUIUpdate("Item 2", null, 0, 2);
+                break;
+
+            case 3:
+                activeItem3 = null;
+                item3Count = 0;
+                CustomEventSystem.current.ItemUIUpdate("Item 3",null, 0, 3);
+                break;
+        }
+    }
+
+    public void ItemGained(Item item, int itemAmount, int slot)
+    {
+        if (activeItem1 == null || activeItem1 == item) //Active Slot 1
+        {
+            activeItem1 = item;
+            item1Count += itemAmount;
+            CustomEventSystem.current.ItemUIUpdate(item.itemName,item.itemSprite, 0, 1);
+        }
+        else
+        {
+            if (activeItem2 == null || activeItem2 == item) //Active Slot 2
+            {
+                activeItem2 = item;
+                item2Count += itemAmount;
+                CustomEventSystem.current.ItemUIUpdate(item.itemName, item.itemSprite, 0, 2);
+            }
+            else
+            {
+                if (activeItem3 == null || activeItem3 == item) //Active Slot 3
+                {
+                    activeItem3 = item;
+                    item3Count += itemAmount;
+                    CustomEventSystem.current.ItemUIUpdate(item.itemName, item.itemSprite, 0, 3);
+                }
+            }
         }
     }
 }

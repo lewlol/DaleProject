@@ -110,4 +110,13 @@ public class CustomEventSystem : MonoBehaviour
             onItemPickup(item, itemAmount, itemSlot);
         }
     }
+
+    public event Action<string, Sprite, int, int> onItemUIUpdate;
+    public void ItemUIUpdate(string itemName, Sprite itemSprite, int itemAmount, int itemSlot)
+    {
+        if(onItemUIUpdate != null)
+        {
+            onItemUIUpdate(itemName, itemSprite, itemAmount, itemSlot);
+        }
+    }
 }

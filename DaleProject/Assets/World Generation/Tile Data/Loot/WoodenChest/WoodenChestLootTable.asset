@@ -29,5 +29,6 @@ MonoBehaviour:
   possibleItems:
   - {fileID: 11400000, guid: 81ce5ab72d90a5f49b5b72599a50cba8, type: 2}
   - {fileID: 11400000, guid: 878ade45646ba92499362cb317b0e6d9, type: 2}
+  - {fileID: 11400000, guid: 81a7197fd8502924e8b85808660effac, type: 2}
   minItems: 1
   maxItems: 4

@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f30bec5793dfe6499ae17d382039942, type: 3}
-  m_Name: RegenPotion
+  m_Script: {fileID: 11500000, guid: 022cb8d5b25663d42a32095e904f2365, type: 3}
+  m_Name: StaminaPotion
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 21300000, guid: d7c891e8ad405db4986384e30d32d130, type: 3}
-  itemName: Regeneration Potion
+  itemSprite: {fileID: 21300000, guid: a3da256bc70aa794e92e9ebad73fa00d, type: 3}
+  itemName: Stamina Potion
   itemDescription: 
   itemRarity: 1
-  coolDownTime: 30
+  coolDownTime: 5
   activeTime: 1
   infinite: 0
-  healthgain: 3
-  regenTime: 30
+  staminaGain: 15

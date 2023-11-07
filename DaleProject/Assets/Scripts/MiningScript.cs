@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class MiningScript : MonoBehaviour
@@ -184,6 +185,17 @@ public class MiningScript : MonoBehaviour
         if (stamina < 0)
         {
             stamina = 0;
+        }
+
+        CustomEventSystem.current.StaminaChange(stamina, playerStats.maxstamina);
+    }
+
+    public void AddStamina(int amount)
+    {
+        stamina += amount;
+        if (stamina < playerStats.maxstamina)
+        {
+            RegenStamina();
         }
 
         CustomEventSystem.current.StaminaChange(stamina, playerStats.maxstamina);
