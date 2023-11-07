@@ -59,6 +59,15 @@ public class ItemHolder : MonoBehaviour
 
                     if(!activeItem1.infinite)
                         item1Count--;
+
+                    if (item1Count != 0)
+                    {
+                        CustomEventSystem.current.ItemUIUpdate(activeItem1.itemName, activeItem1.itemSprite, item1Count, 1);
+                    }
+                    else
+                    {
+                        CustomEventSystem.current.ItemUIUpdate(null, null, 0, 1);
+                    }
                 }
                 break;
             case ItemState.Active:
@@ -107,6 +116,15 @@ public class ItemHolder : MonoBehaviour
 
                     if(!activeItem2.infinite)
                         item2Count--;
+
+                    if (item2Count != 0)
+                    {
+                        CustomEventSystem.current.ItemUIUpdate(activeItem2.itemName, activeItem2.itemSprite, item2Count, 2);
+                    }
+                    else
+                    {
+                        CustomEventSystem.current.ItemUIUpdate(null, null, 0, 2);
+                    }
                 }
                 break;
             case ItemState.Active:
@@ -147,7 +165,7 @@ public class ItemHolder : MonoBehaviour
         switch (item3State)
         {
             case ItemState.Ready:
-                if (Input.GetKeyDown(KeyCode.Z) && item3Count > 0)
+                if (Input.GetKeyDown(KeyCode.V) && item3Count > 0)
                 {
                     activeItem3.Activate(gameObject);
                     item3State = ItemState.Active;
@@ -155,6 +173,15 @@ public class ItemHolder : MonoBehaviour
 
                     if(!activeItem3.infinite)
                         item3Count--;
+
+                    if (item3Count != 0)
+                    {
+                        CustomEventSystem.current.ItemUIUpdate(activeItem3.itemName, activeItem3.itemSprite, item3Count, 3);
+                    }
+                    else
+                    {
+                        CustomEventSystem.current.ItemUIUpdate(null, null, 0, 3);
+                    }
                 }
                 break;
             case ItemState.Active:
@@ -198,19 +225,19 @@ public class ItemHolder : MonoBehaviour
             case 1:
                 activeItem1 = null;
                 item1Count = 0;
-                CustomEventSystem.current.ItemUIUpdate("Item 2", null, 0, 1);
+                CustomEventSystem.current.ItemUIUpdate(null , null, 0, 1);
                 break; 
 
             case 2:
                 activeItem2 = null;
                 item2Count = 0;
-                CustomEventSystem.current.ItemUIUpdate("Item 2", null, 0, 2);
+                CustomEventSystem.current.ItemUIUpdate(null, null, 0, 2);
                 break;
 
             case 3:
                 activeItem3 = null;
                 item3Count = 0;
-                CustomEventSystem.current.ItemUIUpdate("Item 3",null, 0, 3);
+                CustomEventSystem.current.ItemUIUpdate(null, null, 0, 3);
                 break;
         }
     }
@@ -221,7 +248,7 @@ public class ItemHolder : MonoBehaviour
         {
             activeItem1 = item;
             item1Count += itemAmount;
-            CustomEventSystem.current.ItemUIUpdate(item.itemName,item.itemSprite, 0, 1);
+            CustomEventSystem.current.ItemUIUpdate(item.itemName,item.itemSprite, item1Count, 1);
         }
         else
         {
@@ -229,7 +256,7 @@ public class ItemHolder : MonoBehaviour
             {
                 activeItem2 = item;
                 item2Count += itemAmount;
-                CustomEventSystem.current.ItemUIUpdate(item.itemName, item.itemSprite, 0, 2);
+                CustomEventSystem.current.ItemUIUpdate(item.itemName, item.itemSprite, item2Count, 2);
             }
             else
             {
@@ -237,7 +264,7 @@ public class ItemHolder : MonoBehaviour
                 {
                     activeItem3 = item;
                     item3Count += itemAmount;
-                    CustomEventSystem.current.ItemUIUpdate(item.itemName, item.itemSprite, 0, 3);
+                    CustomEventSystem.current.ItemUIUpdate(item.itemName, item.itemSprite, item3Count, 3);
                 }
             }
         }

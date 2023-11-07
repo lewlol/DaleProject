@@ -17,7 +17,7 @@ public class BombItem : Item
 
         Vector3 throwDirection = (mousePosition - parent.transform.position).normalized;
 
-        currentBomb = Instantiate(bombPrefab, parent.transform.position, Quaternion.identity);
+        currentBomb = Instantiate(bombPrefab, parent.transform.position - new Vector3(0, 0, 1), Quaternion.identity);
         Rigidbody2D bombRb = currentBomb.GetComponent<Rigidbody2D>();
 
         bombRb.velocity = throwDirection * bombForce;
