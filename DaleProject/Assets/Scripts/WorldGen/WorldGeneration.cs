@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,9 +50,11 @@ public class WorldGeneration : MonoBehaviour
 
     [Header("Misc Properties")]
     public GameObject dirt;
+    public GameObject tileParent;
 
     private void Start()
     {
+        CustomEventSystem.current.onSleep += ResetWorld;
         currentQuadrant = 1;
         GenerateNewWorld();
     }
@@ -181,6 +184,7 @@ public class WorldGeneration : MonoBehaviour
         SetTileName(gem, x + quadrantOffset.x, y + quadrantOffset.y);
         tt.Gemstone(activeTile, gemSprite);
         tiles.Add(gem);
+        SetParent(gem);
     }
 
     public void GenerateOre()
@@ -236,6 +240,7 @@ public class WorldGeneration : MonoBehaviour
                 newTile.GetComponent<Tile>().Ore(activeTile);
                 SetTileName(newTile, x, y + quadrantOffset.y); //
                 tiles.Add(newTile);
+                SetParent(newTile);
 
                 oreTexture.SetPixel(x, y, Color.black);
                 oreTexture.Apply();
@@ -250,6 +255,7 @@ public class WorldGeneration : MonoBehaviour
                 newTile.GetComponent<Tile>().Ore(activeTile);
                 SetTileName(newTile, x, y + quadrantOffset.y);
                 tiles.Add(newTile);
+                SetParent(newTile);
 
                 oreTexture.SetPixel(x, y, Color.black);
                 oreTexture.Apply();
@@ -384,6 +390,7 @@ public class WorldGeneration : MonoBehaviour
         newTile.GetComponent<Tile>().Rock(activeBiome.rockTile);
         SetTileName(newTile, x + quadrantOffset.x, y + quadrantOffset.y);
         tiles.Add(newTile);
+        SetParent(newTile);
     }
 
     public void GenerateCaveTexture()
@@ -414,10 +421,6 @@ public class WorldGeneration : MonoBehaviour
     {
         string blockName = "X" + x + " " + "Y" + y;
         GameObject tile = GameObject.Find(blockName);
-        if(tile != null)
-        {
-            Debug.Log("Tile Destroyed");
-        }
         Destroy(tile);
     }
 
@@ -438,6 +441,7 @@ public class WorldGeneration : MonoBehaviour
         sr.size = new Vector2(quadrantSize, quadrantSize);
 
         background.name = "Quadrant " + currentQuadrant + " Background";
+        SetParent(background);
     }
 
     private void GenerateLoot()
@@ -473,6 +477,7 @@ public class WorldGeneration : MonoBehaviour
         lootTile.GetComponent<Tile>().Rock(loot);
         SetTileName(lootTile, x + quadrantOffset.x, y + quadrantOffset.y);
         tiles.Add(lootTile);
+        SetParent(lootTile);
     }
     private void GenerateMineshaft(bool generated)
     {
@@ -509,11 +514,11 @@ public class WorldGeneration : MonoBehaviour
         if(generated)
             return;
 
-        Vector2 lBorderPos = new Vector2(7, 0);
+        Vector2 lBorderPos = new Vector2(0, 0);
         GameObject lBorder = Instantiate(borderTile, lBorderPos, Quaternion.identity);
         lBorder.name = "Left Border";
 
-        Vector2 rBorderPos = new Vector2(quadrantSize - 7, 0);
+        Vector2 rBorderPos = new Vector2(quadrantSize - 1, 0);
         GameObject rBorder = Instantiate(borderTile, rBorderPos, Quaternion.identity);
         rBorder.name = "Right Border";
     }
@@ -526,5 +531,24 @@ public class WorldGeneration : MonoBehaviour
     private void SetTileName(GameObject tile, float x, float y)
     {
         tile.name = "X" + x + " " + "Y" + y;
+    }
+
+    public void SetParent(GameObject tile)
+    {
+        tile.transform.parent = tileParent.transform;
+    }
+
+    public void ResetWorld() 
+    {
+        foreach (var child in tiles)
+        {
+            Destroy(child);
+        }
+
+        tiles.Clear();
+
+        currentQuadrant = 1;
+
+        GenerateNewWorld();
     }
 }

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddaf07df73b9154eb8bf94b4e0db602, type: 3}
+  m_Name: Advanced
+  m_EditorClassIdentifier: 
+  biomeName: Underground
+  caveSize: 0.114
+  caveFrequency: 0.557
+  oreFrequency: 0.025
+  gemFrequency: 0.025
+  lootFrequency: 0.02
+  biomeFrequency: 1
+  hasOre: 1
+  hasGems: 1
+  rockTile: {fileID: 11400000, guid: 13bdd188b62a12c409c0ff5fb7dbc554, type: 2}
+  biomeBackground: {fileID: 21300000, guid: a4cdf5a1df8da624d99a70eda5bdba1a, type: 3}
+  commonOres:
+  - {fileID: 11400000, guid: 1e93d62b75f1d9347a851495b35a3644, type: 2}
+  rareOres:
+  - {fileID: 11400000, guid: 3f4a02bec5220534f98f25b5686ad3ac, type: 2}
+  - {fileID: 11400000, guid: a28aff90c8fdce041ab7bef9d068e503, type: 2}
+  uniqueOres:
+  - {fileID: 11400000, guid: 6220593f6c1bcd046a48a4a0732a65b1, type: 2}
+  commonGems:
+  - {fileID: 11400000, guid: 4cf6cd6366bebc849854a6b78590ac5d, type: 2}
+  - {fileID: 11400000, guid: e4841d58914060e45bbd7e965c1255a5, type: 2}
+  rareGems:
+  - {fileID: 11400000, guid: dc624524c13553144b1f4e1715995e79, type: 2}
+  - {fileID: 11400000, guid: 4f7c1da0da75218499785c3bc1161a3a, type: 2}
+  - {fileID: 11400000, guid: 6d63cc7757381494bb2492dad1be0a53, type: 2}
+  uniqueGems:
+  - {fileID: 11400000, guid: ce779f0e1bfae11439b426681b7c6f75, type: 2}
+  - {fileID: 11400000, guid: cea878ad00d652e44830a8ae5751aa8b, type: 2}
+  lootTiles:
+  - {fileID: 11400000, guid: af39a1ac6796ec1449e7217398f6595e, type: 2}
+  - {fileID: 11400000, guid: 7385653b76fa9df46846b1ea56921ee4, type: 2}

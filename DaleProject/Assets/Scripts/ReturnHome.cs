@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ReturnHome : MonoBehaviour
 {
+    public Transform spawnPosition;
     public void ReturnToVillage()
     {
-        SceneManager.LoadScene("Village");
+        GameObject player = GameObject.Find("Player");
+        player.transform.position = spawnPosition.position;
+        CustomEventSystem.current.HeadLampLight(false);
     }
 }

@@ -6,12 +6,20 @@ public class SleepSystem : MonoBehaviour
 {
     int dayCount;
     bool canSleep;
+    Backpack playerBag;
 
+    public GameObject SellUI;
+
+    private void Start()
+    {
+        CustomEventSystem.current.onSleep += RemoveUI;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             canSleep = true;
+            playerBag = collision.gameObject.GetComponent<Backpack>();
         }
     }
 
@@ -27,8 +35,14 @@ public class SleepSystem : MonoBehaviour
     {
         if(canSleep && Input.GetKeyDown(KeyCode.Return))
         {
-            NewDay();
+            playerBag.SellBag();
+            SellUI.SetActive(!SellUI.activeSelf);
         }
+    }
+
+    public void RemoveUI()
+    {
+        SellUI.SetActive(false);
     }
     public void NewDay()
     {

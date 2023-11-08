@@ -119,4 +119,31 @@ public class CustomEventSystem : MonoBehaviour
             onItemUIUpdate(itemName, itemSprite, itemAmount, itemSlot);
         }
     }
+
+    public event Action<bool> onHeadLampLight;
+    public void HeadLampLight(bool activate)
+    {
+        if (onHeadLampLight != null)
+        {
+            onHeadLampLight(activate);
+        }
+    }
+
+    public event Action<int, int, int, int> onSellInventory;
+    public void SellInventory(int rocks, int ores, int gems, int total)
+    {
+        if (onSellInventory != null)
+        {
+            onSellInventory(rocks, ores, gems, total);
+        }
+    }
+
+    public event Action<float> onDepthChange;
+    public void DepthChange(float depth)
+    {
+        if (onDepthChange != null)
+        {
+            onDepthChange(depth);
+        }
+    }
 }

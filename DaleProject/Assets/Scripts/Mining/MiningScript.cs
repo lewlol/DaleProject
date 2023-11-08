@@ -142,7 +142,7 @@ public class MiningScript : MonoBehaviour
         // Add Resource to Backpack and Destroy the Block
         if (block.GetComponent<Tile>().tileDataHolder.isInventory)
         {
-            gameObject.GetComponent<Backpack>().AddResource(block.GetComponent<Tile>().tileDataHolder.id, mineAmount);
+            gameObject.GetComponent<Backpack>().AddResource(block.GetComponent<Tile>().tileDataHolder, mineAmount);
         }
 
         //Track Lifetime Stats

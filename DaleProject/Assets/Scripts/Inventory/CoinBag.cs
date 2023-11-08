@@ -15,12 +15,12 @@ public class CoinBag : MonoBehaviour
     public void PlusCoins(int amount)
     {
         coins += amount;
-        CustomEventSystem.current.UpdateCoins(amount);
+        CustomEventSystem.current.UpdateCoins(coins);
     }
 
     public void RemoveCoins(int amount)
     {
         coins -= amount;
-        CustomEventSystem.current.UpdateCoins(amount);
+        CustomEventSystem.current.UpdateCoins(coins);
     }
 }
