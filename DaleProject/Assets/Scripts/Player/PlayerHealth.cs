@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
         health = stats.maxhealth;
 
         StartCoroutine(SetHealthUI());
+
+        CustomEventSystem.current.onSleep += FullHeal;
     }
     public void AddHealth(int healAmount)
     {
@@ -26,6 +28,13 @@ public class PlayerHealth : MonoBehaviour
         {
             health = stats.maxhealth;
         }
+    }
+
+    public void FullHeal()
+    {
+        health = stats.maxhealth;
+        //Event For Health Gain
+        CustomEventSystem.current.HealthChange(health, stats.maxhealth);
     }
 
     public void RegenerationEffect(int healAmount, int maxRegenTime)

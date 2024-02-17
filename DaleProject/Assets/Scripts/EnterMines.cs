@@ -10,11 +10,13 @@ public class EnterMines : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         canActivate = true;
+        CustomEventSystem.current.IndicatorMessage("Press Enter to Ride to Mines", 0, true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         canActivate = false;
+        CustomEventSystem.current.IndicatorMessage("", 0, true);
     }
 
     private void Update()

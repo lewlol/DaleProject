@@ -146,4 +146,13 @@ public class CustomEventSystem : MonoBehaviour
             onDepthChange(depth);
         }
     }
+
+    public event Action<string, float, bool> onIndicatorMessage;
+    public void IndicatorMessage(string message, float time, bool forever)
+    {
+        if(onIndicatorMessage != null)
+        {
+            onIndicatorMessage(message, time, forever);
+        }
+    }
 }

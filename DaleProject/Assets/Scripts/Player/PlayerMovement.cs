@@ -22,8 +22,11 @@ public class PlayerMovement : MonoBehaviour
 
     //Animation
     private Animator playerAnim;
+
+    Camera cam;
     private void Start()
     {
+        cam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
     }
@@ -71,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     {
         {
             // Calculate the angle between playerCenter and mouse position
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             Vector3 direction = mousePos - playerCenter.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 

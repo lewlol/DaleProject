@@ -32,6 +32,8 @@ public class MiningScript : MonoBehaviour
         stamina = playerStats.maxstamina;
 
         StartCoroutine(SetStamUI());
+
+        CustomEventSystem.current.onSleep += RegenStamina;
     }
 
     private void Update()
@@ -204,6 +206,7 @@ public class MiningScript : MonoBehaviour
     public void RegenStamina()
     {
         stamina = playerStats.maxstamina;
+        CustomEventSystem.current.StaminaChange(stamina, playerStats.maxstamina);
     }
 
     private void HightlightBlock(GameObject block)
@@ -242,6 +245,7 @@ public class MiningScript : MonoBehaviour
         {
            
             Debug.Log("Not enough stamina to mine.");
+            CustomEventSystem.current.IndicatorMessage("You Are Out of Stamina", 3, false);
             return false;
         }
     }
@@ -262,6 +266,7 @@ public class MiningScript : MonoBehaviour
                 else
                 {
                     Debug.Log("Player does not have enough breaking power to break this block.");
+                    CustomEventSystem.current.IndicatorMessage("You Cannot Break This Yet", 3, false);
                     return false;
                 }
             }
@@ -275,6 +280,7 @@ public class MiningScript : MonoBehaviour
                 else
                 {
                     Debug.Log("Player does not have enough breaking power to break this block.");
+                    CustomEventSystem.current.IndicatorMessage("You Cannot Break This Yet", 3, false);
                     return false;
                 }
             }
@@ -288,6 +294,7 @@ public class MiningScript : MonoBehaviour
                 else
                 {
                     Debug.Log("Player does not have enough breaking power to break this block.");
+                    CustomEventSystem.current.IndicatorMessage("You Cannot Break This Yet", 3 , false);
                     return false;
                 }
             }

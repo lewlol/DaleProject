@@ -12,4 +12,12 @@ public class ReturnHome : MonoBehaviour
         player.transform.position = spawnPosition.position;
         CustomEventSystem.current.HeadLampLight(false);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            ReturnToVillage();
+        }
+    }
 }

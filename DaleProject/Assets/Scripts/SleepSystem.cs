@@ -20,6 +20,7 @@ public class SleepSystem : MonoBehaviour
         {
             canSleep = true;
             playerBag = collision.gameObject.GetComponent<Backpack>();
+            CustomEventSystem.current.IndicatorMessage("Press Enter to Sleep and Sell your Resources", 0, true);
         }
     }
 
@@ -28,6 +29,7 @@ public class SleepSystem : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             canSleep = false;
+            CustomEventSystem.current.IndicatorMessage("", 0, true);
         }
     }
 
